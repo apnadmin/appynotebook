@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdf-renderer>
+  <fonts>
+    <font kerning="no" embed-url="file:/home/bitlooter/webcore-fonts/fonts/arial.ttf">
+      <font-triplet name="Arial" style="normal" weight="normal"/>
+    </font>
+  </fonts>
+</pdf-renderer>

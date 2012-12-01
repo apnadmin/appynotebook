@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/dummy"
+    xmlns:tns="http://xml.netbeans.org/schema/dummy"
+    elementFormDefault="qualified">
+    <xsd:complexType name="Top">
+        <xsd:attribute name="name" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:element name="Root" type="tns:Top"/>
+</xsd:schema>

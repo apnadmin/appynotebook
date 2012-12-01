@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <nextCatalog catalog="nbproject/private/cache/retriever/catalog.xml"/>
+    <system systemId="file:/home/bitlooter/development/java/collabopad/src/java/com/colabopad/bean/widgetmenu/widget-menu.xsd" uri="src/conf/xml-resources/jaxb/WidgetMenu/widget-menu.xsd"/>
+    <system systemId="file:/home/bitlooter/development/java/feezixlabs/src/java/com/colabopad/bean/widgetmenu/widget-menu.xsd" uri="xml-resources/jaxb/WidgetMenuBinding/widget-menu.xsd"/>
+    <system systemId="file:/home/bitlooter/development/java/feezixlabs/src/java/com/feezixlabs/util/property-config.xsd" uri="src/conf/xml-resources/jaxb/feezixlabs-config/property-config.xsd"/>
+    <system systemId="file:/home/bitlooter/development/java/feezixlabs/src/java/com/feezixlabs/util/applet-package.xsd" uri="src/conf/xml-resources/jaxb/AppletPackageManifest/applet-package.xsd"/>
+</catalog>

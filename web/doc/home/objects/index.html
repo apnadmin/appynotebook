@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html class="js fontface no-webkit no-chrome no-windows no-ie8 wf-adelle-n4-active wf-adelle-n7-active wf-active" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+<link href="index_files/git-scm-d9f82641da808f568237431257688a8a.css" media="screen" rel="stylesheet" type="text/css">
+<script src="index_files/track.js" data-site-id="4f919d1df5a1f504b3000026" id="gauges-tracker" async="" type="text/javascript"></script><script src="index_files/modernizr-d3e827f2080047c7ad3b548064c7b594.js" type="text/javascript"></script>
+<script src="index_files/modernizr-tests-df0c07a43732eb029194e7afb938e925.js" type="text/javascript"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src='/javascripts/selectivizr-min.js' type='text/javascript'></script>
+<![endif]-->
+<script src="index_files/jsq2fql.js" type="text/javascript"></script>
+<style type="text/css">.tk-adelle{font-family:"adelle",serif;}</style><link href="index_files/jsq2fql-d.css" rel="stylesheet"><script>
+  //<![CDATA[
+    try{Typekit.load();}catch(e){}
+  //]]>
+</script>
+</head>
+<body id="documentation">
+<div class="inner">
+<header>
+<a href="http://www.appynotebook.com/"><img src="../../../img/appynote-education.png" alt="APPYnotebook" height="44" width="310"></a>
+
+</header>
+
+</div>
+<div class="inner" style="margin-left:0">
+<div id="content-wrapper">
+
+<div id="content">
+
+
+<div id="main" class="book">
+    <h1>1.3 Platform Objects</h1>
+  <div><h2>Commonly referenced objects</h2>
+
+<p>There are several objects that facilitate the integration of APPs into the workspace platform. There are objects that originate from the platform and objects that are created by APPs.
+    These objects are outlined and described below. By understanding these objects, a developer can quickly build
+innovative APPs for the platform.</p>
+<ul>
+    <li><a href="#pad-object">pad</a></li>
+    <li><a href="#pageid-object">pageid</a></li>
+    <li><a href="#element-object">element</a></li>
+    <li><a href="#element-config-object">element.config</a></li>
+    
+    <li><a href="#element-config-circle-object">element.config.circle</a></li>
+    <li><a href="#element-config-rect-object">element.config.rect</a></li>
+    <li><a href="#element-config-line-object">element.config.line</a></li>
+    <li><a href="#element-config-text-object">element.config.text</a></li>
+    <li><a href="#element-config-image-object">element.config.image</a></li>
+    <li><a href="#element-config-stroke-object">element.config.stroke</a></li>
+    <li><a href="#element-config-pen-object">element.config.pen</a></li>
+    
+    <li><a href="#parent-grp-object">parent_grp</a></li>
+    <li><a href="#app-instance-object">app_instance</a></li>
+    <li><a href="#user-object">user</a></li>
+    <li><a href="#access-control-object">access_control</a></li>
+    <li><a href="#this-access-mode-object">this.ACCESS_MODE</a></li>
+    <li><a href="#cp-object">cp</a></li>
+    <li><a href="#pt-object">pt</a></li>
+    
+    
+    <li><a href="#delta-object">delta</a></li>
+    <li><a href="#group-object">group</a></li>
+    <!--
+    <li><a href="#group-structure-object">group_structure</a></li>
+    -->
+    <li><a href="#task-object">task</a></li>
+    <li><a href="#messenger-object">messenger</a></li>
+    <li><a href="#event-object">event</a></li>
+</ul>
+<h3 id="pad-object"><a href="#pad-object">The pad Object</a></h3>
+
+<p>The pad object is the essential object that APPs depend on for integrating into the platform. It represents a pad/page in the workspace. 
+   All APPs will run in the context of a pad as part of that pad's content. In other words 
+   APPs are considered as just another type of content on a pad.
+</p>
+
+<p>While the pad object is a fairly dense object in terms of the number of attributes it has,
+    developers only need to interact with few of its attributes.
+</p>
+
+<pre><code>{
+  svg_doc,
+  div_dom
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>svg_doc</code>
+<p>This is the <a href="http://keith-wood.name/svg.html">JQuery SVG</a> wrapper object. This object is what should be used for rendering SVG entities on a pad.</p>
+<code>div_dom</code>
+<p>This object is a dom object representing the pad, it a <code>div</code> element.</p>
+
+
+<h3 id="pageid-object"><a href="#pageid-object">The pageid Object</a></h3>
+
+<p>This object represents the full identifier for a page. A developer can save this object for future use, for
+instance for creating an APP that allows user to navigate to another pad</p>
+
+<p>group objects take the following form:</p>
+<pre><code>{participant_id,
+            context_id,
+            id
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>participant_id</code>
+<p>The user id of the owner of the page</p>
+<code>context_id</code>
+<p>
+    The binder id that the page belongs to.
+</p>
+<code>id</code>
+<p>
+    Actual id of the page.
+</p>
+
+
+
+
+
+<h3 id="element-object"><a href="#element-object">The element Object</a></h3>
+
+<p>The element object represents JSON objects that have been previously persisted into the database.
+    All objects on a pad are lazily loaded whenever that pad is loaded into the browser. When the pad
+    is loaded, the elements associated with it are streamed into appropriate APPs. The element object encapsulates
+    configuration information miscellaneous data that an APP would have previously persisted to the database.
+</p>
+
+<p>You should think of elements as rows in a database. For instance an APP may persist the results of a simulation
+    to the database; when the pad is loaded subsequently the simulation results would be streamed to the APP via the 
+    <code>onInstantiate</code> interface method. The APP can then reload those results to bring the simulation back
+    to its last state.
+</p>
+
+<p>
+    elements are also used to trigger the initial loading of an APP. When a user loads a pad that has an element
+    belonging to a particular APP, if that APP has not been previously loaded, it will be loaded and the <code>onInstantiate</code>
+    interface method would be called with the given element.
+</p>
+<p>element objects take the following form:</p>
+<pre><code>{
+  config,
+  access,
+  created_by,
+  create_date
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>config</code>
+<p>This is the configuration object that would have be created previously by the APP. It is the actual data that the
+element object encapsulate. In other words this object is what the APP would be using. Additionally, certain attributes would
+be automatically added to this object when it is initially registered. Please see the description of this object for details.</p>
+<code>access</code>
+<p>
+    This is an array that holds access control information for the element. Index <code>0</code> of this array contains the access restrictions
+that apply to all users in the current group. Index <code>2</code> contains access control restriction that applies to the current user.
+Please see access control section for details on access control.
+</p>
+<code>created_by</code>
+<p>
+    This attribute is an integer that represents the user id of the user who created this element. This is
+    important for ensuring the integrity of element config data. For instance in a discussion APP, you want
+    to ensure that posts are attributable to the correct user even when the pad may be writable to all users in 
+    the group.
+</p>
+<code>create_date</code>
+<p>
+    This represent the date this element was created.
+</p>
+
+
+
+
+<h3 id="element-config-object"><a href="#element-config-object">The element.config Object</a></h3>
+
+<p>The config object is a data object that APPs create. It can represent anything that an APP wishes to persist
+    to the database. There is no specification as to what the structure of the config object should be, its structure
+    would be be whatever the APP developer needs.
+</p>
+
+<p>
+    However there are additional attributes that a developer can append to this object. The platform would append these attributes if the APP developer doesn't 
+    do so.
+</p>
+
+<pre><code>{
+header:{
+        deletable,
+        movable,
+        showhelp,
+        scalable,
+        rotatable,
+        showcp,
+        cpstyle
+        },
+dim:{x,y,w,h},
+transforms:{trslt:{x:0,y:0},rotate:{angle:0,cx:0,cy:0},scale:{x:1,y:1}}
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>header</code>
+<p>This object represents control information for various visual aspects if the config object represents a visual entity.</p>
+<code>dim</code>
+<p>This object represents the dimensions of the APP entity if it is a visual entity.</p>
+<code>transforms</code>
+<p>
+    This object represents a transformation for configs that represent visual entities. The workspace platform would
+    alter it according to user interaction. For instance if a user drags an APP, the <code>transform.trslt</code> object would be updated accordingly.
+</p>
+
+
+
+
+<h3 id="element-config-circle-object"><a href="#element-config-circle-object">The element.config.circle Object</a></h3>
+
+<p>The element.config.circle object represents the definition of a circle primitive. You would use this to
+    draw a circle on the workspace screen by calling the <a href="../../app-api/add-circle.html">addCircle</a> api method. Note that the circle object is in fact an ellipses
+    object, a circle being a specific case.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>{
+    x,
+    y,
+    rad,
+    adj,
+    ops
+}
+</code>
+</pre>
+<h4>Attribute Descriptions</h4>
+<code>x</code>
+<p>The x coordinate in pixels of the center.</p>
+<code>y</code>
+<p>The y coordinate in pixels of the center.</p>
+<code>rad</code>
+<p>
+    The radius in pixels.
+</p>
+<code>adj</code>
+<p>
+    The adjacent side length in pixels.
+</p>
+<code>ops</code>
+<p>
+    The opposite side length in pixels.
+</p>
+
+<h3 id="element-config-rect-object"><a href="#element-config-rect-object">The element.config.rect Object</a></h3>
+
+<p>The element.config.rect object represents the definition of a rectangle primitive. You would use this to
+    draw a rectangle on the workspace screen by calling the <a href="../../app-api/add-rect.html">addRect</a> api method.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>{
+    x,
+    y,
+    w,
+    h
+}
+</code>
+</pre>
+<h4>Attribute Descriptions</h4>
+<code>x</code>
+<p>The x coordinate in pixels of the center.</p>
+<code>y</code>
+<p>The y coordinate in pixels of the center.</p>
+<code>w</code>
+<p>
+    The width in pixels.
+</p>
+<code>h</code>
+<p>
+    The length in pixels.
+</p>
+
+
+
+<h3 id="element-config-line-object"><a href="#element-config-line-object">The element.config.line Object</a></h3>
+
+<p>The element.config.line object represents the definition of a line primitive. You would use this to
+    draw a line on the workspace screen by calling the <a href="../../app-api/add-line.html">addLine</a> api method.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>{
+    start:{x,y},
+       end:{x,y}
+}
+</code>
+</pre>
+<h4>Attribute Descriptions</h4>
+<code>start.x</code>
+<p>The x coordinate in pixels of the start of the line.</p>
+<code>start.y</code>
+<p>The y coordinate in pixels of the start of the line.</p>
+
+<code>end.x</code>
+<p>The x coordinate in pixels of the end of the line.</p>
+<code>end.y</code>
+<p>The y coordinate in pixels of the end of the line.</p>
+
+
+<h3 id="element-config-text-object"><a href="#element-config-text-object">The element.config.text Object</a></h3>
+
+<p>The element.config.text object represents the definition of a text primitive. You would use this to
+    draw a text on the workspace screen by calling the <a href="../../app-api/add-text.html">addText</a> api method.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>{data,
+pos:{x,y}
+}</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>data</code>
+<p>Text data.</p>
+<code>pos.x</code>
+<p>The x coordinate in pixels of the start of the text.</p>
+<code>pos.y</code>
+<p>The y coordinate in pixels of the start of the text.</p>
+
+<h3 id="element-config-image-object"><a href="#element-config-image-object">The element.config.image Object</a></h3>
+
+<p>The element.config.image object represents the definition of an image primitive. You would use this to
+    draw an image on the workspace screen by calling the <a href="../../app-api/add-image.html">addImage</a> api method.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>{
+    url,
+    link,
+pos:{
+       x,
+       y,
+       w,
+       h
+}
+}
+</code>
+</pre>
+<h4>Attribute Descriptions</h4>
+<code>url</code>
+<p>The url of the image file.</p>
+<code>link</code>
+<p>If specified a link would be provided for the specified url.</p>
+<code>pos.x</code>
+<p>The x coordinate in pixels of upper left of the image.</p>
+<code>pos.y</code>
+<p>The y coordinate in pixels of upper left of the image.</p>
+<code>pos.w</code>
+<p>
+    The width in pixels.
+</p>
+<code>pos.h</code>
+<p>
+    The height in pixels.
+</p>
+
+
+
+<h3 id="element-config-stroke-object"><a href="#element-config-stroke-object">The element.config.stroke Object</a></h3>
+
+<p>The element.config.stroke object represents the definition of a stroke primitive. You would use this to
+    draw a stroke on the workspace screen by calling the <a href="../../app-api/add-stroke.html">addStroke</a> api method.
+    A stroke represents freehand writing. You could use this to simulate hand written text. This property is in fact a
+    two-dimensional array where each entry represents a point on the screen.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>[[x,y]*,[x,y]]
+</code>
+</pre>
+<h4>Attribute Descriptions</h4>
+<code>x</code>
+<p>For each entry in the array, the index <code>0</code> represents the x coordinate of the point.</p>
+<code>y</code>
+<p>For each entry in the array, the index <code>1</code> represents the y coordinate of the point.</p>
+
+
+
+<h3 id="element-config-pen-object"><a href="#element-config-pen-object">The element.config.pen Object</a></h3>
+
+<p>The element.config.pen object represents the definition of the pen associated with primitive visual entities such as circles,rectangle,lines and text. 
+    It is used to style these primitives.
+</p>
+
+<p>This object takes the following form:</p>
+<pre>
+<code>{
+    color,
+    width,
+    fill,
+    extra_settings:{}
+    } 
+</code>
+</pre>
+<h4>Attribute Descriptions</h4>
+<code>color</code>
+<p>Any valid html color value. Used to draw the outline of shapes.</p>
+<code>width</code>
+<p>The width of the pen which dictates the thickness of the outlines of shapes drawn with it.</p>
+<code>fill</code>
+<p>Any valid html color value. Used to fill the outline of shapes</p>
+<code>extra_settings</code>
+<p>Any valid combination of svg style attributes</p>
+
+
+
+
+
+
+
+<h3 id="parent-grp-object"><a href="#parent-grp-object">The parent_grp Object</a></h3>
+
+<p>The is an SVG Group element. If the element object represents a visual entity then it should be rendered in this group element.
+    This essential for correct z-ordering of visual entities.
+</p>
+
+
+
+
+
+
+<h3 id="app-instance-object"><a href="#app-instance-object">The app_instance Object</a></h3>
+
+<p>This object is an additional wrapper around the element.config object. Specifically it is the object passed
+    to <code>addInstance</code> api method. This object is transient and is only active while the pad it
+    belongs to is active. While this object has some attributes that are required, it can have any other attributes that the
+    APP wishes to associate with an active visual entity.
+</p>
+
+<p>app_instance objects take the following form:</p>
+<pre><code>{
+  config,
+  svg_node,
+  cp
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>config</code>
+<p>See <a href="#element-config-object">description</a></p>
+<code>svg_node</code>
+<p>
+    This should be an SVG group element, it represents the enclosing group element for all visual entities 
+    that the app_instance represents. In most cases this would be the same as <a href="#parent-grp-object">parent_grp</a>.
+    
+</p>
+<code>cp</code>
+<p>
+    See detail of <a href="#cp-object">control panel </a> object
+</p>
+
+
+<h3 id="user-object"><a href="#user-object">The user Object</a></h3>
+
+<p>This object represents a user.
+</p>
+
+<p>user objects take the following form:</p>
+<pre><code>{
+  id,
+  name,
+  photo,
+  on_line
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>id</code>
+<p>The id of the user.</p>
+<code>name</code>
+<p>
+    The full name of the user as it appears in the workspace.
+</p>
+<code>photo</code>
+<p>
+    The file name of the user's profile photo.
+</p>
+<code>on_line</code>
+<p>
+    set to true if user is on line.
+</p>
+
+
+
+<h3 id="access-control-object"><a href="#access-control-object">The access-control Object</a></h3>
+
+<p>This object is used to specify access control for <a href="#element-object">elements</a> stored in the database.
+</p>
+
+<p>access_control objects take the following form:</p>
+<pre><code>{
+  user_id,
+  access
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>user_id</code>
+<p>See <a href="#user-object">user</a> object for description</p>
+<code>access</code>
+<p>
+    This is a bitwise combination of the <a href="#user-object">this.ACCESS_MODE</a> object.
+</p>
+
+
+<h3 id="this-access-mode-object"><a href="#this-access-mode-object">The this.ACCESS_MODE Object</a></h3>
+
+<p>This object is an enum of access options for <a href="#element-object">elements</a>, it grants right to add or alter content on a <a href="#pad-object">pad</a>. It applies to <a href="#element-object">elements</a>, <a href="#pad-object">pads</a> and binders stored in the database.
+   Its values represent the various access types that can be granted to users.
+</p>
+
+<p>this.ACCESS_MODE take the following form:</p>
+<pre><code>{
+NONE:0,
+READ:1,
+WRITE:2,
+CREATE:4,
+DELETE:8,
+EMBED:16,
+ALTER_SECURITY:32
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>NONE</code>
+<p>Revokes all rights.</p>
+<code>READ</code>
+<p>
+    Grants right to read content on a <a href="#pad-object">pad</a>. It applies both to <a href="#pad-object">pads</a> and <a href="#element-object">elements</a>.
+</p>
+
+<code>WRITE</code>
+<p>
+    Grants right to add or alter content on a <a href="#pad-object">pad</a>. It applies both to <a href="#pad-object">pads</a> and <a href="#element-object">elements</a>.
+</p>
+
+<code>CREATE</code>
+<p>
+    This only applies to binders. It grants the right to create new <a href="#pad-object">pads</a>.
+</p>
+
+<code>DELETE</code>
+<p>
+    Grants delete right on an <a href="#element-object">element</a>.
+</p>
+
+<code>EMBED</code>
+<p>
+    Grants embed right. This only applies to a <a href="#pad-object">pad</a>, it makes the <a href="#pad-object">pad</a> embeddable.
+</p>
+<code>ALTER_SECURITY</code>
+<p>
+    Grants right to alter the security settings on an <a href="#element-object">element</a>.
+    In other words while a user may be granted the right to alter an <a href="#element-object">element</a>, they
+    would need this right to alter the access control settings on that <a href="#element-object">element</a>.
+</p>
+
+
+<h3 id="cp-object"><a href="#cp-object">The cp Object</a></h3>
+
+<p>This object represents a control panel object to be associated with an <a href="#app-instance-object">app_instance</a> object.
+</p>
+
+<p>cp objects take the following form:</p>
+<pre><code>{
+  html,
+  size:{width,height}
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>html</code>
+<p>Html markup that makes up the control panel.</p>
+<code>size</code>
+<p>
+    This represents the size of the control panel.
+</p>
+
+
+
+
+
+<h3 id="pt-object"><a href="#pt-object">The pt Object</a></h3>
+
+<p>This object is a point on the workspace screen. Points are used in many callback interface methods.
+</p>
+
+<p>pt objects take the following form:</p>
+<pre><code>{
+  x,
+  y
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>x</code>
+<p>x coordinate in pixels.</p>
+<code>y</code>
+<p>
+    y coordinate in pixels.
+</p>
+
+<h3 id="delta-object"><a href="#delta-object">The delta Object</a></h3>
+
+<p>This object represents delta for transformations. It is used in the <code>onTranslate</code>,<code>onScale</code> and <code>onRotate</code>.
+    When used in <code>onScale</code>, it is not an object but a floating point number representing the angular delta.
+</p>
+
+<p>delta objects take the following form:</p>
+<pre><code>{
+  x,
+  y,
+  angle
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>x</code>
+<p>horizontal delta for translate or horizontal delta for scaling. It has no effect for rotation</p>
+<code>y</code>
+<p>
+    vertical delta for translate or vertical delta for scaling. It has no effect for rotation
+</p>
+
+
+
+<h3 id="group-object"><a href="#group-object">The group Object</a></h3>
+
+<p>This object represents a group that users can be a part of. Users in the same group can collaborate and share
+content.</p>
+
+<p>group objects take the following form:</p>
+<pre><code>{id,
+            title,
+            creator,
+            participants:[]
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>id</code>
+<p>The id of the group</p>
+<code>title</code>
+<p>
+    The title of the group.
+</p>
+<code>creator</code>
+<p>
+    The <a href="#user-object">user</a>.id of the creator of this group.
+</p>
+<code>participants</code>
+<p>
+    The list of <a href="#user-object">users</a> in this group.
+</p>
+
+
+
+
+
+
+
+
+<h3 id="task-object"><a href="#task-object">The taskqueue Object</a></h3>
+
+<p>A taskqueue is a queue to which completed tasks can be submitted. Binders and pads can be submitted to a taskqueue.</p>
+
+<p>taskqueue objects take the following form:</p>
+<pre><code>{
+  id,
+  name
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>id</code>
+<p>id of the taskqueue</p>
+<code>name</code>
+<p>
+    name of taskqueue.
+</p>
+
+
+
+<h3 id="listener-object"><a href="#listener-object">The listener Object</a></h3>
+<p>The instances of this object represent message handlers. 
+    It is used in conjunction with <a href="../../app-api/messenger-registerListener.html">registerListener</a> method of the <a href="#messenger-object">messenger</a> object.</p>
+
+<p>message objects take the following form:</p>
+<pre><code>{
+  id,
+  destination,
+  rcvMessage
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>id</code>
+<p>id of the listener. This can be any unique value, it is suggested the current time stamp be used.</p>
+<code>destination</code>
+<p>This represents an ActiveMQ topic destination. Generally it should be a uuid that would not collide with
+other destination addresses. If the destination already exists then this listener simply receives messages
+from the existing destination, if it doesn't exist then it will be created.
+</p>
+<code>rcvMessage</code>
+<p>callback that would receive messages from this destination.</p>
+
+
+
+
+
+
+
+<h3 id="message-object"><a href="#message-object">The message Object</a></h3>
+
+<p>The instances of this object are used to send messages to remote app_instances.</p>
+
+<p>message objects take the following form:</p>
+<pre><code>{
+  to,
+  message
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>to</code>
+<p>This is the <code>destination</code> as described by the <a href="#listener-object">listener</a> object.</p>
+<code>message</code>
+<p>This is the actual message. It can be text or a JSON.</p>
+
+
+<h3 id="messenger-object"><a href="#messenger-object">The messenger Object</a></h3>
+
+<p>The messenger object is a component that can be used to send messengers to remote app_instances.
+This component is in fact used by the workspace to facilitate whiteboard collaboration.
+This component can be used to develop APPs for realtime communication such as Chat/IM APPs.</p>
+
+<p>messenger objects take the following form:</p>
+<pre><code>{
+  sendMessage,
+  registerListener,
+  unregisterListener
+}
+</code></pre>
+<h4>Attribute Descriptions</h4>
+<code>sendMessage</code>
+<p>See <a href="../../app-api/messenger-sendMessage.html">sendMessage</a></p>
+<code>registerListener</code>
+<p>See <a href="../../app-api/messenger-registerListener.html">registerListener</a></p>
+<code>unregisterListener</code>
+<p>See <a href="../../app-api/messenger-unregisterListener.html">unregisterListener</a></p>
+
+
+
+
+
+<h3 id="event-object"><a href="#event-object">The event Object</a></h3>
+
+<p>
+    The event object is the browser event object.
+</p>
+
+</div>
+</div>
+
+</div>
+</div>
+<footer>
+
+</footer>
+
+</div>
+</body></html>

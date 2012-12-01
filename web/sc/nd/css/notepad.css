@@ -1,0 +1,6 @@
+/* Common CSS for jQuery demonstration pages. */
+body {
+	font-family: Arial, Helvetica, Sans-serif;
+        font-size: 62.5%;
+	background: url("../../img/bg_dotted.png");
+}

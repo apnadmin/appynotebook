@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : top.xml
+    Created on : September 10, 2009, 3:12 PM
+    Author     : bitlooter
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns1:Root  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns1='http://xml.netbeans.org/schema/dummy'
+   xsi:schemaLocation='http://xml.netbeans.org/schema/dummy file:/home/bitlooter/development/java/collabopad/src/java/com/colabopad/bean/widgetmenu/dummy.xsd' name="">
+
+</ns1:Root>

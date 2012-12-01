@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : test-package-manifest.xml
+    Created on : December 19, 2010, 7:18 PM
+    Author     : bitlooter
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns1:package  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns1='http://xml.netbeans.org/schema/applet-package'
+   xsi:schemaLocation='http://xml.netbeans.org/schema/applet-package file:/home/bitlooter/development/java/feezixlabs/src/java/com/feezixlabs/util/applet-package.xsd'>
+    <ns1:name></ns1:name>
+    <ns1:version></ns1:version>
+    <ns1:description></ns1:description>
+    <ns1:applets>
+        <ns1:applet>
+            <ns1:name></ns1:name>
+            <ns1:description></ns1:description>
+            <ns1:iconPath></ns1:iconPath>
+            <ns1:version></ns1:version>
+            <ns1:authorName></ns1:authorName>
+            <ns1:authorLink></ns1:authorLink>
+            <ns1:categoryId></ns1:categoryId>
+            <ns1:tags></ns1:tags>
+            <ns1:createDate></ns1:createDate>
+            <ns1:lastModifiedDate></ns1:lastModifiedDate>
+            <ns1:showInMenu></ns1:showInMenu>
+            <ns1:codePath></ns1:codePath>
+            <ns1:resources>
+                <ns1:resource>
+                    <ns1:fileName></ns1:fileName>
+                    <ns1:label></ns1:label>
+                    <ns1:fsName></ns1:fsName>
+                    <ns1:type></ns1:type>
+                    <ns1:mime></ns1:mime>
+                    <ns1:size></ns1:size>
+                    <ns1:createDate></ns1:createDate>
+                    <ns1:lastModifiedDate></ns1:lastModifiedDate>
+                </ns1:resource>
+            </ns1:resources>
+        </ns1:applet>
+        <ns1:applet>
+            <ns1:name></ns1:name>
+            <ns1:description></ns1:description>
+            <ns1:iconPath></ns1:iconPath>
+            <ns1:version></ns1:version>
+            <ns1:authorName></ns1:authorName>
+            <ns1:authorLink></ns1:authorLink>
+            <ns1:categoryId></ns1:categoryId>
+            <ns1:tags></ns1:tags>
+            <ns1:createDate></ns1:createDate>
+            <ns1:lastModifiedDate></ns1:lastModifiedDate>
+            <ns1:showInMenu></ns1:showInMenu>
+            <ns1:codePath></ns1:codePath>
+            <ns1:resources>
+                <ns1:resource>
+                    <ns1:fileName></ns1:fileName>
+                    <ns1:label></ns1:label>
+                    <ns1:fsName></ns1:fsName>
+                    <ns1:type></ns1:type>
+                    <ns1:mime></ns1:mime>
+                    <ns1:size></ns1:size>
+                    <ns1:createDate></ns1:createDate>
+                    <ns1:lastModifiedDate></ns1:lastModifiedDate>
+                </ns1:resource>
+            </ns1:resources>
+        </ns1:applet>
+        <ns1:applet>
+            <ns1:name></ns1:name>
+            <ns1:description></ns1:description>
+            <ns1:iconPath></ns1:iconPath>
+            <ns1:version></ns1:version>
+            <ns1:authorName></ns1:authorName>
+            <ns1:authorLink></ns1:authorLink>
+            <ns1:categoryId></ns1:categoryId>
+            <ns1:tags></ns1:tags>
+            <ns1:createDate></ns1:createDate>
+            <ns1:lastModifiedDate></ns1:lastModifiedDate>
+            <ns1:showInMenu></ns1:showInMenu>
+            <ns1:codePath></ns1:codePath>
+            <ns1:resources>
+                <ns1:resource>
+                    <ns1:fileName></ns1:fileName>
+                    <ns1:label></ns1:label>
+                    <ns1:fsName></ns1:fsName>
+                    <ns1:type></ns1:type>
+                    <ns1:mime></ns1:mime>
+                    <ns1:size></ns1:size>
+                    <ns1:createDate></ns1:createDate>
+                    <ns1:lastModifiedDate></ns1:lastModifiedDate>
+                </ns1:resource>
+            </ns1:resources>
+        </ns1:applet>
+    </ns1:applets>
+
+</ns1:package>

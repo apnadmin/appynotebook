@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/widget-menu"
+    xmlns:tns="http://xml.netbeans.org/schema/widget-menu"
+    elementFormDefault="qualified">
+    <xsd:complexType name="MenuItem">
+        <xsd:attribute name="id" type="xsd:integer" use="required"/>
+        <xsd:attribute name="title" type="xsd:string" use="required"/>
+        <xsd:attribute name="icon" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="Menu">
+        <xsd:sequence>
+            <xsd:element name="MenuItems" minOccurs="0" maxOccurs="unbounded" type="tns:MenuItem"/>
+            <xsd:element name="Menus" minOccurs="0" maxOccurs="unbounded" type="tns:Menu"/>
+        </xsd:sequence>
+        <xsd:attribute name="title" type="xsd:string" use="required"/>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="iconUrl" type="xsd:string"/>
+        <xsd:attribute name="premium" type="xsd:boolean" default="false"/>
+        <xsd:attribute name="pages" type="xsd:integer" default="0"/>
+    </xsd:complexType>
+    <xsd:element name="Menu" type="tns:Menu"></xsd:element>
+</xsd:schema>

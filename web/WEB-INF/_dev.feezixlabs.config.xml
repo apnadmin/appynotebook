@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config xmlns="http://xml.netbeans.org/schema/property-config">
+    <property id="baseUrl">
+        <description></description>
+        <value>http://192.168.1.106:8080</value>
+    </property>
+    <property id="image_upload_directory">
+        <description></description>
+        <value>/path/to/appynotebook/img-uploads</value>
+    </property>
+    <property id="static_file_directory">
+        <description></description>
+        <value>/path/to/appynotebook/static-files</value>
+    </property>
+    <property id="file_serving_url_prefix">
+        <description></description>
+        <value>http://192.168.1.106:8080/imageImporter/?file_name=</value>
+    </property>
+    <property id="applet_deployment_policy">
+        <description></description>
+        <value>check</value>
+    </property>
+    <property id="active_mq_rate">
+        <description></description>
+        <value>100</value>
+    </property>
+    <property id="timezone_list">
+        <description></description>
+        <value>      
+&lt;option value=&quot;America/New_York&quot;&gt;Eastern Time (US &amp; Canada)&lt;/option&gt;        
+&lt;option value=&quot;America/Los_Angeles&quot;&gt;Pacific Time (US &amp; Canada)&lt;/option&gt;
+&lt;option value=&quot;America/Chicago&quot;&gt;Central Time (US &amp; Canada)&lt;/option&gt;
+&lt;option value=&quot;America/Denver&quot;&gt;Mountain Time (US &amp; Canada)&lt;/option&gt;
+&lt;option value=&quot;Europe/Belfast&quot;&gt;(GMT) Greenwich Mean Time : Belfast&lt;/option&gt;
+&lt;option value=&quot;Europe/Dublin&quot;&gt;(GMT) Greenwich Mean Time : Dublin&lt;/option&gt;
+&lt;option value=&quot;Europe/Lisbon&quot;&gt;(GMT) Greenwich Mean Time : Lisbon&lt;/option&gt;
+&lt;option value=&quot;Europe/London&quot;&gt;(GMT) Greenwich Mean Time : London&lt;/option&gt;
+&lt;option value=&quot;Europe/Amsterdam&quot;&gt;Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna&lt;/option&gt;
+&lt;option value=&quot;Europe/Belgrade&quot;&gt;Belgrade, Bratislava, Budapest, Ljubljana, Prague&lt;/option&gt;
+&lt;option value=&quot;Europe/Brussels&quot;&gt;Brussels, Copenhagen, Madrid, Paris&lt;/option&gt;
+&lt;option value=&quot;Europe/Moscow&quot;&gt;Moscow, St. Petersburg, Volgograd&lt;/option&gt;
+&lt;option value=&quot;Pacific/Midway&quot;&gt;Midway Island, Samoa&lt;/option&gt;
+&lt;option value=&quot;America/Adak&quot;&gt;Hawaii-Aleutian&lt;/option&gt;
+&lt;option value=&quot;Etc/GMT+10&quot;&gt;Hawaii&lt;/option&gt;
+&lt;option value=&quot;Pacific/Marquesas&quot;&gt;Marquesas Islands&lt;/option&gt;
+&lt;option value=&quot;Pacific/Gambier&quot;&gt;Gambier Islands&lt;/option&gt;
+&lt;option value=&quot;America/Anchorage&quot;&gt;Alaska&lt;/option&gt;
+&lt;option value=&quot;America/Ensenada&quot;&gt;Tijuana, Baja California&lt;/option&gt;
+&lt;option value=&quot;Etc/GMT+8&quot;&gt;Pitcairn Islands&lt;/option&gt;
+&lt;option value=&quot;America/Chihuahua&quot;&gt;Chihuahua, La Paz, Mazatlan&lt;/option&gt;
+&lt;option value=&quot;America/Dawson_Creek&quot;&gt;Arizona&lt;/option&gt;
+&lt;option value=&quot;America/Belize&quot;&gt;Saskatchewan, Central America&lt;/option&gt;
+&lt;option value=&quot;America/Cancun&quot;&gt;Guadalajara, Mexico City, Monterrey&lt;/option&gt;
+&lt;option value=&quot;Chile/EasterIsland&quot;&gt;Easter Island&lt;/option&gt;
+&lt;option value=&quot;America/Havana&quot;&gt;Cuba&lt;/option&gt;
+&lt;option value=&quot;America/Bogota&quot;&gt;Bogota, Lima, Quito, Rio Branco&lt;/option&gt;
+&lt;option value=&quot;America/Caracas&quot;&gt;Caracas&lt;/option&gt;
+&lt;option value=&quot;America/Santiago&quot;&gt;Santiago&lt;/option&gt;
+&lt;option value=&quot;America/La_Paz&quot;&gt;La Paz&lt;/option&gt;
+&lt;option value=&quot;Atlantic/Stanley&quot;&gt;Faukland Islands&lt;/option&gt;
+&lt;option value=&quot;America/Campo_Grande&quot;&gt;Brazil&lt;/option&gt;
+&lt;option value=&quot;America/Goose_Bay&quot;&gt;Atlantic Time (Goose Bay)&lt;/option&gt;
+&lt;option value=&quot;America/Glace_Bay&quot;&gt;Atlantic Time (Canada)&lt;/option&gt;
+&lt;option value=&quot;America/St_Johns&quot;&gt;Newfoundland&lt;/option&gt;
+&lt;option value=&quot;America/Araguaina&quot;&gt;UTC-3&lt;/option&gt;
+&lt;option value=&quot;America/Montevideo&quot;&gt;Montevideo&lt;/option&gt;
+&lt;option value=&quot;America/Miquelon&quot;&gt;Miquelon, St. Pierre&lt;/option&gt;
+&lt;option value=&quot;America/Godthab&quot;&gt;Greenland&lt;/option&gt;
+&lt;option value=&quot;America/Argentina/Buenos_Aires&quot;&gt;Buenos Aires&lt;/option&gt;
+&lt;option value=&quot;America/Sao_Paulo&quot;&gt;Brasilia&lt;/option&gt;
+&lt;option value=&quot;America/Noronha&quot;&gt;Mid-Atlantic&lt;/option&gt;
+&lt;option value=&quot;Atlantic/Cape_Verde&quot;&gt;Cape Verde Is.&lt;/option&gt;
+&lt;option value=&quot;Atlantic/Azores&quot;&gt;Azores&lt;/option&gt;
+&lt;option value=&quot;Africa/Abidjan&quot;&gt;(GMT) Monrovia, Reykjavik&lt;/option&gt;
+&lt;option value=&quot;Africa/Algiers&quot;&gt;West Central Africa&lt;/option&gt;
+&lt;option value=&quot;Africa/Windhoek&quot;&gt;Windhoek&lt;/option&gt;
+&lt;option value=&quot;Asia/Beirut&quot;&gt;Beirut&lt;/option&gt;
+&lt;option value=&quot;Africa/Cairo&quot;&gt;Cairo&lt;/option&gt;
+&lt;option value=&quot;Asia/Gaza&quot;&gt;Gaza&lt;/option&gt;
+&lt;option value=&quot;Africa/Blantyre&quot;&gt;Harare, Pretoria&lt;/option&gt;
+&lt;option value=&quot;Asia/Jerusalem&quot;&gt;Jerusalem&lt;/option&gt;
+&lt;option value=&quot;Europe/Minsk&quot;&gt;Minsk&lt;/option&gt;
+&lt;option value=&quot;Asia/Damascus&quot;&gt;Syria&lt;/option&gt;
+&lt;option value=&quot;Africa/Addis_Ababa&quot;&gt;Nairobi&lt;/option&gt;
+&lt;option value=&quot;Asia/Tehran&quot;&gt;Tehran&lt;/option&gt;
+&lt;option value=&quot;Asia/Dubai&quot;&gt;Abu Dhabi, Muscat&lt;/option&gt;
+&lt;option value=&quot;Asia/Yerevan&quot;&gt;Yerevan&lt;/option&gt;
+&lt;option value=&quot;Asia/Kabul&quot;&gt;Kabul&lt;/option&gt;
+&lt;option value=&quot;Asia/Yekaterinburg&quot;&gt;Ekaterinburg&lt;/option&gt;
+&lt;option value=&quot;Asia/Tashkent&quot;&gt;Tashkent&lt;/option&gt;
+&lt;option value=&quot;Asia/Kolkata&quot;&gt;Chennai, Kolkata, Mumbai, New Delhi&lt;/option&gt;
+&lt;option value=&quot;Asia/Katmandu&quot;&gt;Kathmandu&lt;/option&gt;
+&lt;option value=&quot;Asia/Dhaka&quot;&gt;Astana, Dhaka&lt;/option&gt;
+&lt;option value=&quot;Asia/Novosibirsk&quot;&gt;Novosibirsk&lt;/option&gt;
+&lt;option value=&quot;Asia/Rangoon&quot;&gt;Yangon (Rangoon)&lt;/option&gt;
+&lt;option value=&quot;Asia/Bangkok&quot;&gt;Bangkok, Hanoi, Jakarta&lt;/option&gt;
+&lt;option value=&quot;Asia/Krasnoyarsk&quot;&gt;Krasnoyarsk&lt;/option&gt;
+&lt;option value=&quot;Asia/Hong_Kong&quot;&gt;Beijing, Chongqing, Hong Kong, Urumqi&lt;/option&gt;
+&lt;option value=&quot;Asia/Irkutsk&quot;&gt;Irkutsk, Ulaan Bataar&lt;/option&gt;
+&lt;option value=&quot;Australia/Perth&quot;&gt;Perth&lt;/option&gt;
+&lt;option value=&quot;Australia/Eucla&quot;&gt;Eucla&lt;/option&gt;
+&lt;option value=&quot;Asia/Tokyo&quot;&gt;Osaka, Sapporo, Tokyo&lt;/option&gt;
+&lt;option value=&quot;Asia/Seoul&quot;&gt;Seoul&lt;/option&gt;
+&lt;option value=&quot;Asia/Yakutsk&quot;&gt;Yakutsk&lt;/option&gt;
+&lt;option value=&quot;Australia/Adelaide&quot;&gt;Adelaide&lt;/option&gt;
+&lt;option value=&quot;Australia/Darwin&quot;&gt;Darwin&lt;/option&gt;
+&lt;option value=&quot;Australia/Brisbane&quot;&gt;Brisbane&lt;/option&gt;
+&lt;option value=&quot;Australia/Hobart&quot;&gt;Hobart&lt;/option&gt;
+&lt;option value=&quot;Asia/Vladivostok&quot;&gt;Vladivostok&lt;/option&gt;
+&lt;option value=&quot;Australia/Lord_Howe&quot;&gt;Lord Howe Island&lt;/option&gt;
+&lt;option value=&quot;Etc/GMT-11&quot;&gt;Solomon Is., New Caledonia&lt;/option&gt;
+&lt;option value=&quot;Asia/Magadan&quot;&gt;Magadan&lt;/option&gt;
+&lt;option value=&quot;Pacific/Norfolk&quot;&gt;Norfolk Island&lt;/option&gt;
+&lt;option value=&quot;Asia/Anadyr&quot;&gt;Anadyr, Kamchatka&lt;/option&gt;
+&lt;option value=&quot;Pacific/Auckland&quot;&gt;Auckland, Wellington&lt;/option&gt;
+&lt;option value=&quot;Etc/GMT-12&quot;&gt;Fiji, Kamchatka, Marshall Is.&lt;/option&gt;
+&lt;option value=&quot;Pacific/Chatham&quot;&gt;Chatham Islands&lt;/option&gt;
+&lt;option value=&quot;Pacific/Tongatapu&quot;&gt;Nuku'alofa&lt;/option&gt;
+&lt;option value=&quot;Pacific/Kiritimati&quot;&gt;Kiritimati&lt;/option&gt;</value>
+    </property>
+    <property id="resource_directory">
+        <description></description>
+        <value>/path/to/appynotebook/apps</value>
+    </property>
+    <property id="temp_upload_directory">
+        <description></description>
+        <value>/path/to/appynotebook/tmp</value>
+    </property>
+    <property id="account_create_notifier">
+        <description></description>
+        <value>invite@yourappynotebook.com</value>
+    </property>
+    <property id="account_create_notifier_password">
+        <description></description>
+        <value>123</value>
+    </property>
+    <property id="app_notifier">
+        <description></description>
+        <value>app-notifier@yourappynotebook.com</value>
+    </property>
+    <property id="app_notifier_password">
+        <description></description>
+        <value>123</value>
+    </property>
+    <property id="account_create_notifier_url">
+        <description></description>
+        <value>smtp.gmail.com</value>
+    </property>
+    <property id="account_create_notifier_port">
+        <description></description>
+        <value>587</value>
+    </property>
+    <property id="account_create_notifier_html">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="account_create_notifier_tls">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="invite_notifier">
+        <description></description>
+        <value>invite@yourappynote.com</value>
+    </property>
+    <property id="invite_notifier_password">
+        <description></description>
+        <value>123</value>
+    </property>
+    <property id="installation_login_url">
+        <description></description>
+        <value>http://192.168.1.106:8080/sc/nd/?room_id=</value>
+    </property>
+    <property id="installation_name">
+        <description></description>
+        <value>HaDron</value>
+    </property>
+    <property id="account_creation_via_invite_notification_email">
+        <description></description>
+        <value>
+
+Hi {participant_name},&lt;br&gt;
+You have been invited to join &lt;b&gt;{room}&lt;/b&gt;, please use the following information to login:&lt;br&gt;
+&lt;b&gt;login&lt;/b&gt;: {username}&lt;br&gt;
+&lt;b&gt;password&lt;/b&gt;: {passwd}&lt;br&gt;&lt;br&gt;
+&lt;a href=&quot;{installation_login_url}&quot;&gt;Click Here To Login&lt;/a&gt;
+
+        </value>
+    </property>
+    <property id="room_invite_notification_email">
+        <description></description>
+        <value>
+
+Hi {participant_name},&lt;br&gt;
+You have been invited to join &lt;b&gt;{room}&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;a href=&quot;{installation_login_url}&quot;&gt;Click Here To Login&lt;/a&gt;
+
+        </value>
+    </property>
+    <property id="account_creation_notification_email">
+        <description></description>
+        <value>
+
+Hi {participant_name},&lt;br&gt;
+Your {installation_name} account has been created, please use the following information to login:&lt;br&gt;
+&lt;b&gt;login&lt;/b&gt;: {username}&lt;br&gt;
+&lt;b&gt;password&lt;/b&gt;: {passwd}&lt;br&gt;&lt;br&gt;
+
+&lt;a href=&quot;{installation_login_url}&quot;&gt;Click Here To Login&lt;/a&gt;
+
+        </value>
+    </property>
+    <property id="account_login_recovery_notification_email">
+        <description></description>
+        <value>
+
+Hi {participant_name},&lt;br&gt;
+Please use the following information to login:&lt;br&gt;
+&lt;b&gt;login&lt;/b&gt;: {username}&lt;br&gt;
+&lt;b&gt;password&lt;/b&gt;: {passwd}&lt;br&gt;&lt;br&gt;
+
+&lt;a href=&quot;{installation_login_url}&quot;&gt;Click Here To Login&lt;/a&gt;
+
+        </value>
+    </property>
+    <property id="institutional_instance">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="allow_user_account_creation">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="allow_auto_login_after_signup">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="allow_auto_signup">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="restrict_access_to_domains">
+        <description></description>
+        <value>all</value>
+    </property>
+    <property id="default_roles">
+        <description></description>
+        <value>room_creator</value>
+    </property>
+    <property id="room_size_limit">
+        <description></description>
+        <value>-1</value>
+    </property>
+    <property id="system_user_limit">
+        <description></description>
+        <value>-1</value>
+    </property>
+    <property id="enable_http_proxy">
+        <description></description>
+        <value>false</value>
+    </property>
+    <property id="explore_and_learn_url">
+        <description></description>
+        <value>http://wiki.phyzixlabs.com/devwiki/doku.php?id=developer-guide:learn_n_explore&amp;do=export_xhtml</value>
+    </property>
+    <property id="hadron_help_url">
+        <description></description>
+        <value>http://wiki.phyzixlabs.com/devwiki</value>
+    </property>
+    <property id="whats_new_url">
+        <description></description>
+        <value>http://wiki.phyzixlabs.com/devwiki/doku.php?id=developer-guide:what_is_new&amp;do=export_xhtml</value>
+    </property>
+    <property id="enable_applet_import">
+        <description></description>
+        <value>false</value>
+    </property>
+    <property id="load_sample_applets">
+        <description></description>
+        <value>false</value>
+    </property>
+    <property id="enable_applet_deployment">
+        <description></description>
+        <value>true</value>
+    </property>
+    <property id="default_binder_access">
+        <description></description>
+        <value>1</value>
+    </property>
+    <property id="default_page_access">
+        <description></description>
+        <value>3</value>
+    </property>
+    <property id="default_element_access">
+        <description></description>
+        <value>3</value>
+    </property>
+    <property id="enable_content_importing">
+        <description></description>
+        <value>true</value>
+    </property>
+</config>

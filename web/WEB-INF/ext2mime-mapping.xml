@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ext2mime-mapping.xml
+    Created on : January 9, 2011, 11:25 AM
+    Author     : bitlooter
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns1:config  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns1='http://xml.netbeans.org/schema/property-config'
+   xsi:schemaLocation='http://xml.netbeans.org/schema/property-config file:/home/bitlooter/development/java/feezixlabs/src/java/com/feezixlabs/util/property-config.xsd'>
+    <ns1:property id=".js">
+        <ns1:description></ns1:description>
+        <ns1:value>text/javascript</ns1:value>
+    </ns1:property>
+    <ns1:property id=".html">
+        <ns1:description></ns1:description>
+        <ns1:value>text/html</ns1:value>
+    </ns1:property>
+    <ns1:property id=".htm">
+        <ns1:description></ns1:description>
+        <ns1:value>text/html</ns1:value>
+    </ns1:property>
+    <ns1:property id=".svg">
+        <ns1:description></ns1:description>
+        <ns1:value>image/svg+xml</ns1:value>
+    </ns1:property>
+    <ns1:property id=".xml">
+        <ns1:description></ns1:description>
+        <ns1:value>text/xml</ns1:value>
+    </ns1:property>
+    <ns1:property id=".txt">
+        <ns1:description></ns1:description>
+        <ns1:value>text/plain</ns1:value>
+    </ns1:property>
+    <ns1:property id=".css">
+        <ns1:description></ns1:description>
+        <ns1:value>text/css</ns1:value>
+    </ns1:property>
+    <ns1:property id=".jpg">
+        <ns1:description></ns1:description>
+        <ns1:value>image/jpeg</ns1:value>
+    </ns1:property>
+    <ns1:property id=".jpeg">
+        <ns1:description></ns1:description>
+        <ns1:value>image/jpeg</ns1:value>
+    </ns1:property>
+    <ns1:property id=".png">
+        <ns1:description></ns1:description>
+        <ns1:value>image/png</ns1:value>
+    </ns1:property>
+    <ns1:property id=".gif">
+        <ns1:description></ns1:description>
+        <ns1:value>image/gif</ns1:value>
+    </ns1:property>
+    <ns1:property id=".bmp">
+        <ns1:description></ns1:description>
+        <ns1:value>image/bmp</ns1:value>
+    </ns1:property>
+    <ns1:property id=".pdf">
+        <ns1:description></ns1:description>
+        <ns1:value>application/pdf</ns1:value>
+    </ns1:property>
+    <ns1:property id=".mp3">
+        <ns1:description></ns1:description>
+        <ns1:value>audio/mpeg3</ns1:value>
+    </ns1:property>
+</ns1:config>

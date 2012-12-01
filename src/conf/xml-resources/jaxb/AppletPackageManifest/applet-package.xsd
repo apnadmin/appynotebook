@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://xml.netbeans.org/schema/applet-package"
+    xmlns:tns="http://xml.netbeans.org/schema/applet-package"
+    elementFormDefault="qualified">
+    <xsd:complexType name="applet">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="description" type="xsd:string"/>
+            <xsd:element name="iconPath" type="xsd:string"/>
+            <xsd:element name="version" type="xsd:string"/>
+            <xsd:element name="authorName" type="xsd:string"/>
+            <xsd:element name="authorLink" type="xsd:string"/>
+            <xsd:element name="categoryId" type="xsd:string"/>
+            <xsd:element name="tags" type="xsd:string"/>
+            <xsd:element name="createDate" type="xsd:dateTime"/>
+            <xsd:element name="lastModifiedDate" type="xsd:dateTime"/>
+            <xsd:element name="showInMenu" type="xsd:string"/>
+            <xsd:element name="codePath" type="xsd:string"/>
+            <xsd:element name="resources" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence maxOccurs="unbounded">
+                        <xsd:element name="resource" type="tns:resource"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="dependencies" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="resource" type="tns:resource" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="resource">
+        <xsd:sequence>
+            <xsd:element name="fileName" type="xsd:string"/>
+            <xsd:element name="label" type="xsd:string"/>
+            <xsd:element name="fsName" type="xsd:string"/>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="mime" type="xsd:string"/>
+            <xsd:element name="size" type="xsd:string"/>
+            <xsd:element name="createDate" type="xsd:dateTime"/>
+            <xsd:element name="lastModifiedDate" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="package">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="name" type="xsd:string"/>
+                <xsd:element name="version" type="xsd:string"/>
+                <xsd:element name="description" type="xsd:string"/>
+                <xsd:element name="license" type="xsd:string"/>
+                <xsd:element name="restrictToDomain" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="publicKey" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="uuid" type="xsd:string"/>
+                <xsd:element name="applets">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="applet" type="tns:applet" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

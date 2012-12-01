@@ -1,0 +1,115 @@
+/*
+Theme Name: Ardmore
+Theme URI: http://ardmore.ithemes.com/
+Author: iThemes
+Author URI: http://ithemes.com/
+Version: 1.1.4
+Description: Ardmore is a premium WordPress theme designed by iThemes.
+Tags: light, business, theme options, image fader, dropdown menus, CMS
+
+Copyright (c) 2009 iThemes Media, LLC.
+See license.txt for terms and conditions.
+
+See history.txt for version history.
+*/
+
+/*CSS Reset*/
+
+body { /* This is where you set many of the universal defaults */
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	line-height:1.4em;
+	padding:5px;
+	margin:0;
+}
+
+
+/*********************************************
+	Universal Link Styles
+*********************************************/
+
+a, a:link, a:visited {
+	color:blue;
+	text-decoration: none;
+}
+
+a:hover, a:active { 
+	color:blue;
+	text-decoration: underline; 
+}
+
+/*********************************************
+	Universal Text Elements
+*********************************************/
+i, em {
+	font-style: italic;
+}
+b, strong {
+	font-weight: bold;
+}
+p, ul, ol, blockquote {
+	color: #666;
+}
+
+ol, ul {
+	margin: 5px 35px;
+}
+ol {
+	list-style-type: decimal;
+}
+ul {
+	list-style-type: disc;
+}
+blockquote {
+	margin: 5px 0px 5px 10px; padding: 0px 0px 0px 10px;
+	font-style: italic;
+}
+
+img { 
+	border: 0px; 
+	background: none; 
+}
+
+p {
+	padding: 0px;
+	margin: 0 0 15px;
+}
+
+/*********************************************
+	Header Styles
+*********************************************/
+
+h1,h2,h3,h4,h5,h6 { /* Use this for universal styles for all header elements */
+	font-family: Arial, Helvetica, Sans-Serif;
+	padding: 0px;
+	margin: 0px 0px 10px;
+	font-weight: normal;
+	text-decoration: none;
+	text-align: left;
+	letter-spacing: -1px;
+	line-height:1.2em;
+}
+
+h1 { 
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+h2 {
+	font-size: 18px;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+h4,h5,h6,h7 {
+	font-size: 14px;
+	letter-spacing:0px;
+}
+
+h3 a, h3 a:link, h3 a:visited { }
+
+h3 a:hover, h3 a:active { }

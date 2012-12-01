@@ -1,0 +1,1 @@
+<%@include file="../sc/nd/widgets/getresource.jsp" %>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title></title>
+<meta charset='utf-8'>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href="../book_files/git-scm-d9f82641da808f568237431257688a8a.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="../book_files/modernizr-d3e827f2080047c7ad3b548064c7b594.js" type="text/javascript"></script>
+<script src="../book_files/modernizr-tests-df0c07a43732eb029194e7afb938e925.js" type="text/javascript"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src='/javascripts/selectivizr-min.js' type='text/javascript'></script>
+<![endif]-->
+<script src="http://use.typekit.com/jsq2fql.js" type="text/javascript"></script>
+<script>
+  //<![CDATA[
+    try{Typekit.load();}catch(e){}
+  //]]>
+</script>
+</head>
+<body id='documentation'>
+<div class='inner'>
+<header>
+<a href="http://www.appynotebook.com/"><img src="../../../img/appynote-education.png" alt="APPYnotebook" height="44" width="310"></a>
+
+</header>
+
+</div>
+<div class='inner' style="margin-left:0">
+<div id='content-wrapper'>
+
+<div id='content'>
+
+
+<div id='main' class="book">
+    <h1>Access Control</h1>
+  <div><h2>Understanding Access Control</h2>
+
+<p>
+    Access to resources within the workspace can be controlled in various ways. Access control is managed via user settings<br/>
+    <img src="../../img/access-control-1.png"/><br/>
+    
+    <h3>Access control rules for binders are applied as follows.</h3>
+    <p>        
+        <code>READ</code> access granted for a binder means that the user to whom that access has been granted would be able
+        to see that binder under the name of the owner in the navigation panel. This does not grant read access
+        to the content of this binder. It merely makes this binder visible to the member to whom this access is granted.
+    </p>
+    <p>
+        <code>WRITE</code> access currently has no meaning/effect.
+    </p>
+    
+    <h3>Access control rules for pages are applied as follows.</h3>
+    <p>
+        <code>READ</code> access means content on a page can be viewed by users with this access.
+        <p>
+            <code>READ</code> access is additive, ie there must be <code>READ</code> on the binder as well as on the 
+            page.
+        </p>         
+    </p>
+    <p>
+        <code>WRITE</code> access means user can create new content on this page. For instance a user
+        would be able to draw on a white-board page. Typically this would also mean users can alter elements
+        on the page.
+    </p>
+    
+    
+    
+    <h3>Access control rules for elements are applied as follows. </h3>
+    <p>
+        Elements are the content of your pages.
+        Every piece of content on a page is associated with an element. For instance a shape drawing would be represented
+        by an element, an APP embedded on a page would be associated with an element, also the data that APPs produce may be associated with elements.
+    </p>
+    <p>
+        <code>READ</code> access means that the user to whom it is granted can view this element. It is
+        possible that the page on which this element resides has <code>READ</code> access, if this element's
+        <code>READ</code> is revoked then the user would not be able to view this element. In other words
+        this access supersedes access granted at the page level.
+        <p>
+            <code>READ</code> access is additive, ie there must be <code>READ</code> on the binder,page as well as on the 
+            element.
+        </p>        
+    </p>
+    <p>
+        <code>WRITE</code> access allows the member to whom it is granted to alter the attributes of this element.
+        For instance an APP on a page may be resized or moved by a user who has <code>WRITE</code> access to this
+        element. note that this access supersedes the access granted at the page level. In other words
+        even if <code>WRITE</code> access has been granted at the page level, if this access is not granted then
+        the user would not be able to alter this element.
+        <p>
+            <code>WRITE</code> access is additive, ie there must be <code>WRITE</code> on the page as well as on the 
+            element.
+        </p>
+    </p>
+    <p>
+        Elements by default inherit <code>READ</code>&<code>WRITE</code> access granted at the page level so there is no
+        need to have to grant them explicit. However there are instances when they may need to be revoked explicitly.
+        Also certain APPs need to selectively provide access to elements, for instance the grading APP doesn't grant
+        access to grade elements except to the instructor and the person to whom a particular grade is assigned.
+    </p>
+</p>
+<ol>
+    <li><a href="#group-access-control">Group Access Control</a></li>
+    <li><a href="#rename-group">Content Access Control</a></li>
+</ol>
+
+
+<h3><a id="group-access-control">Group Access Control</a></h3>
+
+<p>
+    Access to a group can be either public or by invite only. If a group is public, then any user can join the group
+    given the group url. A group url can be derived from a page url.<br/>
+    <img src="../../img/access-control-2.png"/>
+</p>
+
+
+<h3><a id="rename-group">Content Access Control</a></h3>
+<p>
+    <ul>
+        <li>
+            To view specific access granted to a user for your resources, select the user:<br/>
+            <img src="../../img/access-control-3.png"/>
+        </li>
+        <li>
+            To grant (or revoke) access for a specific user, select the user and check the grant "To" checkbox
+            then click the save button.<br/>
+            <img src="../../img/access-control-4.png"/>
+        </li>
+        <li>
+            Note the user "Everyone" refers to everyone in the group. This is an easy way to grant (or revoke)
+            access control to all members of the group. You can use this to give generic access and then grant
+            specific access to specific users.
+        </li>    
+    </ul>    
+</p>
+
+<div id='nav'><a href='user-profile.html'>prev</a> | <a href='../index.html'>next</a></div></div>
+</div>
+
+</div>
+</div>
+<footer>
+
+
+</footer>
+
+</div>
+</body>
+</html>

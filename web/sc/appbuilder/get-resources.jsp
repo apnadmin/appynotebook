@@ -1,0 +1,1 @@
+<%@page contentType="text/xml" pageEncoding="UTF-8"%><%=com.feezixlabs.struts.action.handler.WidgetResourceActionHandler.getResourcesExt(request) %>

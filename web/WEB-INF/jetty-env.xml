@@ -1,0 +1,18 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure  class="org.mortbay.jetty.webapp.WebAppContext">
+
+  <New id="feezixlabsDB" class="org.mortbay.jetty.plus.naming.Resource">
+    <Arg></Arg>
+    <Arg>jdbc/appynotebookDB</Arg>
+    <Arg>
+     <New class="org.apache.commons.dbcp.BasicDataSource">
+          <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+          <Set name="url">jdbc:mysql://127.0.0.1:3306/appynotebook?autoReconnect=true</Set>
+          <Set name="username">bitlooter</Set>
+          <Set name="password">bitlooter</Set>
+     </New>
+    </Arg>
+   </New>
+
+</Configure>

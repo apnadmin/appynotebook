@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="744.09448"
+   height="1052.3622"
+   id="svg2"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="powered-by-appynotebook.svg">
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="693"
+     id="namedview88"
+     showgrid="false"
+     inkscape:zoom="7.1762366"
+     inkscape:cx="-1407.0408"
+     inkscape:cy="1156.2342"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective92" />
+    <radialGradient
+       cx="0.5"
+       cy="0.5"
+       r="0.5"
+       fx="0.5"
+       fy="0.5"
+       id="radialGradient598"
+       xlink:href="#linearGradient587" />
+    <linearGradient
+       id="linearGradient590"
+       xlink:href="#linearGradient587" />
+    <linearGradient
+       id="linearGradient587">
+      <stop
+         id="stop588"
+         style="stop-color:#000000;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop589"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="112.06259"
+       y1="-485.28952"
+       x2="-170.00552"
+       y2="-485.28973"
+       id="linearGradient1711"
+       xlink:href="#linearGradient1694"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,1.475473,-0.677749,0,0,0)" />
+    <linearGradient
+       x1="-92.98716"
+       y1="-477.69666"
+       x2="315.00735"
+       y2="-477.69669"
+       id="linearGradient1710"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,1.475472,-0.677749,0,0,0)" />
+    <linearGradient
+       x1="303.90472"
+       y1="-492.41382"
+       x2="-93.992599"
+       y2="-492.41382"
+       id="linearGradient1709"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,1.475472,-0.677749,0,0,0)" />
+    <linearGradient
+       x1="112.06259"
+       y1="-485.28952"
+       x2="-170.00552"
+       y2="-485.28973"
+       id="linearGradient1705"
+       xlink:href="#linearGradient1694"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,1.475473,-0.677749,0,0,0)" />
+    <linearGradient
+       x1="-92.98716"
+       y1="-477.69666"
+       x2="315.00735"
+       y2="-477.69669"
+       id="linearGradient1701"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,1.475472,-0.677749,0,0,0)" />
+    <linearGradient
+       x1="303.90472"
+       y1="-492.41382"
+       x2="-93.992599"
+       y2="-492.41382"
+       id="linearGradient1700"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,1.475472,-0.677749,0,0,0)" />
+    <linearGradient
+       x1="244.8598"
+       y1="827.01349"
+       x2="244.8598"
+       y2="646.06177"
+       id="linearGradient1692"
+       xlink:href="#linearGradient1694"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(1.479463,0.675921)" />
+    <linearGradient
+       x1="240.86183"
+       y1="635.74658"
+       x2="240.86183"
+       y2="1038.9441"
+       id="linearGradient1690"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(1.475472,0.677749)" />
+    <linearGradient
+       x1="242.39842"
+       y1="1035.3337"
+       x2="242.39842"
+       y2="636.25543"
+       id="linearGradient1686"
+       xlink:href="#linearGradient1683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(1.475472,0.677749)" />
+    <linearGradient
+       id="linearGradient1683">
+      <stop
+         id="stop1684"
+         style="stop-color:#c5db0c;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop1685"
+         style="stop-color:#6a7606;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient1694">
+      <stop
+         id="stop1695"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop1696"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="639.16986"
+       y1="297.0076"
+       x2="639.16986"
+       y2="37.247349"
+       id="linearGradient2072"
+       xlink:href="#linearGradient3357"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.922789,0,0,1.083672,-393.4264,4.919428)" />
+    <linearGradient
+       x1="206.27219"
+       y1="336.08893"
+       x2="206.27219"
+       y2="84.127136"
+       id="linearGradient2062"
+       xlink:href="#linearGradient4355"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.922789,0,0,1.083672,0.825282,-1.37233)" />
+    <linearGradient
+       x1="130.4778"
+       y1="538.54492"
+       x2="413.59784"
+       y2="242.00929"
+       id="linearGradient12530"
+       xlink:href="#linearGradient3357"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.616714,0,0,0.861579,571.8593,-188.9662)" />
+    <linearGradient
+       x1="667.29266"
+       y1="509.65479"
+       x2="667.29266"
+       y2="268.69797"
+       id="linearGradient5662"
+       xlink:href="#linearGradient3357"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.955913,0,0,1.122571,-447.5282,-210.4664)" />
+    <linearGradient
+       id="linearGradient3357">
+      <stop
+         id="stop3359"
+         style="stop-color:#5d0e81;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3361"
+         style="stop-color:#d9c8f0;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4355">
+      <stop
+         id="stop4357"
+         style="stop-color:#d9c8f0;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop4359"
+         style="stop-color:#5d0e81;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <filter
+       x="-0.25"
+       y="-0.25"
+       width="1.5"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3779">
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.000000"
+         in="SourceAlpha"
+         id="feGaussianBlur3781" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.500000 0 "
+         type="matrix"
+         result="bluralpha"
+         id="feColorMatrix3783" />
+      <feOffset
+         result="offsetBlur"
+         dy="1.000000"
+         dx="1.000000"
+         in="bluralpha"
+         id="feOffset3785" />
+      <feMerge
+         id="feMerge3787">
+        <feMergeNode
+           in="offsetBlur"
+           id="feMergeNode3789" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode3791" />
+      </feMerge>
+    </filter>
+    <filter
+       x="-0.25"
+       y="-0.25"
+       width="1.5"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3815">
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.000000"
+         in="SourceAlpha"
+         id="feGaussianBlur3817" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.500000 0 "
+         type="matrix"
+         result="bluralpha"
+         id="feColorMatrix3819" />
+      <feOffset
+         result="offsetBlur"
+         dy="1.000000"
+         dx="1.000000"
+         in="bluralpha"
+         id="feOffset3821" />
+      <feMerge
+         id="feMerge3823">
+        <feMergeNode
+           in="offsetBlur"
+           id="feMergeNode3825" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode3827" />
+      </feMerge>
+    </filter>
+    <filter
+       x="-0.25"
+       y="-0.25"
+       width="1.5"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3172">
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="1.000000"
+         in="SourceAlpha"
+         id="feGaussianBlur3174" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.500000 0 "
+         type="matrix"
+         result="bluralpha"
+         id="feColorMatrix3176" />
+      <feOffset
+         result="offsetBlur"
+         dy="1.000000"
+         dx="1.000000"
+         in="bluralpha"
+         id="feOffset3178" />
+      <feMerge
+         id="feMerge3180">
+        <feMergeNode
+           in="offsetBlur"
+           id="feMergeNode3182" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode3184" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     id="g2941"
+     inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/powered-by-appynotebook.png"
+     inkscape:export-xdpi="258.39188"
+     inkscape:export-ydpi="258.39188">
+    <g
+       transform="translate(53.509941,-75.80575)"
+       id="g3803">
+      <text
+         x="-1497.1532"
+         y="-27.291189"
+         id="text2897"
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3779);font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+         sodipodi:linespacing="125%"><tspan
+           x="-1497.1532"
+           y="-27.291189"
+           id="tspan2899"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">A<tspan
+   id="tspan3901"
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">P</tspan><tspan
+   id="tspan3903"
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#333333;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">P</tspan><tspan
+   id="tspan3905"
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">Y</tspan><tspan
+   id="tspan2905"
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#0075bd;fill-opacity:1;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">notebook</tspan></tspan></text>
+    </g>
+    <text
+       x="-1442.7784"
+       y="-111.63039"
+       id="text2904"
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
+         x="-1442.7784"
+         y="-111.63039"
+         id="tspan2906"
+         style="font-size:8px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold">Powered by</tspan></text>
+  </g>
+</svg>

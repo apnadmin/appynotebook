@@ -1,0 +1,62 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure id="appynotebookApp" class="org.mortbay.jetty.webapp.WebAppContext">
+ <!--
+ <Set name="configurationClasses">
+    <Array type="java.lang.String">
+      <Item>org.mortbay.jetty.webapp.WebInfConfiguration</Item>
+      <Item>org.mortbay.jetty.plus.webapp.EnvConfiguration</Item>
+      <Item>org.mortbay.jetty.plus.webapp.Configuration</Item>
+      <Item>org.mortbay.jetty.webapp.JettyWebXmlConfiguration</Item>
+      <Item>org.mortbay.jetty.webapp.TagLibConfiguration</Item>
+    </Array>
+  </Set>
+  -->
+   <Set name="maxFormContentSize" type="int">2000000</Set>
+   <Set name="contextPath">/</Set>
+
+   <!--
+   <Set name="war"><SystemProperty name="jetty.home" default="."/>/webapps/collabopad</Set>
+   -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Optional context configuration                                  -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--
+  <Set name="extractWAR">false</Set>
+  <Set name="copyWebDir">false</Set>
+  <Set name="defaultsDescriptor"><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Set>
+  <Set name="overrideDescriptor"><SystemProperty name="jetty.home" default="."/>/contexts/test.d/override-web.xml</Set>
+  -->
+
+  <!--
+  <New id="colabopadDB" class="org.mortbay.jetty.plus.naming.Resource">
+    <Arg><Ref id="colabopadApp"/></Arg>
+    <Arg>jdbc/colabopadDB</Arg>
+    <Arg>
+     <New class="org.apache.commons.dbcp.BasicDataSource">
+          <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+          <Set name="url">jdbc:mysql://localhost/colabopad</Set>
+          <Set name="username">bitlooter</Set>
+          <Set name="password">bitlooter</Set>
+     </New>
+    </Arg>
+   </New>
+   -->
+
+  <Get name="securityHandler">
+    <Set name="userRealm">
+     <New class="org.mortbay.jetty.security.JDBCUserRealm">
+	    <Set name="name">APPYnotebook JDBC Realm</Set>
+	    <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/appynotebook.jdbc.realm.properties</Set>
+            <!-- To enable reload of realm when properties change, uncomment the following lines -->
+            <!-- changing refreshInterval (in seconds) as desired                                -->
+            <!--
+            <Set name="refreshInterval">5</Set>
+            <Call name="start"></Call>
+            -->
+      </New>
+    </Set>
+    <Set name="checkWelcomeFiles">true</Set>
+  </Get>
+
+</Configure>

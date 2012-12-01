@@ -1,0 +1,6 @@
+jar-libraries
+dist
+build
+nbproject
+/web/WEB-INF/dev.feezixlabs.config.xml
+/web/WEB-INF/prod.feezixlabs.config.xml

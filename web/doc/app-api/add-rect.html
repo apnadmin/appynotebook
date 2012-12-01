@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="js fontface no-webkit no-chrome no-windows no-ie8 wf-adelle-n4-active wf-adelle-n7-active wf-active" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+<meta charset="utf-8">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+<link href="index_files/git-scm-d9f82641da808f568237431257688a8a.css" media="screen" rel="stylesheet" type="text/css">
+
+<script src="index_files/modernizr-tests-df0c07a43732eb029194e7afb938e925.js" type="text/javascript"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src='/javascripts/selectivizr-min.js' type='text/javascript'></script>
+<![endif]-->
+<script src="index_files/jsq2fql.js" type="text/javascript"></script>
+<style type="text/css">.tk-adelle{font-family:"adelle",serif;}</style><link href="index_files/jsq2fql-d.css" rel="stylesheet"><script>
+  //<![CDATA[
+    try{Typekit.load();}catch(e){}
+  //]]>
+</script>
+
+<body id="documentation">
+<div class="inner">
+<header>
+<a href="http://www.appynotebook.com/"><img src="../../img/appynote-education.png" alt="APPYnotebook" height="44" width="310"></a>
+
+</header>
+
+</div>
+<div class="inner" style="margin-left:0">
+<div id="content-wrapper">
+
+<div id="content">
+
+  <div id="main" class="book">
+    <div class="man-page">
+  <div id="header">
+    <h1>addRect Manual Page</h1>
+      <h2>NAME</h2>
+      <div class="sectionbody"><div class="paragraph">
+  <p>addRect - adds rectangle shape primitive to pad.
+</p>
+</div>
+</div>
+  </div>
+
+  <div class="sect1">
+  <h2 id="_synopsis">SYNOPSIS</h2>
+    <div class="sectionbody"><div class="verseblock">
+  <pre class="content"><em>addRect</em> (<a href="../home/objects/index.html#element-config-rect-object">config</a>,<a href="../home/objects/index.html#pad-object">pad</a>,persist_to_db,paint_only)</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+  <h2 id="_description">DESCRIPTION</h2>
+    <div class="sectionbody"><div class="paragraph">
+            <p>Call this method to programmatically add a rectangle primitive to a pad. It has the same effect as adding a rectangle using
+      the rectangle drawing tool.
+</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+  <h2 id="_options">PARAMETERS</h2>
+  
+  <code>config</code> 
+  <p>This is an extension of the platform <a href="../home/objects/index.html#element-config-object">config</a> object.</p>
+  <code>pad</code>
+  <p>See <a href="../home/objects/index.html#pad-object">pad</a> object.</p>
+  <code>persist_to_db</code>
+  <p>Set to true if the config should be persisted to database.</p>
+  <code>paint_only</code>
+  <p>Set to true if this should only be painted but not added to the content list of the current pad.
+  This means if the the pad is closed and reopened and the <code>persist_to_db</code> isn't set to true then the primitive would not be redrawn.
+  This is mainly to be used to render transient primitives.</p>
+    <div class="sectionbody"><div class="dlist">
+
+</div>
+</div>
+
+</div>
+
+<div class="sect1">
+  <h2 id="_examples">Examples</h2>
+    <div class="sectionbody">
+<pre><code>var config = {
+  rect:{x:20,y:20,w:40,h:50},
+  dim:{},
+  transforms:{trslt:{x:0,y:0},rotate:{cx:0,cy:0,angle:0},scale:{x:1,y:1}},
+  pen:{color:"blue",width:0,fill:"yellow"}
+};            
+this.addRect(config,pad,save,!save);
+</code></pre>
+        <div class="ulist">
+            
+</div>
+</div>
+</div>
+
+
+</div>
+
+  </div>
+
+</div>
+</div>
+<footer>
+
+</footer>
+
+</div>
+</body>
+</html>
