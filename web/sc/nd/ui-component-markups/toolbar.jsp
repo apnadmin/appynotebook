@@ -15,7 +15,7 @@
         <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Resize" onclick="ColabopadApplication.setPenMode('resize')"><img src="images/toolbar/context/resize-2d.png"/></button>
         <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Type Text" onclick="ColabopadApplication.setPenMode('text')"><img src="images/toolbar/context/text.png"/></button>
         
-        <button  class="phyzixlabs-not-portable writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Text Editor" onclick="ColabopadApplication.showTextEditor(<%= com.feezixlabs.db.dao.MiscDAO.getTextData("rich-text-editor").getData() %>,'prod')"><img src="images/toolbar/context/text-writer.png"/></button>
+        <button  class="phyzixlabs-not-portable writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Text Editor" onclick="ColabopadApplication.showTextEditor('<%= com.feezixlabs.db.dao.MiscDAO.getTextData("rich-text-editor").getData() %>','prod')"><img src="images/toolbar/context/text-writer.png"/></button>
         <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Insert Image" onclick="ColabopadApplication.setPenMode('image')"><img src="images/toolbar/context/pen-mode-image.png"/></button>
 </div>
 <div id="phyzixlabs-export-menu" style="display:none">

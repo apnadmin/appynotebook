@@ -14,7 +14,7 @@
    width="744.09448"
    height="1052.3622"
    id="svg2"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="powered-by-appynotebook.svg">
   <metadata
      id="metadata90">
@@ -37,14 +37,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="693"
+     inkscape:window-width="1301"
+     inkscape:window-height="744"
      id="namedview88"
      showgrid="false"
      inkscape:zoom="7.1762366"
-     inkscape:cx="-1407.0408"
+     inkscape:cx="-1413.5708"
      inkscape:cy="1156.2342"
-     inkscape:window-x="0"
+     inkscape:window-x="65"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
@@ -341,12 +341,15 @@
     </filter>
   </defs>
   <g
-     id="g2941"
-     inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/powered-by-appynotebook.png"
-     inkscape:export-xdpi="258.39188"
-     inkscape:export-ydpi="258.39188">
+     id="g3071"
+     inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/embed-logo.png"
+     inkscape:export-xdpi="188.8074"
+     inkscape:export-ydpi="188.8074">
     <g
-       transform="translate(53.509941,-75.80575)"
+       inkscape:export-ydpi="254.50874"
+       inkscape:export-xdpi="254.50874"
+       inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/embed-logo.png"
+       transform="translate(44.730966,-66.46938)"
        id="g3803">
       <text
          x="-1497.1532"
@@ -369,13 +372,13 @@
    style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#0075bd;fill-opacity:1;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">notebook</tspan></tspan></text>
     </g>
     <text
-       x="-1442.7784"
-       y="-111.63039"
+       x="-1450.1639"
+       y="-101.17922"
        id="text2904"
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
-         x="-1442.7784"
-         y="-111.63039"
+         x="-1450.1639"
+         y="-101.17922"
          id="tspan2906"
          style="font-size:8px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold">Powered by</tspan></text>
   </g>

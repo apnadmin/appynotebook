@@ -205,7 +205,7 @@
                     java.util.List<com.feezixlabs.bean.Pad> sortedPads = padSorter.topo(pads);
                     com.feezixlabs.bean.Pad rootPad = new com.feezixlabs.bean.Pad();
                     //rootPad.setChildren(sortedPads);
-                    com.feezixlabs.struts.action.handler.PadActionHandler.convertToTree(rootPad, sortedPads);
+                    //com.feezixlabs.struts.action.handler.PadActionHandler.convertToTree(rootPad, sortedPads);
                     
                     for(com.feezixlabs.bean.Pad pad:pads){
                           title = net.sf.json.JSONObject.fromObject(pad.getConfig(),jsonConfig).get("title").toString().replaceAll("\\\\", "\\\\\\\\").replaceAll("\"", "\\\\\"");

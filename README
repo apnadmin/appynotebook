@@ -1,0 +1,61 @@
+
+The information below should help you get APPYnotebook up and running. Note that this guide assumes you know your way around operating systems,database servers and Appservers. It only covers the aspects of deployment that are specific to APPYnotebook. If you have any questions pertaining to the components of the infrastructure stack (OS,DB,appserver..etc) you need to consult other sources(google,stackexchange..etc).
+
+
+Operating System
+    APPYnotebook is developed on Ubuntu and the hosted version runs on a Ubuntu server. It has never been tested on any other operating system, while it should run on any J2EE container regardless of OS, we cannot guarantee it. 
+
+AppServer
+    Jetty is recommended, specifaclly version 6.1.16 is used for the hosted version on appynotebook.com.
+    APPYnotebook uses ActiveMQ's ajax client for real-time messaging such as is used for the collaborative whiteboard feature.
+    The Ajax client uses Jetty's continuation technology which is only available in certain versions of Jetty (6.1.16 being one of them).
+
+    However if messaging is not an important functionaility for your deployment, then you can disable it by editing the colabopad.js file , look for the function startMQ and uncomment the return statement at the begining to prevent execution; in this case the choice of AppServer is irrelivant since any J2EE container should be sufficient.
+
+Database
+    The software is built on MYSQL, all the database scripts are based on MYSQL, the hosted version of APPYnotebook uses MYSQL 5.5.28+
+    To setup the database, create a database called appynotebook, then do the following:
+
+    1.run tables.sql to create tables
+    2.run stored-procedures.sql to create required stored procedures
+    3.run user-roles.sql, this contains required user roles.
+    4.run text-data.sql, this contains certain settings and static data
+
+
+Running APPYnotebook
+    First rename the file WEB-INF/_dev.feezixlabs.config.xml to WEB-INF/dev.feezixlabs.config.xml
+    This file contains configuration settings for the dev environment, edit the settings according to prepare for deployment.
+    
+
+    create a directory to serve as the base directory for APPYnotebook, name it appynotebook_app. In this directory create the following sub-directories
+    1.appynotebook_app/apps
+    2.appynotebook_app/config
+    3.appynotebook_app/img-uploads
+    4.appynotebook_app/logs
+    5.appynotebook_app/portable-appynotebook
+    6.appynotebook_app/static-files
+    7.appynotebook_app/static-files/defaults
+    8.appynotebook_app/static-files/work
+    9.appynotebook_app/tmp
+
+    Now edit dev.feezixlabs.config.xml. Generally you only need to specify the value for the variable system paths. All the path values starting with /path/to/appynotebook_app should be replaced with the actual path. This should be the only settings needed to change in order to run APPYnotebook.
+
+    Once you have the application running, you should be able to create the initial account via the login screen by chosing to sign in anonymously.
+    When you sign-in anonymousely, a new user would be created along with a new group. You can now edit the user roles in the database to make this new user a sysadmin. 
+    Administration
+    To get to the developer/adminstrative screen, you'll need to grant the sysadmin role to your user in the database.
+
+Once you have sysadmin access, you need to install foundation Apps. There are three foundation Apps:
+
+ 1.Embeded text editor. (for creating text editor pages)
+ 2.Embeded Web page editor. (for creating web pages)
+ 3.Rich text editor. (for inserting rich text on a canvas)
+ 
+
+
+You'll also need to install the portable-appynotebook template, this template is required for generating interactive portable ebooks.
+Get this template from the following github repo https://github.com/apnadmin/portable-appynotebook. This should be pulled into appynotebook_app/portable-appynotebook.
+
+You may also install the free Apps.
+
+

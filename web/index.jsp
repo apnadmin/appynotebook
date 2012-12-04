@@ -128,7 +128,7 @@ and open the template in the editor.
            -->
       </div>
       <div id="footer" style="margin-top:20px">
-            <p style="color:silver;">Copyright &copy; Phyzixlabs Software. All rights reserved</p>
+            <p style="color:silver;">Copyright &copy; APPYnotebook Software. All rights reserved</p>
       </div>            
   </body>
 </html>

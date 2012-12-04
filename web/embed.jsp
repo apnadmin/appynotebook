@@ -311,11 +311,11 @@
            <div class="ui-corner-all" style="margin-left: 2px;margin-right: 2px;background: rgba(0,0,0,0.4) none;position:relative;z-index:10000000000;padding:3px;text-align: right">
                <div style="text-align:left;width:150px;float:left">
                    <a id="share-btn-tip" href="#"><button style="width:32px;height:32px" id="share-btn" class="btn btn-mini" title="Share code">Share code</button></a>
-                   <a target="_blank" href="http://hadron.phyzixlabs.com<%=fullScreenURL%>"><button style="width:32px;height:32px" id="fullscreen-btn" class="btn btn-mini" title="Viewin full screen">View in fullscreen</button></a>
+                   <a target="_blank" href="http://hadron.appynotebook.com<%=fullScreenURL%>"><button style="width:32px;height:32px" id="fullscreen-btn" class="btn btn-mini" title="Viewin full screen">View in fullscreen</button></a>
                    <button style="width:32px;height:32px" id="download-btn" class="btn btn-mini" title="Download">Download</button>
                </div>
                <div style="width:200px;float:right">
-                  <a href="http://www.phyzixlabs.com" target="new window"> <img style="border:none" src="/img/phyzixlabs-embed-bk.png" alt="Powered by APPYnotebook"/></a>
+                  <a href="http://www.appynotebook.com" target="new window"> <img style="border:none" src="/img/embed-logo-w-bk.png" alt="Powered by APPYnotebook"/></a>
                </div>
                <div style="clear:both"></div>
            </div>

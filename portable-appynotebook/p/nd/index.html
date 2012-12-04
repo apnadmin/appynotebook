@@ -1,0 +1,2198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<html>
+  <head>
+    <title>Note taking App for school, take notes and do homework</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    
+   <script type="text/javascript">
+      var sessionId  = '1008xo88jwz3d';
+      var my_pid = 0;
+      var secure_token = "";
+      var StripePublicKey = "U5F28Rnz2s1bgsp12VtM8Z5Nza4Da0FB";
+      
+          
+      var room_id = 32;
+      var user_id = 38;
+      //var user_fullname = "Edmond Kemokai";
+      var room_access_code = '';
+      var app_queue_url = 'dest.38-32';
+      var mouse_event_queue_url = 'dest.-msevnt';
+      var amq = null;
+      var jqready = false;
+      var m_dependencies = 1;
+      var isCreator= (38 == user_id);
+      var isSysadmin = true;
+      var current_tree_node = null;
+      var baseUrl = "http://192.168.1.106:7000";
+      var imageServiceUrl = "http://192.168.1.106:7000/imageImporter/?file_name=";
+      var env = "dev";
+      
+        
+
+      function json_deref(obj){
+          return obj;
+      }
+      var execute_scripts = false;
+      var imports_loaded=0;
+      var imports_requested=0;
+      var imports_executed = 0;
+
+      var page_screen_mode = false;
+      
+
+      var text_editor_classid = "1c1767f21a6011e29fb01231381dd16f";
+      var embeded_text_editor_classid = "1c1764641a6011e29fb01231381dd16f";
+      var embeded_web_page_classid = "1c1766301a6011e29fb01231381dd16f";
+    </script>
+    
+    <!--Main -->
+    
+    
+    
+    <!-- BEGINE JQUERY -->
+    <!--<link type="text/css" href="../../js/jquery-ui-1.8.23.custom/css/smoothness/jquery-ui-1.8.23.custom.css" rel="stylesheet" />-->
+    <link type="text/css" href="js/jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css" rel="stylesheet" />
+    
+    <!--JQ Dynatree -->
+    <link href='js/jquery-plugins/dynatree-1.2.2/src/skin/ui.dynatree.css' rel='stylesheet' type='text/css'>
+    <!-- JQ Context -->
+    <link href='js/jquery-plugins/jquery.contextMenu-1.01/jquery.contextMenu.css' rel='stylesheet' type='text/css'>
+    <!-- JQ SVG -->
+    <link href="js/jquery/jquery.svg.package-1.4.5/jquery.svg.css" rel="stylesheet" type="text/css">
+    <!--jq grid-->
+    <link rel="stylesheet" type="text/css" media="screen" href="js/jquery-plugins/jquery.jqGrid-4.4.1/css/ui.jqgrid.css" />
+    <!--Filament group menus -->
+    <link rel="stylesheet" type="text/css" media="screen" href="js/jquery-plugins/fg-menu/fg.menu.css" />
+
+    <link href='js/jquery-plugins/medialize-jQuery-contextMenu-1326fb7/src/jquery.contextMenu.css' rel='stylesheet' type='text/css'>
+    <!--<script type="text/javascript" src="../../js/jquery-plugins/medialize-jQuery-contextMenu-1326fb7/src/jquery.contextMenu.js"></script>-->
+    
+    
+    <link type="text/css" href="css/notepad.css" rel="Stylesheet" />
+    
+    
+    
+    
+
+    <script type="text/javascript">
+        var ColabopadApplication={ContextMenus:null,MsgHandler:null,Utility:null,PageTemplate:null};
+    </script>
+    <script type="text/javascript" src="js/all.js"></script>
+    
+    <script type="text/javascript" src="js/core/portable.js"></script>
+    <script type="text/javascript" src="js/core/colabopad.js"></script>
+
+    <!--
+    <script type="text/javascript" src="https://js.stripe.com/v1"></script>
+    -->
+    
+    <style type="text/css">
+
+    .np-cursor-freehand{
+        cursor:url(images/cursors/pencil.png), auto;
+    }
+    .np-cursor-freehand-bb{
+        cursor:url(images/cursors/pencil-bb.png), auto;
+    }
+
+    .np-cursor-eraser{
+        cursor:url(images/cursors/eraser-cursor.png), auto;
+    }
+    .np-cursor-text{
+        cursor:text;
+    }
+
+    .np-cursor-rect{
+        cursor:crosshair;
+    }
+    .np-cursor-circle{
+        cursor:crosshair;
+    }
+    .np-cursor-line{
+        cursor:crosshair;
+    }
+    .np-cursor-image{
+        cursor:url(images/cursors/image-mode-cursor.png), auto;
+    }
+
+    .np-cursor-move{
+        cursor:url(images/cursors/move-cursor.png), auto;
+    }
+    .np-cursor-fill{
+        cursor:url(images/cursors/fill-cursor.png), auto;
+    }
+    .np-cursor-rotate{
+        cursor:crosshair;
+    }
+    .np-cursor-pointer{
+        cursor:default;
+    }
+    .np-cursor-resize{
+        cursor:se-resize;
+    }
+    .np-cursor-richtext{
+        cursor:url(images/cursors/rich-text-cursor.png), auto;
+    }
+    .dock{
+		min-width:8.5in;
+                margin:0px;
+                padding:0px;
+                
+    }
+    .texteditor-content {
+        word-wrap:break-word;
+    }
+    .notepad {
+		min-width:8.5in;
+		/*min-height:11in;*/
+		border-style:none;
+		border-width:1px;
+                margin-left:2px;
+      }
+    .notepad-text-editor {
+		border-style:solid;
+		border-width:1px;
+                border-color: silver;
+                margin:0;
+                padding: 0;
+      }
+      .txt-inputer{border-style:dotted}
+
+      
+      button.toolbar-button {}
+      button.menu-button{width:150px;vertical-align:middle}
+
+
+      #participants-header {
+                              list-style-type:none;
+                              height:97.7%;                             
+                              background:none;
+                              background-color:#ffffff;
+                              margin:0;
+                              padding:5px;
+                             }
+      h3#participants-header-label {margin:0; color:black; }
+      ul#participants {}
+
+      /*#participant-treecontrol {color:black;background:none}*/
+      .roomTitle {font-weight:bold}
+
+
+       span.phyzixlabs-room-teamspace.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/applications-other.png");
+       }
+       span.phyzixlabs-room-teamspace.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/applications-other.png");
+       }
+
+       span.phyzixlabs-room-teamspace-binder.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/aiksaurus.png");
+       }
+       span.phyzixlabs-room-teamspace-binder.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/aiksaurus.png");
+       }
+
+
+       span.phyzixlabs-room-assignment-root.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/stock_task-assigned-to.png");
+       }
+       span.phyzixlabs-room-assignment-root.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/stock_task-assigned-to.png");
+       }
+
+       span.phyzixlabs-room-assignment.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("../appbuilder/img/folder.png");
+       }
+       span.phyzixlabs-room-assignment.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("../appbuilder/img/folder-open.png");
+       }
+
+       span.phyzixlabs-room-assignment-submitted.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/stock_task-assigned.png");
+       }
+       span.phyzixlabs-room-assignment-submitted.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/stock_task-assigned.png");
+       }
+
+       span.phyzixlabs-room-assignment-submission.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/assignment-ungraded.png");
+       }
+       span.phyzixlabs-room-assignment-submission.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/assignment-ungraded.png");
+       }
+       span.phyzixlabs-room-assignment-submission-graded.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/assignment-graded.png");
+       }
+       span.phyzixlabs-room-assignment-submission-graded.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/misc/assignment-graded.png");
+       }
+
+
+
+
+       span.vroomtitle span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/edutainment.png");
+       }
+
+       span.phyzixlabs-room-inactive span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/edutainment.png");
+       }
+
+       span.catalog_node span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/system-file-manager.png");
+       }
+       span.my_catalog_node span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/applications-office.png");
+       }
+
+       span.cart_node span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/cart.png");
+       }
+       span.catalog_subject_node span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/folder.png");
+       }
+       span.catalog_topic_node span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/gnome-blog.png");
+       }
+       span.catalog_page_node span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/alacarte.png");
+       }
+
+       span.phyzixlabs-room-root span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/misc/start-here.png");
+       }
+
+
+
+       .style a{
+          color:gray;
+          font-family:sans-serif;
+          font-size:13px;
+          text-decoration:none;
+        }
+
+       span.onlineperson a
+       {
+           
+       }
+       
+       span.onlineperson span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/online_person.png");
+       }
+       span.onlineperson-nf span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/online_person.png");
+       }
+
+       span.creatoronlineperson a
+       {
+          font-style:italic;
+          color:blue;
+          font-weight:bold;
+       }
+
+       span.creatoronlineperson span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/online_person.png");
+       }
+
+       span.selfonlineperson a
+       {
+          font-style:italic;
+          color:blue;
+          font-weight:bold;
+       }
+
+       span.selfonlineperson span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/online_person.png");
+       }
+
+       span.onlineperson-creator-cp span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/online_person.png");
+       }
+       span.onlineperson-creator-cp-nf span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/online_person.png");
+       }
+
+       span.offlineperson-creator-cp span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/offline_person.png");
+       }
+
+       
+
+
+
+       span.offlineperson a
+       {
+            
+       }
+
+       span.offlineperson span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/offline_person.png");
+       }
+
+       /*span.docnode a
+       {
+
+       }
+
+       span.docnode span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/gnome-blog.png");
+       }*/
+
+
+       span.docnode.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/work-bench/gnome-blog.png");
+       }
+       span.docnode.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/work-bench/gnome-blog.png");
+       }
+
+       span.fdocnode.dynatree-ico-cf span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/work-bench/gnome-blog.png");
+       }
+       span.fdocnode.dynatree-ico-ef span.dynatree-icon
+       {
+            background-position: 0 0;
+            background-image: url("images/work-bench/gnome-blog.png");
+       }
+       /*span.fdocnode a
+       {
+
+       }
+
+       span.fdocnode span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/gnome-blog.png");
+       }*/
+
+       span.padnode a
+       {
+
+       }
+
+       span.padnode span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/alacarte.png");
+       }
+
+       span.padnode0 a
+       {
+
+       }
+
+       span.padnode0 span.dynatree-icon
+       {
+           background-position: 0 0;
+            background-image: url("images/work-bench/alacarte.png");
+       }
+       #colabopadMenus ul li {cursor:default}
+	#toolbar {
+		padding: 10px 4px;
+	}
+        ul.dynatree-container {border:none}
+        #ide-header h1 {
+	text-align: center;
+	margin: auto;
+	font-family:Courier;	
+	color: #3cb2ec;
+        }
+        .signup-label{
+            text-align:right;
+            background-color:#f6f6f6;
+        }
+
+        /* css for timepicker */
+        .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+        .ui-timepicker-div dl { text-align: left; }
+        .ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+        .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+        .ui-timepicker-div td { font-size: 90%; }
+        .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+    </style>
+
+
+
+
+    <script language="javascript" type="text/javascript">
+      /**
+      function include_dom(id, env) {
+         var html_doc = document.getElementsByTagName('head').item(0);
+         var js = document.createElement('script');
+         js.setAttribute('language', 'javascript');
+         js.setAttribute('type', 'text/javascript');
+
+         if(env != undefined)
+            js.setAttribute('src', 'widgets/getwidget.jsp?id='+id+'&env='+env+'&ts='+(new Date().getTime()));
+        else
+            js.setAttribute('src', 'widgets/getwidget.jsp?id='+id+'&ts='+(new Date().getTime()));
+
+         html_doc.appendChild(js);
+         return false;
+     }
+     **/
+
+        
+    $(document).ready(function(){
+        $.blockUI.defaults.applyPlatformOpacityRules = false;
+        $.blockUI({css:{},overlayCSS: { backgroundColor: '#666666',opacity:.98 },theme:false,message: '<h1><img src="images/misc/busy.gif" />Loading ,please wait...<button style="visibility:hidden" id="flash-cancel-button">Cancel</button></h1> '});
+        $('#flash-hider').css("display","block");
+
+        ColabopadApplication.ContextMenus.show_bindTeamSpaceContextMenu = (38 == user_id);
+         
+
+          
+    	  $('.fg-button').hover(
+    		function(){ $(this).removeClass('ui-state-default').addClass('ui-state-focus'); },
+    		function(){ $(this).removeClass('ui-state-focus').addClass('ui-state-default'); }
+    	  );
+          loadApp();
+          //initTouch2Mouse();
+            $('#flash-cancel-button').button({
+                    text: false,
+                    icons: {
+                            primary: "ui-icon-cancel"
+                    }
+            }).click(function(){
+                ColabopadApplication.forceReady();
+            });
+            setTimeout(function(){
+                $('#flash-cancel-button').css("visibility","visible");
+            },5000);
+    });
+    
+
+
+
+
+    function debug(msg){
+        if(ColabopadApplication.getEnv() == 'dev' && typeof phyzixlabs_database == "undefined"){
+            jQuery('#debug-output').css({display:'block'}).append('<span style="background-color:black;color:yellow">debug:<span style="color:#04fd33">'+msg+'</span></span><br/>');
+        }
+    }
+
+    window.log = function (msg){
+        if(ColabopadApplication.getEnv() == 'dev' && typeof phyzixlabs_database == "undefined"){
+            jQuery('#debug-output').css({display:'block'}).append('<span style="background-color:black;color:yellow"><span style="color:#04fd33">'+msg+'</span></span><br/>');
+        }
+    };
+
+    window.applet_log = function(msg,env){
+        if(env == 'dev' && typeof phyzixlabs_database == "undefined"){
+            jQuery('#debug-output').css({display:'block'}).append('<span style="background-color:black;color:yellow"><span style="color:#04fd33">'+msg+'</span></span><br/>');
+        }
+    };
+
+    function debug1(msg){
+       // jQuery('#debug-output1').css({display:'block'}).html('<textarea readonly cols="256" rows="16">'+msg+'</textarea><br/>');
+    }
+    function debug2(msg){
+       // jQuery('#debug-output2').css({display:'block'}).html('<textarea readonly cols="256" rows="16">'+msg+'</textarea><br/>');
+    }
+
+    function showAbout(){
+        jQuery('#about-dialog').dialog("open")
+    }
+    function showHelp(){
+        window.open('help/app-help.jsp','helpwindowx','location=no,toolbar=no,scrollbars=yes,directories=no,menubar=no,status=no,copyhistory=no,resizable=yes');
+    }
+    function showDevHelp(){
+        window.open('help/dev/dev-help.jsp','helpwindowx','location=no,toolbar=no,scrollbars=yes,directories=no,menubar=no,status=no,copyhistory=no,resizable=yes');
+    }
+
+    function loadApp(){
+        --m_dependencies;
+        if(m_dependencies == 0)
+            initApp(false);
+    }
+
+
+    function touchHandler(event)
+    {
+        var touches = event.changedTouches,
+            first = touches[0],
+            type = "";
+
+             switch(event.type)
+        {
+            case "touchstart": type = "mousedown"; break;
+            case "touchmove":  type="mousemove"; break;
+            case "touchend":   type="mouseup"; break;
+            default: return;
+        }
+
+                 //initMouseEvent(type, canBubble, cancelable, view, clickCount,
+        //           screenX, screenY, clientX, clientY, ctrlKey,
+        //           altKey, shiftKey, metaKey, button, relatedTarget);
+
+        var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent(type, true, true, window, 1,
+                                  first.screenX, first.screenY,
+                                  first.clientX, first.clientY, false,
+                                  false, false, false, 0/*left*/, null);
+
+                                                                                     first.target.dispatchEvent(simulatedEvent);
+        event.preventDefault();
+    }
+
+    function initTouch2Mouse()
+    {
+        document.addEventListener("touchstart", touchHandler, true);
+        document.addEventListener("touchmove", touchHandler, true);
+        document.addEventListener("touchend", touchHandler, true);
+        document.addEventListener("touchcancel", touchHandler, true);
+    }
+    </script>
+
+<style type="text/css">
+    .fg-button {
+       outline: 0;
+       /*margin:0 0 0 0;*/
+       /*padding: .1em .2em;*/
+       text-decoration:none !important;
+       cursor:pointer;
+       position: relative;
+       text-align: center;
+       zoom:1;
+       }
+	.fg-button { outline: 0;/* margin:0 4px 0 0; padding: .4em 1em;*/ text-decoration:none !important; cursor:pointer; position: relative; text-align: center; zoom: 1; }
+	.fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
+
+	a.fg-button { float:left; }
+
+	/* remove extra button width in IE */
+	button.fg-button { width:auto; overflow:visible; }
+
+	.fg-button-icon-left { padding-left: 2.1em; }
+	.fg-button-icon-right { padding-right: 2.1em; }
+	.fg-button-icon-left .ui-icon { right: auto; left: .2em; margin-left: 0; }
+	.fg-button-icon-right .ui-icon { left: auto; right: .2em; margin-left: 0; }
+
+	.fg-button-icon-solo { display:block; width:8px; text-indent: -9999px; }	 /* solo icon buttons must have block properties for the text-indent to work */
+
+	.fg-buttonset { /*float:left;*/ }
+	.fg-buttonset .fg-button { /*float: left;*/ }
+	.fg-buttonset-single .fg-button,
+	.fg-buttonset-multi .fg-button { margin-right: -1px;}
+
+	.fg-toolbar { padding: .5em; margin: 0;  }
+	.fg-toolbar .fg-buttonset { margin-right:1.5em; padding-left: 1px; }
+	.fg-toolbar .fg-button { font-size: 1em;  }
+
+    #floating-toolbox-toolbar ul li {padding:0;margin:0}
+    #floating-toolbox-toolbar ul li button {width:22px;text-align:center}
+
+    img.ui-icon{
+        height:16px;
+        width:16px;
+        position:relative;
+        display:inline;
+    }
+</style>
+
+
+
+<style>
+    #participantMenu {
+        background:#FFF;
+        border:1px solid #444;
+        display:none;
+        width:150px;
+    }
+
+    #participantMenu ul, #participantMenu ul * {
+        padding:0;
+        margin:0;
+    }
+
+    #participantMenu ul li{
+        list-style:none;
+        border:1px solid #444;
+        padding: 5px;
+        display:block;
+    }
+
+    #participantMenu ul li:hover{
+        background:#666;
+        color:#FFF;
+    }
+
+    #participantMenu ul li:hover span{
+        color:#FFF;
+    }
+
+    #participantMenu li:hover a{
+        color:#FFF;
+    }
+
+    #participantMenu a{
+        color:#000;
+        font:11px Tahoma;
+        font-weight:bold;
+        text-decoration:none;
+    }
+    .hidden { position:absolute; top:0; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    .ui-layout-west {
+        background: url("image/misc/bg_dotted.png")  !important;
+    }
+    .ui-layout-center {
+        background: url("image/misc/bg_dotted.png")  !important;
+    }
+    .error-blinkable-active {text-decoration:blink;color:red}
+    
+     /* force a height so the tabs don't jump as content height changes */
+    #participant-tabcontrol .tabs-spacer { float: left; height: 200px; }
+    .tabs-bottom .ui-tabs-nav { clear: left; padding: 0 .2em .2em .2em; }
+    .tabs-bottom .ui-tabs-nav li { top: auto; bottom: 0; margin: 0 .2em 1px 0; border-bottom: auto; border-top: 0; }
+    .tabs-bottom .ui-tabs-nav li.ui-tabs-active { margin-top: -1px; padding-top: 1px; }    
+</style>
+
+
+<!---->
+<script type="text/javascript">
+
+    var ddmenu = false;
+	jQuery(function(){
+		//all hover and click logic for buttons
+		jQuery(".fg-button:not(.ui-state-disabled)")
+		.hover(
+			function(){
+				jQuery(this).addClass("ui-state-hover");
+			},
+			function(){
+				jQuery(this).removeClass("ui-state-hover");
+			}
+		)
+		.mousedown(function(){
+				jQuery(this).parents('.fg-buttonset-single:first').find(".fg-button.ui-state-active").removeClass("ui-state-active");
+				if( jQuery(this).is('.ui-state-active.fg-button-toggleable, .fg-buttonset-multi .ui-state-active') ){ jQuery(this).removeClass("ui-state-active"); }
+				else { jQuery(this).addClass("ui-state-active"); }
+		})
+		.mouseup(function(){
+			if(! jQuery(this).is('.fg-button-toggleable, .fg-buttonset-single .fg-button,  .fg-buttonset-multi .fg-button') ){
+				jQuery(this).removeClass("ui-state-active");
+			}
+		});
+
+        jQuery('#colabopadMenus li').hover(
+			function(){
+				//$(this).addClass("ui-state-hover");
+                jQuery(this).css("color","blue");
+			},
+			function(){
+				//$(this).removeClass("ui-state-hover");
+                jQuery(this).css("color","black");
+			}
+		);
+	});
+
+</script>
+
+
+    <script type="text/javascript">
+
+
+
+        var room_count = 0;
+        function validate(){
+            if($('#roomLabel').attr("value") != ''){
+                return true;
+            }
+            alert('Please fill-out all required fields')
+            return false;
+        }
+        function launchDevIDE(){
+            window.open('../appbuilder/index.jsp','devpadwindowx','location=no,toolbar=no,directories=no,menubar=no,status=no,copyhistory=no,resizable=yes');
+        }
+
+        function openRoom(room_id){
+            window.location.href = 'index.jsp?room_id='+room_id,'notepadwindow'+room_id+'&ts'+new Date().getTime();
+            //window.open('index.jsp?room_id='+room_id,'notepadwindow'+room_id,'location=no,toolbar=no,directories=no,menubar=no,status=no,copyhistory=no,resizable=yes');
+        }
+    </script>
+</head>
+
+  <body style="background: url(images/misc/bg_dotted.png);margin:0;padding:0;overflow:hidden">
+      <div id="main-overlay" class="ui-widget-overlay" style="border-style:none;margin:0;padding:0">
+          <div id="flash-hider" style="display:none;border-style:none;margin:0;padding:0">
+                    <div id="main-view" style="border-style:none;margin: 0;padding: 0">
+        <div id="left-sidebar-panel" style="width:350px;margin-right:4px;float:left;margin-bottom: 0">
+             <div id="application-left-navigation-panel" style="padding-top: 0px;">
+    
+    
+        <!--<div class="ui-widget-header ui-corner-all" style="padding: 6px 4px;margin-bottom: 4px;"><img src="images/work-bench/vmware.png"/> <span style="vertical-align:top">Work Explorer</span> <div style="clear:both"></div></div>-->
+        <div style="padding:4px;border-bottom: 0;"  class="ui-widget-header">
+	    <a target="_blank" href="http://www.appynotebook.com" id="powered-by-button" style="display:none;text-decoration:none;vertical-align:bottom"><span style="text-shadow: 0 1px 0 rgba(204, 204, 204, 0.8);font-family: 'Ubuntu Condensed', sans-serif, cursive;color:#808080;text-decoration:none">Powered by APPYnotebook</span><a/>
+            <button id="view-rooms-btn" style="display:none">Your Rooms</button>
+            <button id="add-participant-btn" style="display:none">Add Participant</button>
+            
+            <a href="../appbuilder" target="_blank"><button id="applet-builder" style="display:none">App Builder & System Tools</button></a>
+            
+            <button id="sign-out-btn" style="display:none">Sign-Out</button>
+            <button id="user-settings-btn" style="display:none">Your Settings</button>
+            <button id="package-ebook-btn" style="display:none">Package e-book</button>
+            
+            
+            <a href="/doc/home/index.html#workspace" target="_blank"><button id="workspace-help-button" style="display:none;float:right;">Help</button></a> 
+            
+            
+            <button id="collapse-sidebar-button" style="display:none;float:right;">Close Panel</button>
+            <button id="new-binder-button" style="display:none;float:right;">New Binder</button>
+            <div style="clear:both"></div>
+        </div>
+    
+    
+    <div class="ui-widget-header ui-corner-bottom" style="padding:4px;padding-bottom: 4px;padding-top: 2px">
+        <div class="ui-widget-content" id="participant-treecontrol" style="margin-top:4px;overflow: hidden"></div>
+    </div>
+    <div class="ui-widget-content ui-corner-all" id="user-applet-holder" style="padding:4px;margin-top: 4px;">
+        <div style="text-align:center;padding:2px;margin-bottom:4px" class="ui-corner-all ui-widget-header" id="user-applet-holder-header">APPS 
+            
+            
+                <button id="add-new-btn" style="float:right;display:none">Add a new App</button>
+                <button id="refresh-apps-btn" style="float:right;display:none">Refresh</button>
+                <button id="bummy-panel-btn" style="float:right;display:none">&nbsp;</button>
+            
+            
+            <div style="clear:both"></div>
+        </div>
+        <div id="app-panel" style="clear:both"></div>
+    </div>    
+
+    <div id="debug-output" style="display:none;width:250px;border-style:solid;padding:3px;background:black;max-height:400px;overflow:auto"></div>
+
+</div>
+
+        </div>
+        <button id="expand-sidebar-button" style="display:none;float:left;width:32px;height:32px;">Open side panel</button>
+        <div id="ui_center_pane" class="ui-widget-content"  style="float:right;margin:0;padding: 0px;">
+            
+
+<div id="colabopad-frame">
+    
+    <div id="participant-tabcontrol-pane" style="position: absolute;left:-130000px">
+        <div id="participant-tabcontrol" style="display:none;background:url(images/misc/bg_dotted-v1.png)">
+
+            <ul id="participant-tabcontrol-headers">
+                <li class="phyzixlabs-not-portable"><a style="font-weight:bold" href="#main-home-tab"><span style="float:left" class="ui-icon ui-icon-home"></span>APP Store</a></li>
+            </ul>
+
+            <div id="participant-tabcontrol-tabs">
+                <div id="main-home-tab" style="padding:0px;" class="phyzixlabs-not-portable">
+                    <iframe id="appStoreHomePage"  name="appStoreHomePage" src="../../app-store/index.jsp" width="100%" height="140" scrolling="no"  frameborder="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="hold-javascript"></div>
+    <div id="application-page-screen"></div>
+    <div id="page-controlpanel-holder" style="">      
+
+    <div  style="display:none;" id="main-page-toolbar-container"> <!--class="ui-corner-all ui-widget-header" -->
+            <div style="border-right:0px;border-left: 0px;border-top:0px;margin-bottom: 2px;margin-top:0px;padding:8px;padding-bottom: 5px" class="ui-widget-header">
+                <ul id="main-page-toolbar" style="list-style:none;display:inline;background:none;margin-bottom: 2px" >
+
+                    
+                    
+                    <li style="display:inline">
+                        <button style="float:left" id="phyzixlabs-file-new-page-menu-button" class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary"  title="New Page"><span class="ui-icon ui-icon-triangle-1-s"></span><img src="images/toolbar/context/new-doc.png" style="float:none"/></button> 
+                    </li>        
+
+                    
+
+                    <li style="display:inline;">
+                        <button style="float:left" id="phyzixlabs-export-pdf-button" onclick="ColabopadApplication.menubar.filemenu.savePageItem.action('pdf');return false;" class="toolbar-button fg-button ui-state-default ui-corner-left  ui-priority-primary" title="Export/Print PDF" ><img src="images/export-menu/pdf-16x16.png" style="float:none"/></button> 
+                        <button style="float:left" id="phyzixlabs-export-png-button" onclick="ColabopadApplication.menubar.filemenu.savePageItem.action('png');return false;" class="toolbar-button fg-button ui-state-default ui-priority-primary" title="Export/Print PNG" ><img src="images/export-menu/png.png" style="float:none"/></button> 
+                        <button style="float:left" id="phyzixlabs-export-svg-button" onclick="ColabopadApplication.menubar.filemenu.savePageItem.action('svg');return false;" class="toolbar-button fg-button ui-state-default ui-corner-right  ui-priority-primary" title="Export/Print SVG" ><img src="images/export-menu/svg.png" style="float:none"/></button> 
+                    </li>            
+
+                    <li style="display:inline">
+                        <button style="float:left"  class="toolbar-button fg-button ui-state-default ui-corner-left ui-state-disabled" title="Undo" onclick="ColabopadApplication.undo()" id="undo_btn"  disabled><img src="images/toolbar/context/undo.png"/></button> 
+                        <button style="float:left"  class="toolbar-button fg-button ui-state-default ui-corner-right ui-state-disabled" title="Redo" onclick="ColabopadApplication.redo()" id="redo_btn" disabled><img src="images/toolbar/context/redo.png"/></button> 
+                    </li>
+
+
+
+
+                    <li style="display:inline">
+                        <button style="float:left" id="delete-page-tb-btn" class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary ui-state-disabled" title="Delete Page" id="del-pg-button" onclick="ColabopadApplication.delPage()" disabled><img src="images/toolbar/context/del-doc.png" style="float:none"/></button>
+                    </li>
+
+                    
+                    <li style="display:inline" class="phyzixlabs-not-portable">
+                        <button style="float:left"  id="phyzixlabs-developer-menu" class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Apps" ><span class="ui-icon ui-icon-triangle-1-s"></span><img src="images/toolbar/context/widgets.png" style="float:none"/></button>
+                    </li>
+                    
+                    <li style="display:inline">
+                        <input type="text" value="#000000" class="iColorPicker writeonly" size="7" style="border:none;" id="pencolorPicker" name="pencolorPicker"/>
+
+                        <!--<div><input id="penColor" name="penColor" class=" writeonly" type="text" value="#333399" /></div>-->
+
+                        <select  id="penWidthCtrl" class="writeonly" name="penWidthCtrl" onchange="ColabopadApplication.setPenWidth(this.value)" title="Pen Width">
+                            <option  value="1" selected>1px</option>
+                            <option  value="2" >2px</option>
+                            <option  value="3" >3px</option>
+                            <option  value="4" >4px</option>
+                            <option  value="5" >5px</option>
+                            <option  value="6" >6px</option>
+                            <option  value="7" >7px</option>
+                            <option  value="8" >8px</option>
+                            <option  value="9" >9px</option>
+                            <option  value="10" >10px</option>
+                            <option  value="11" >11px</option>
+                            <option  value="12" >12px</option>
+                            <option  value="13" >13px</option>
+                            <option  value="14" >14px</option>
+                            <option  value="15" >15px</option>
+                            <option  value="16" >16px</option>
+                            <option  value="17" >17px</option>
+                            <option  value="18" >18px</option>
+                            <option  value="19" >19px</option>
+                            <option  value="20" >20px</option>
+                        </select>
+
+                    </li>
+
+                    <li style="display:inline">
+                        <button style="float:right"  class="toolbar-button fg-button ui-state-default ui-corner-right  ui-priority-primary ui-state-disabled" title="Next Page" id="next-pg-button" onclick="ColabopadApplication.nextPage()" disabled><img src="images/toolbar/context/go-next.png" style="float:none"/></button>
+                    </li>
+                    <li style="display:inline">
+                        <button style="float:right"  class="toolbar-button fg-button ui-state-default ui-corner-left  ui-priority-primary ui-state-disabled" title="Previous Page" id="prev-pg-button" onclick="ColabopadApplication.prevPage()" disabled><img src="images/toolbar/context/go-previous.png" style="float:none"/></button>
+                    </li>
+
+                    <li style="display:inline">
+                        <button style="float:right;display:none" id="edit-webpage-link-button"  class="toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Point to URL" ><img src="images/toolbar/context/www-browser.png" style="float:none"/></button>
+                    </li>
+                    <li style="display:inline">
+                        <button style="float:right;display:none" id="edit-webpage-button"  class="toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Edit Page" ><img src="images/toolbar/context/edit-stock_new-html.png" style="float:none"/></button>
+                    </li>
+                    <li style="display:inline">
+                        <button style="float:right;display:none" id="finish-edit-webpage-button"  class="toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Finished editing Page" ><img src="images/toolbar/context/gfloppy.png" style="float:none"/></button>
+                    </li>
+                </ul>
+            </div>
+
+
+        <div  id="ckeditortoolbar-container" style="padding-left:0px;margin-bottom: 2px">
+
+        </div>
+
+
+        <button id="new-workbook-btn"  class="toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="New Workbook" onclick="$('#book-dialog').dialog('open')" style="display:none;padding:0;"><img src="images/toolbar/participant/new-context.png" /></button>
+    </div>
+        
+    </div>
+    <div id="tab-content-holder"></div>
+    
+   
+
+
+<div id="floating-toolbox-toolbar" style="padding: 2px;width:44px;display:none;" class="fg-buttonset fg-buttonset-single">
+
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary ui-state-active" title="Select,Move" onclick="ColabopadApplication.setPenMode('pointer')"><img src="images/toolbar/context/pointer.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Activate APPS for Drag & Drop" onclick="ColabopadApplication.setPenMode('move')"><img src="images/toolbar/context/move-pen-mode.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Write" onclick="ColabopadApplication.setPenMode('freehand')"><img src="images/toolbar/context/pen.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Draw Line" onclick="ColabopadApplication.setPenMode('line')"><img src="images/toolbar/context/line.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Draw Rectangle" onclick="ColabopadApplication.setPenMode('rect')"><img src="images/toolbar/context/rect.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Draw Circle" onclick="ColabopadApplication.setPenMode('circle')"><img src="images/toolbar/context/circle.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Fill Shape" onclick="ColabopadApplication.setPenMode('fill')"><img src="images/toolbar/context/fill.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Erase" onclick="ColabopadApplication.setPenMode('eraser')"><img src="images/toolbar/context/eraser.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Rotate items" onclick="ColabopadApplication.setPenMode('rotate')"><img src="images/toolbar/context/rotate.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Resize" onclick="ColabopadApplication.setPenMode('resize')"><img src="images/toolbar/context/resize-2d.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Type Text" onclick="ColabopadApplication.setPenMode('text')"><img src="images/toolbar/context/text.png"/></button>
+        
+        <button  class="phyzixlabs-not-portable writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Text Editor" onclick="ColabopadApplication.showTextEditor(a040b6c01a5e11e29f1a0800273c185b,'prod')"><img src="images/toolbar/context/text-writer.png"/></button>
+        <button  class="writeonly toolbar-button fg-button ui-state-default ui-corner-all  ui-priority-primary" title="Insert Image" onclick="ColabopadApplication.setPenMode('image')"><img src="images/toolbar/context/pen-mode-image.png"/></button>
+</div>
+<div id="phyzixlabs-export-menu" style="display:none">
+    <ul>
+        <li  style="vertical-align: middle"><a onclick="ColabopadApplication.menubar.filemenu.savePageItem.action('pdf');return false;" href="#"><img src="images/export-menu/pdf.png" style="width:16px;height:16px"/> PDF File</a></li>
+        <li class="phyzixlabs-not-portable"><a onclick="ColabopadApplication.menubar.filemenu.savePageItem.action('png');return false;" href="#"><img src="images/export-menu/png.png" style="width:16px;height:16px"/> PNG File</a></li>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.savePageItem.action('svg');return false;" href="#"><img src="images/export-menu/svg.png" style="width:16px;height:16px"/> SVG File</a></li>
+    </ul>    
+</div>        
+        
+<div id="phyzixlabs-file-new-page-menu" style="display:none">
+    <ul>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.newPageMenuItem.action('text-editor');return true;" href="#"><img src="page-templates/defaults/icons/text-writer.png" style="width:16px;height:16px"/> Text Document</a></li>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.newPageMenuItem.action('web-page');return true;" href="#"><img src="page-templates/defaults/icons/stock_new-html.png" style="width:16px;height:16px"/> Web page</a></li>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.newPageMenuItem.action('default');return true;" href="#"><img src="page-templates/defaults/icons/stripe-32.png" style="width:16px;height:16px"/> Notebook</a></li>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.newPageMenuItem.action('graph-paper');return true;" href="#"><img src="page-templates/defaults/icons/graph-32.png" style="width:16px;height:16px"/> Graph Paper</a></li>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.newPageMenuItem.action('plain-sheet');return true;" href="#"><img src="page-templates/defaults/icons/plain-32.png" style="width:16px;height:16px"/> Plain Sheet</a></li>
+        <li><a onclick="ColabopadApplication.menubar.filemenu.newPageMenuItem.action('black-board');return true;" href="#"><img src="page-templates/defaults/icons/blackboard-32.png" style="width:16px;height:16px"/> Black Board</a></li>
+    </ul>
+</div>        
+        
+<div id="content-view-scrollpane"></div>
+
+   <div id="widget-contrl-panel"  style="width:128px;position:absolute;display:none">
+    <div id="widget-move-button" class="widget-app-cp-button" style="width:16px;height:16px"><img  src="images/widget-cp/move.png" title="Move" style="cursor:move;"/></div>
+    <div id="widget-delete-button" class="widget-app-cp-button" style=""> <button id="app-cp-delete-btn">delete</button>  </div>
+    <div id="widget-controlpanel-button" class="widget-app-cp-button" style="width:16px;height:16px;"> <img  src="images/widget-cp/control-panel.png" title="Control Panel" style="cursor:pointer;"/></div>
+    <div id="widget-instance-control-panel" style="display:none"></div>    
+    <div id="widget-help-button" class="widget-app-cp-button" style="margin-top: 2px;margin-bottom: 2px"><button id="app-cp-help-btn">help</button> </div>
+</div>
+
+<div id="widget-rotate-button" class="widget-app-cp-button" style="width:16px;height:16px;display:none;position:absolute"><img  src="images/widget-cp/rotate.png" title="Rotate" style="cursor:crosshair"/></div>
+<div id="widget-scale-button" class="widget-app-cp-button" style="width:16px;height:16px;display:none;position:absolute"><img  src="images/widget-cp/resize.png" title="Resize" style="cursor:se-resize"/></div>
+
+<!-- IMPORTANT: this should remain visible and block, otherwise inner html wont be visible -->
+<div id="widget-markup" >
+</div>
+
+<div id="widget-class-control-panel"  style="position:absolute;display:none"></div>
+
+
+   
+<div id="debug-output1" style="display:none"></div>
+<div id="debug-output2" style="display:none"></div>
+<!--<input type="image" id="move-button" src="move.png" style="cursor:move;display:none"/>-->
+
+<textarea id="textinputer" style="outline:black;display:none;overflow:hidden;background:none;" class="txt-inputer" rows="1" cols="16"></textarea>
+<span id="shape-metric" style="background-color:gray;color:white;display:none;position:absolute;border-style:dashed;border-color:yellow;border-width:1px;padding:3px"></span>
+
+
+   <div id="toolbar-hider" style="display:none"></div>
+   <div id="inches_to_pixel" style="width:1in;"></div>
+</div>
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div style="clear:both"></div>
+
+    <!--IMPORTANT THAT THIS STAYS OUT OF THE LAYOUT -->
+           <!-- Definition of context menu -->
+
+       <!--online and this participant is room creator-->
+       <ul id="creator-controlpanel-online-menu" class="contextMenu">
+         <!--
+         <li class="subscribe"><a href="#subscribe">Subscribe</a></li>
+         <li class="checkout"><a href="#checkout">Check-out</a></li>
+         <li class="security"><a href="#security">Grant Access</a></li>
+         -->
+         <li class="student_mode"><a href="#student_mode">Follow</a></li>
+         <li class="invite"><a href="#invite">Send Invite</a></li>
+         <li class="delete"><a href="#delete">Remove</a></li>
+         <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+       </ul>
+
+
+       <ul id="creator-controlpanel-online-menu-nf" class="contextMenu">
+         <!--
+         <li class="subscribe"><a href="#subscribe">Subscribe</a></li>
+         <li class="checkout"><a href="#checkout">Check-out</a></li>
+         <li class="security"><a href="#security">Grant Access</a></li>
+         -->
+         <li class="leave_student_mode"><a href="#leave_student_mode">Stop Following</a></li>
+         <li class="invite"><a href="#invite">Send Invite</a></li>
+         <li class="delete"><a href="#delete">Remove</a></li>
+         <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+       </ul>
+
+       <ul id="creator-controlpanel-offline-menu" class="contextMenu">
+         <li class="invite"><a href="#invite">Send Invite</a></li>
+         <li class="delete"><a href="#delete">Remove</a></li>
+         <!--
+         <li class="security"><a href="#security">Grant Access</a></li>
+         -->
+       </ul>
+
+
+       <ul id="participantMenuOnline" class="contextMenu">
+         <!--
+         <li class="subscribe"><a href="#subscribe">Subscribe</a></li>
+         <li class="checkout"><a href="#checkout">Check-out</a></li>
+         <li class="security"><a href="#security">Grant Access</a></li>
+         -->
+         <li class="student_mode"><a href="#student_mode">Follow</a></li>
+         
+       </ul>
+
+       <ul id="participantMenuOnline-nf" class="contextMenu">
+         <!--
+         <li class="subscribe"><a href="#subscribe">Subscribe</a></li>
+         <li class="checkout"><a href="#checkout">Check-out</a></li>
+         <li class="security"><a href="#security">Grant Access</a></li>
+         -->
+         <li class="leave_student_mode"><a href="#leave_student_mode">Stop Following</a></li>
+         
+       </ul>
+
+
+       <ul id="participantMenuOnlineCreator" class="contextMenu">
+             <li class="new_book"><a href="#new-book">New Binder</a></li>
+             <li class="invite"><a href="#invite">Send Invite</a></li>
+             <!--
+             <li class="security"><a href="#security">Edit Access Control</a></li>
+             -->
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+       </ul>
+
+
+       <ul id="participantMenuOnlineSelf" class="contextMenu">
+             <li class="new_book"><a href="#new-book">New Binder</a></li>
+             <li class="invite"><a href="#invite">Send Invite</a></li>
+             <!--
+             <li class="delete"><a href="#delete">Remove</a></li>
+             
+             <li class="security"><a href="#security">Edit Access Control</a></li>
+             -->
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+       </ul>
+
+       <ul id="participantMenuOffline" class="contextMenu">
+           <!--
+             <li class="security"><a href="#security">Grant Access</a></li>
+           -->
+       </ul>
+
+
+       <ul id="workbookMenu" class="contextMenu">
+           
+                <li class="distribute"><a href="#distribute">Distribute</a></li>
+                <!--
+                <li class="distribute"><a href="#distribute_as_assignment">Distribute As Assignment</a></li>
+                -->
+            
+            
+                <li class="distribute"><a href="#auto-distribute">Make System Welcome</a></li>
+            
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+             <li class="rename"><a href="#rename">Rename...</a></li>
+             <!--
+             <li class="savetodisk"><a href="#savetodisk">Save to SVG File</a></li>
+             -->
+             <li class="delete"><a href="#delete">Remove</a></li>
+             <li class="submit_assignment"><a href="#submit_assignment">Submit</a></li>
+
+             <!--
+             <li class="security"><a href="#security">Request Access</a></li>
+             -->
+       </ul>
+       <ul id="workbookMenu-default" class="contextMenu">
+           
+                <li class="distribute"><a href="#distribute">Distribute</a></li>
+                <!--
+                <li class="distribute"><a href="#distribute_as_assignment">Distribute As Assignment</a></li>
+                -->
+            
+            
+                <li class="distribute"><a href="#auto-distribute">Make System Welcome</a></li>
+            
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+             <li class="rename"><a href="#rename">Rename...</a></li>
+             <li class="submit_assignment"><a href="#submit_assignment">Submit</a></li>
+             <li class="savetodisk"><a href="#savetodisk">Export e-Book</a></li>
+             <!--
+             <li class="savetodisk"><a href="#savetodisk">Save to SVG File</a></li>
+             
+             <li class="security"><a href="#security">Request Access</a></li>
+             -->
+       </ul>
+
+
+       <ul id="workbookMenu-me" class="contextMenu">
+           
+                <li class="distribute"><a href="#distribute">Distribute</a>
+                    <!--<ul>
+                        <li class="distribute"><a href="#distribute">To All</a></li>
+                        <li class="distribute"><a href="#distribute">To Some</a></li>
+                    </ul>-->
+                </li>
+                <!--
+                <li class="distribute"><a href="#distribute_as_assignment">Distribute As Assignment</a></li>
+                -->
+            
+            
+                <li class="distribute"><a href="#auto-distribute">Make System Welcome</a></li>
+            
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+             <li class="rename"><a href="#rename">Rename...</a></li>
+             <!--
+             <li class="savetodisk"><a href="#savetodisk">Save to SVG File</a></li>
+             -->
+             <li class="delete"><a href="#delete">Remove</a></li>
+             <li class="submit_assignment"><a href="#submit_assignment">Submit</a></li>
+             <li class="savetodisk"><a href="#savetodisk">Export e-Book</a></li>
+       </ul>
+       <ul id="workbookMenu-me-default" class="contextMenu">
+           
+                <li class="distribute"><a href="#distribute">Distribute</a></li>
+                <!--
+                <li class="distribute"><a href="#distribute_as_assignment">Distribute As Assignment</a></li>
+                -->
+            
+            
+                <li class="distribute"><a href="#auto-distribute">Make System Welcome</a></li>
+            
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+             <li class="rename"><a href="#rename">Rename...</a></li>
+             <li class="submit_assignment"><a href="#submit_assignment">Submit</a></li>
+             <li class="savetodisk"><a href="#savetodisk">Export e-Book</a></li>
+             <!--
+             <li class="savetodisk"><a href="#savetodisk">Save to SVG File</a></li>
+             
+             <li class="security"><a href="#security">Edit Access Control</a></li>
+             -->
+       </ul>
+
+       <ul id="workbookPageMenu" class="contextMenu">
+             <li class="rename"><a href="#rename">Rename...</a></li>
+             <li class="delete"><a href="#delete">Remove</a></li>
+             <li class="embed_code"><a href="#embed_code">Embed Code</a></li>
+             <li class="page_url"><a href="#page_url">Get Page URL</a></li>
+             <li class="submit_assignment"><a href="#submit_assignment">Submit</a></li>
+       </ul>
+       <ul id="workbookPageMenu-default" class="contextMenu">
+             <li class="rename"><a href="#rename">Rename...</a></li>
+             <li class="submit_assignment"><a href="#submit_assignment">Submit</a></li>
+       </ul>
+       <!--
+       <ul id="padContextMenu" class="contextMenu">
+           <li class="cut"><a href="#cut">Cut</a></li>
+           <li class="copy"><a href="#copy">Copy</a></li>
+           <li class="paste"><a href="#paste">Paste</a></li>
+       </ul>
+       -->
+       <div class="contextMenu" id="padContextMenu">
+          <ul>
+           <li id="cut"><img src="../../js/jquery-plugins/jquery.contextMenu/images/cut.png" />Cut</li>
+           <li id="copy"><img src="../../js/jquery-plugins/jquery.contextMenu/images/page_white_copy.png" />Copy</li>
+           <li id="paste"><img src="../../js/jquery-plugins/jquery.contextMenu/images/page_white_paste.png" />Paste</li>
+          </ul>
+       </div>
+
+       
+       
+       
+       <ul id="phyzixlabs-room-root-menu" class="contextMenu">
+             <li class="new"><a href="#new">New Participant</a></li>
+             
+                <li class="load_users"><a href="#load_users">Load Participants from file</a></li>
+            
+            <li class="rename"><a href="#rename">Rename</a></li>
+       </ul>
+
+       <div  id="phyzixlabs-add-participant-menu" style="display:none">
+           <ul>
+                 <li class="new"><a  href="#" onclick="ColabopadApplication.createParticipant('new')">New Participant</a></li>
+               
+                    <li class="load_users"><a  href="#" onclick="ColabopadApplication.createParticipant('load_users')">Load Participants from file</a></li>
+                
+           </ul>
+       </div>
+
+       <ul id="phyzixlabs-room-teamspace-menu" class="contextMenu">
+             <li class="new_book"><a href="#new-book">New Binder</a></li>
+             <li class="import-office"><a href="#import-office">Import Office/PDF Document</a></li>
+       </ul>
+
+       <ul id="phyzixlabs-room-assignment-root-menu" class="contextMenu">
+             <li class="new_assignment"><a href="#new-assignment">New Task</a></li>
+       </ul>
+
+       <ul id="phyzixlabs-room-assignment-menu" class="contextMenu">
+             <li class="edit_assignment"><a href="#edit-assignment">Edit</a></li>
+             <li class="archive_assignment"><a href="#archive-assignment">Archive</a></li>
+       </ul>
+
+       <ul id="phyzixlabs-room-assignment-submission-menu" class="contextMenu">
+             <li class="mark_as_graded_assignment"><a href="#mark-as-graded-assignment">Mark as graded</a></li>
+       </ul>
+    <div id="image-dialog" title="Add Image" style="display:none">
+    <table>
+        <tr>
+            <td>Url:</td><td><input type="text" id="image-module-image-url"/></td>
+        </tr>
+        <tr class="image-dialog-hide-row">
+            <td colspan="2" style="text-align:center">--OR--</td>
+        </tr>
+        <tr class="image-dialog-hide-row">
+            <td>Upload:</td><td><iframe id="imageUploadInterface" name="imageUploadInterface" src="export-handlers/image-uploader.jsp" width="300" height="30" scrolling="no" frameborder="no"></iframe></td>
+        </tr>
+        <!--
+        <tr>
+            <td>Link:</td><td><input type="text" id="image-module-image-link"/></td>
+        </tr>
+        -->
+        <tr>
+            <td>Width:</td><td><input type="text" size="4" id="image-module-image-width"/>px</td>
+        </tr>
+        <tr>
+            <td>Height:</td><td><input type="text" size="4" id="image-module-image-height"/>px</td>
+        </tr>
+    </table>
+</div>
+
+<div id="create-room-dialog" title="Add Group" style="display:none;">
+    <table style="border-width:1px;border-color:#f6f6f6">
+        <tr>
+            <td class="signup-label">Group Title*:</td><td><input type="text" name="roomLabel" id="roomLabel" /></td>
+        </tr>
+    </table>
+</div>
+
+<div id="book-dialog" style="display:none" title="Binder Title">
+    <table>
+        <tr>
+            <td>Title:</td><td><input type="text" id="work-book-title"/></td>
+        </tr>
+    </table>
+    <input type="hidden" id="work-book-title-pid"/>
+    <input type="hidden" id="work-book-title-context-id"/>
+</div>
+
+<div id="page-title-dialog" style="display:none" title="Page Title">
+    <table>
+        <tr>
+            <td>Title:</td><td><input type="text" id="page-title"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <fieldset>
+                    <legend>Position</legend>
+                    <table>
+                        <tr>
+                            <td><input type="radio" name="page_position" value="before"/></td><td>Before</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="page_position" value="append"/></td><td>Append</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="page_position" value="after"/></td><td>After</td>
+                        </tr>        
+                        <tr>
+                            <td><input type="radio" name="page_position" value="bottom" checked/></td><td>Bottom</td>
+                        </tr>    
+                    </table>                    
+                </fieldset>    
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="page-title-pid"/>
+    <input type="hidden" id="page-title-context-id"/>
+    <input type="hidden" id="page-title-page-id"/>
+</div>
+
+<div id="room-title-dialog" style="display:none" title="Group Name">
+    <table>
+        <tr>
+            <td><input type="text" id="room-title-textfield"/></td>
+        </tr>
+    </table>
+</div>
+
+
+
+<div id="about-dialog" title="About Hadron<sup>TM</sup>" style="display:none">
+    <p style="text-align:center;background-image:url(../../favicon.png);background-repeat:no-repeat">
+         Hadron<sup>TM</sup>, v1.2.1<br/><br/>
+        Copyright © 2011. All Rights Reserved, Phyzixlabs Software
+    </p>
+</div>
+
+
+<div id="new-participant-dialog" title="New Participant" style="display:none">
+    <table>
+            <tr>
+                <td>Name:</td><td><input type="text" name="fullName" id="fullName"></td>
+            </tr>
+            <tr>
+                <td>E-mail:</td><td><input type="text" name="emailAddress" id="emailAddress"></td>
+            </tr>
+    </table>
+</div>
+
+
+<div id="access-grant-dialog" title="Grant Access">
+    <table>
+        <tr>
+            <td>
+                <table id="context-access-control-list" class="scroll" cellpadding="0" cellspacing="0"></table>
+                <div id="context-access-control-list-pager" class="scroll" style="text-align:center;"></div>
+            </td>
+            <td>
+                <table id="page-access-control-list" class="scroll" cellpadding="0" cellspacing="0"></table>
+                <div id="page-access-control-list-pager" class="scroll" style="text-align:center;"></div>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="grant-to-pid-id"/>
+</div>
+
+<div id="load-users-dialog" title="Load Users" style="display:none;">
+    <iframe id="loadUsersInterface"  name="loadUsersInterface" src="../appbuilder/add-users.jsp" width="400" height="140" scrolling="no"  frameborder="no"></iframe>
+</div>
+
+<div id="embed-code-dialog" title="Embed Code" style="display:none">
+    Size:<input type="text" size="3" id="phyzixlabs-embed-code-width"/>x<input type="text" size="3" id="phyzixlabs-embed-code-height"/> (px)<br>
+    Copy and past this code to your web page:
+    <textarea  id="phyzixlabs-embed-code" cols="32" rows="5"></textarea>
+</div>
+
+<div id="page-url-dialog" title="Page URL" style="display:none">
+    <input type="text" size="48" id="phyzixlabs-page-url" readonly/>
+</div>
+
+<div id="file-upload-dialog" title="Import" style="display:none">
+    <iframe id="fileUploadInterface" name="fileUploadInterface" src="export-handlers/file-uploader.jsp" width="300" height="60" scrolling="no" frameborder="no"></iframe>
+</div>
+
+<div id="assignment-dialog" style="display:none" title="Task Definition">
+    <table>
+        <tr>
+            <td style="text-align:right">
+                Title:
+            </td>
+            <td>
+                <input type="text" id="assignment-title"/>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2">                
+                <div class="ui-widget-header ui-corner-all" style="padding:2px"> Submission Time Window</div>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="text-align:right">
+                Time Zone:
+            </td>
+            <td>
+                <select id="assignment-timezone" style="">
+                        
+<option value="America/New_York">Eastern Time (US & Canada)</option>        
+<option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+<option value="America/Chicago">Central Time (US & Canada)</option>
+<option value="America/Denver">Mountain Time (US & Canada)</option>
+<option value="Europe/Belfast">(GMT) Greenwich Mean Time : Belfast</option>
+<option value="Europe/Dublin">(GMT) Greenwich Mean Time : Dublin</option>
+<option value="Europe/Lisbon">(GMT) Greenwich Mean Time : Lisbon</option>
+<option value="Europe/London">(GMT) Greenwich Mean Time : London</option>
+<option value="Europe/Amsterdam">Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+<option value="Europe/Belgrade">Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+<option value="Europe/Brussels">Brussels, Copenhagen, Madrid, Paris</option>
+<option value="Europe/Moscow">Moscow, St. Petersburg, Volgograd</option>
+<option value="Pacific/Midway">Midway Island, Samoa</option>
+<option value="America/Adak">Hawaii-Aleutian</option>
+<option value="Etc/GMT+10">Hawaii</option>
+<option value="Pacific/Marquesas">Marquesas Islands</option>
+<option value="Pacific/Gambier">Gambier Islands</option>
+<option value="America/Anchorage">Alaska</option>
+<option value="America/Ensenada">Tijuana, Baja California</option>
+<option value="Etc/GMT+8">Pitcairn Islands</option>
+<option value="America/Chihuahua">Chihuahua, La Paz, Mazatlan</option>
+<option value="America/Dawson_Creek">Arizona</option>
+<option value="America/Belize">Saskatchewan, Central America</option>
+<option value="America/Cancun">Guadalajara, Mexico City, Monterrey</option>
+<option value="Chile/EasterIsland">Easter Island</option>
+<option value="America/Havana">Cuba</option>
+<option value="America/Bogota">Bogota, Lima, Quito, Rio Branco</option>
+<option value="America/Caracas">Caracas</option>
+<option value="America/Santiago">Santiago</option>
+<option value="America/La_Paz">La Paz</option>
+<option value="Atlantic/Stanley">Faukland Islands</option>
+<option value="America/Campo_Grande">Brazil</option>
+<option value="America/Goose_Bay">Atlantic Time (Goose Bay)</option>
+<option value="America/Glace_Bay">Atlantic Time (Canada)</option>
+<option value="America/St_Johns">Newfoundland</option>
+<option value="America/Araguaina">UTC-3</option>
+<option value="America/Montevideo">Montevideo</option>
+<option value="America/Miquelon">Miquelon, St. Pierre</option>
+<option value="America/Godthab">Greenland</option>
+<option value="America/Argentina/Buenos_Aires">Buenos Aires</option>
+<option value="America/Sao_Paulo">Brasilia</option>
+<option value="America/Noronha">Mid-Atlantic</option>
+<option value="Atlantic/Cape_Verde">Cape Verde Is.</option>
+<option value="Atlantic/Azores">Azores</option>
+<option value="Africa/Abidjan">(GMT) Monrovia, Reykjavik</option>
+<option value="Africa/Algiers">West Central Africa</option>
+<option value="Africa/Windhoek">Windhoek</option>
+<option value="Asia/Beirut">Beirut</option>
+<option value="Africa/Cairo">Cairo</option>
+<option value="Asia/Gaza">Gaza</option>
+<option value="Africa/Blantyre">Harare, Pretoria</option>
+<option value="Asia/Jerusalem">Jerusalem</option>
+<option value="Europe/Minsk">Minsk</option>
+<option value="Asia/Damascus">Syria</option>
+<option value="Africa/Addis_Ababa">Nairobi</option>
+<option value="Asia/Tehran">Tehran</option>
+<option value="Asia/Dubai">Abu Dhabi, Muscat</option>
+<option value="Asia/Yerevan">Yerevan</option>
+<option value="Asia/Kabul">Kabul</option>
+<option value="Asia/Yekaterinburg">Ekaterinburg</option>
+<option value="Asia/Tashkent">Tashkent</option>
+<option value="Asia/Kolkata">Chennai, Kolkata, Mumbai, New Delhi</option>
+<option value="Asia/Katmandu">Kathmandu</option>
+<option value="Asia/Dhaka">Astana, Dhaka</option>
+<option value="Asia/Novosibirsk">Novosibirsk</option>
+<option value="Asia/Rangoon">Yangon (Rangoon)</option>
+<option value="Asia/Bangkok">Bangkok, Hanoi, Jakarta</option>
+<option value="Asia/Krasnoyarsk">Krasnoyarsk</option>
+<option value="Asia/Hong_Kong">Beijing, Chongqing, Hong Kong, Urumqi</option>
+<option value="Asia/Irkutsk">Irkutsk, Ulaan Bataar</option>
+<option value="Australia/Perth">Perth</option>
+<option value="Australia/Eucla">Eucla</option>
+<option value="Asia/Tokyo">Osaka, Sapporo, Tokyo</option>
+<option value="Asia/Seoul">Seoul</option>
+<option value="Asia/Yakutsk">Yakutsk</option>
+<option value="Australia/Adelaide">Adelaide</option>
+<option value="Australia/Darwin">Darwin</option>
+<option value="Australia/Brisbane">Brisbane</option>
+<option value="Australia/Hobart">Hobart</option>
+<option value="Asia/Vladivostok">Vladivostok</option>
+<option value="Australia/Lord_Howe">Lord Howe Island</option>
+<option value="Etc/GMT-11">Solomon Is., New Caledonia</option>
+<option value="Asia/Magadan">Magadan</option>
+<option value="Pacific/Norfolk">Norfolk Island</option>
+<option value="Asia/Anadyr">Anadyr, Kamchatka</option>
+<option value="Pacific/Auckland">Auckland, Wellington</option>
+<option value="Etc/GMT-12">Fiji, Kamchatka, Marshall Is.</option>
+<option value="Pacific/Chatham">Chatham Islands</option>
+<option value="Pacific/Tongatapu">Nuku'alofa</option>
+<option value="Pacific/Kiritimati">Kiritimati</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                Open Time:
+            </td>
+            <td>
+                <input type="text" id="assignment-open-time"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                Close Time:
+            </td>
+            <td>
+                <input type="text" id="assignment-close-time"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+               <div class="ui-widget-header ui-corner-all" style="padding:2px">Submission Versioning</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                Allow Versioning:
+            </td>
+            <td>
+                <input type="checkbox" value="yes" id="assignment-allow-versioning" size="2"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                Limit:
+            </td>
+            <td>
+                <input size="4" type="text" id="assignment-versioning-limit"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <div class="ui-widget-header ui-corner-all" style="padding:2px"> Submission Reminder</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                First Reminder:
+            </td>
+            <td>
+                <input type="text" id="assignment-first-reminder-time"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                Repeat Interval:
+            </td>
+            <td>
+                <input type="text" id="assignment-reminder-repeat-interval-days" size="2"/><span style="font-size:10px;color:silver;font-weight:bold">(days)</span>-<input size="4" type="text" id="assignment-reminder-repeat-interval"/><span style="font-size:10px;color:silver;font-weight:bold">(h:m)</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:right">
+                Repeat Count:
+            </td>
+            <td>
+                <input type="text" size="2" id="assignment-reminder-repeat-count"/>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="assignment-id"/>
+</div>
+
+
+<div id="assignment-list-dialog" title="Select" style="display:none">
+    <select id="available-assignment-list">
+
+    </select>
+</div>
+
+<div id="assignment-submission-list-dialog" title="Overwrite" style="display:none">
+    <p id="available-assignment-submission-message">
+
+    </p>
+    <select id="available-assignment-submission-list">
+
+    </select>
+</div>
+
+
+<div id="distribute-content-dialog" title="Users">
+    <table>
+        <tr>
+            <td>
+                <table id="distribute-content-users-list" class="scroll" cellpadding="0" cellspacing="0"></table>
+                <div id="distribute-content-users-list-pager" class="scroll" style="text-align:center;"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="account-upgrade-dialog" title="Upgrade" style="display:none">
+    <h3 style="text-align:center">No contracts <span style="color:#6299c5">*</span> <span style="color:#FECA40">No setup fees</span> <span style="color:#6299c5">*</span> Cancel anytime</h3>
+
+    <div id="account-upgrade-dialog-perform-page">
+        <div id="account-upgrade-breadcrumb" class="ui-corner-all ui-widget-header" style="padding:8px">
+            <span id="account-upgrade-breadcrumb-home"><span style="float:left" class="ui-icon ui-icon-home"></span><span id="account-upgrade-breadcrumb-home-active">Available Plans</span><a id="account-upgrade-breadcrumb-home-inactive" href="#">Available Plans</a></span>
+            <span id="account-upgrade-breadcrumb-payment-info"> >> <span id="account-upgrade-breadcrumb-payment-info-active">Payment information</span><a id="account-upgrade-breadcrumb-payment-info-inactive" href="#">Payment information</a></span>
+        </div>
+
+
+        <div id="account-upgrade-page1">
+            
+            <table>
+                <tr>
+                    <th></th>
+                    <th style="text-align:center">Individual <br/><span>($9.99 per month)</span></th>
+                    <th style="text-align:center">Team <br/><span>($9 per user per month)</span></th>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Document Imports</td><td style="text-align:center">Unlimited</td><td style="text-align:center">Unlimited</td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Document Exports</td><td style="text-align:center">Unlimited</td><td style="text-align:center">Unlimited</td>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Number of binders</td><td style="text-align:center">Unlimited</td><td style="text-align:center">Unlimited</td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Number of pages/binder</td><td style="text-align:center">Unlimited</td><td style="text-align:center">Unlimited</td>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Number of task definitions</td><td style="text-align:center">1</td><td style="text-align:center">Unlimited</td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Number of rooms</td><td style="text-align:center">1</td><td style="text-align:center">1</td>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Can rename room?</td><td style="text-align:center"><img src="../../img/check.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Number of unpaid room invitation</td><td style="text-align:center">4</td><td style="text-align:center">10</td>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Is teamspace available?</td><td style="text-align:center"><img src="../../img/check.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Can you access apps?</td><td style="text-align:center"><img src="../../img/check.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Can you use shared whiteboard?</td><td style="text-align:center"><img src="../../img/check.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Presentation mode</td><td style="text-align:center"><img src="../../img/button_cancel.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr class="ui-state-highlight">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Page annotation</td><td style="text-align:center"><img src="../../img/check.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr class="">
+                    <td style="padding:8px;text-align:right;font-weight: bold">Can you upload files?</td><td style="text-align:center"><img src="../../img/check.png"/></td><td style="text-align:center"><img src="../../img/check.png"/></td>
+                </tr>
+                
+                <tr>
+                    <td></td><td style="text-align:center"><button id="upgrade-btn-individual">Upgrade</button></td><td style="text-align:center"><button id="upgrade-btn-team">Upgrade</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="account-upgrade-page2" style="display:none">
+            <div id="credit-card-error" style="display:none;padding:4px;margin-bottom: 2px;margin-top: 2px;" class="ui-state-error ui-corner-all"></div>
+            <table>
+                <tr>
+                    <td style="width:200px;font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                        Monthly charge
+                    </td>
+                    <td>
+                        <span id="account-upgrade-monthly-charge" style="font-weight:bold"></span>
+                    </td>
+                </tr>
+                <tr class="team-size-row">
+                    <td style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                        Team Size <span style="color:red">*</span>
+                    </td>
+                    <td>
+                        <select id="account-upgrade-dialog-team-plan-size">
+                            <option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option><option value="121">121</option><option value="122">122</option><option value="123">123</option><option value="124">124</option><option value="125">125</option><option value="126">126</option><option value="127">127</option><option value="128">128</option><option value="129">129</option><option value="130">130</option><option value="131">131</option><option value="132">132</option><option value="133">133</option><option value="134">134</option><option value="135">135</option><option value="136">136</option><option value="137">137</option><option value="138">138</option><option value="139">139</option><option value="140">140</option><option value="141">141</option><option value="142">142</option><option value="143">143</option><option value="144">144</option><option value="145">145</option><option value="146">146</option><option value="147">147</option><option value="148">148</option><option value="149">149</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="account-upgrade-dialog-current-payment-information-page" style="display:none">
+                    <td class="ui-state-highlight" style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right">
+                        Current Payment Information
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>Number:</td><td><span id="account-upgrade-dialog-display-credit-card-last4-number"></span></td><td><button id="account-upgrade-dialog-change-credit-card-button" style="float:right">Change</button></td>
+                            </tr>
+                            <tr>
+                                <td>Expires:</td><td><span id="account-upgrade-dialog-display-credit-card-expiration-date"></span></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td><td><span id="account-upgrade-dialog-display-credit-card-type"></span></td><td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr id="account-upgrade-dialog-new-payment-information-page" style="display:none">
+                    <td class="ui-state-highlight" style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right">
+                        Credit Card <span style="color:red">*</span><br/>
+                        <img src="../../img/tinylock.png"/> <span style="font-size:8px;font-weight: bold;color: grey">Secure</span>
+                    </td>
+                    <td>
+                        <table>
+                            
+                            <tr>
+                                <td>
+                                    <span class="error-blinkable" id="account-upgrade-dialog-credit-card-number-label">Credit Card Number</span>
+                                </td>
+                                <td>
+                                    <button id="account-upgrade-dialog-dont-change-credit-card-button" style="display:none">Use current payment information</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input size="16" type="text" id="account-upgrade-dialog-credit-card-number"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="error-blinkable" id="account-upgrade-dialog-credit-card-expiration-month-label">Expiration (Month/Year)</span>
+                                </td>
+                                <td>
+                                    <span class="error-blinkable" id="account-upgrade-dialog-credit-card-security-code-label">Security Code</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="account-upgrade-dialog-credit-card-expiration-month">
+                                        <option value=""></option>
+                                        <option value="01" >01 &middot; Jan</option>
+
+                                        <option value="02" >02 &middot; Feb</option>
+                                        <option value="03" >03 &middot; Mar</option>
+                                        <option value="04" >04 &middot; Apr</option>
+                                        <option value="05" >05 &middot; May</option>
+                                        <option value="06" >06 &middot; Jun</option>
+
+                                        <option value="07" >07 &middot; Jul</option>
+                                        <option value="08" >08 &middot; Aug</option>
+                                        <option value="09" >09 &middot; Sep</option>
+                                        <option value="10" >10 &middot; Oct</option>
+                                        <option value="11" >11 &middot; Nov</option>
+
+                                        <option value="12" >12 &middot; Dec</option>
+                                    </select> /
+                                    <select id="account-upgrade-dialog-credit-card-expiration-year">
+                                        <option></option>
+                                        <option value="2012">2012</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2014">2014</option>
+
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" size="6" id="account-upgrade-dialog-credit-card-security-code"/> <img src="../../img/cvc.png"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="ui-state-highlight" style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right">
+                        Read & Agree <span style="color:red">*</span>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="account-upgrade-dialog-credit-card-tos"/> <span class="error-blinkable" id="account-upgrade-dialog-credit-card-tos-label">I agree to APPYnote's <a href="http://www.appynote.com/terms/" target="_blank">Terms of Service</a>.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td  colspan="2" style="text-align:center"><button id="upgrade-signup-btn">Sign-Up</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="account-upgrade-dialog-confirm-page" style="display:none">
+        <h1>Thank you!</h1>
+        <span id="account-upgrade-dialog-confirm-page-msg"></span>
+        <div style="text-align:center">
+            <button id="account-upgrade-dialog-confirm-page-close-button">Close</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="account-plan-update-dialog" title="Plan Update" style="display:none">
+    <h3 style="text-align:center">No contracts <span style="color:#6299c5">*</span> <span style="color:#FECA40">No setup fees</span> <span style="color:#6299c5">*</span> Cancel anytime</h3>   
+    <div id="account-plan-update-dialog-perform-page">
+        <div id="account-plan-update-dialog-credit-card-error" style="display:none;padding:4px" class="ui-state-error ui-corner-all"></div>
+        <table>
+            <tr>
+                <td style="width:200px;font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                    Monthly charge
+                </td>
+                <td>
+                    <span id="account-plan-update-monthly-charge" style="font-weight:bold"></span>
+                </td>
+            </tr>
+            <tr id="account-plan-update-dialog-team-size-row">
+                <td style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                    Team Size <span style="color:red">*</span>
+                </td>
+                <td>
+                    <select id="account-plan-update-dialog-team-plan-size">
+                        <option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option><option value="121">121</option><option value="122">122</option><option value="123">123</option><option value="124">124</option><option value="125">125</option><option value="126">126</option><option value="127">127</option><option value="128">128</option><option value="129">129</option><option value="130">130</option><option value="131">131</option><option value="132">132</option><option value="133">133</option><option value="134">134</option><option value="135">135</option><option value="136">136</option><option value="137">137</option><option value="138">138</option><option value="139">139</option><option value="140">140</option><option value="141">141</option><option value="142">142</option><option value="143">143</option><option value="144">144</option><option value="145">145</option><option value="146">146</option><option value="147">147</option><option value="148">148</option><option value="149">149</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="account-plan-update-dialog-current-payment-information-page" style="display:none">
+                <td style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                    Current Payment Information
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Number:</td><td><span id="display-credit-card-last4-number"></span></td><td><button id="change-credit-card-button" style="float:right">Change</button></td>
+                        </tr>
+                        <tr>
+                            <td>Expires:</td><td><span id="display-credit-card-expiration-date"></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td>Type:</td><td><span id="display-credit-card-type"></span></td><td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr id="account-plan-update-dialog-new-payment-information-page" style="display:none;">
+                <td style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                    Credit Card <span style="color:red">*</span><br/>
+                    <img src="../../img/tinylock.png"/> <span style="font-size:8px;font-weight: bold;color: grey">Secure</span>
+                </td>
+                <td>
+                    <table>
+                        
+                        <tr>
+                            <td colspan="2">
+                                <span class="error-blinkable1" id="account-plan-update-dialog-credit-card-number-label">Credit Card Number</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input size="16" type="text" id="account-plan-update-dialog-credit-card-number"/>
+                            </td>
+                            <td>
+                                <button id="dont-change-credit-card-button" style="display:none">Use current payment information</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="error-blinkable1" id="account-plan-update-dialog-credit-card-expiration-month-label">Expiration (Month/Year)</span>
+                            </td>
+                            <td>
+                                <span class="error-blinkable1" id="account-plan-update-dialog-credit-card-security-code-label">Security Code</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="account-plan-update-dialog-credit-card-expiration-month">
+                                    <option value=""></option>
+                                    <option value="01" >01 &middot; Jan</option>
+
+                                    <option value="02" >02 &middot; Feb</option>
+                                    <option value="03" >03 &middot; Mar</option>
+                                    <option value="04" >04 &middot; Apr</option>
+                                    <option value="05" >05 &middot; May</option>
+                                    <option value="06" >06 &middot; Jun</option>
+
+                                    <option value="07" >07 &middot; Jul</option>
+                                    <option value="08" >08 &middot; Aug</option>
+                                    <option value="09" >09 &middot; Sep</option>
+                                    <option value="10" >10 &middot; Oct</option>
+                                    <option value="11" >11 &middot; Nov</option>
+
+                                    <option value="12" >12 &middot; Dec</option>
+                                </select> /
+                                <select id="account-plan-update-dialog-credit-card-expiration-year">
+                                    <option></option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" size="6" id="account-plan-update-dialog-credit-card-security-code"/> <img src="../../img/cvc.png"/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;padding:8px;border: none;text-align: right" class="ui-state-highlight">
+                    Read & Agree <span style="color:red">*</span>
+                </td>
+                <td>
+                    <input type="checkbox" id="account-plan-update-dialog-credit-card-tos"/> <span class="error-blinkable1" id="account-plan-update-dialog-credit-card-tos-label">I agree to APPYnote's <a href="http://www.appynote.com/terms/" target="_blank">Terms of Service</a>.</span>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align:center">
+            <button id="change-plan-submit-button">Submit</button>
+        </div>
+    </div>
+    <div id="account-plan-update-dialog-confirm-page" style="display:none">
+        <h1>Thank you!</h1>
+        <span id="account-plan-update-dialog-confirm-page-msg"></span>
+        <div id="text-align:center">
+            <button id="account-plan-update-dialog-confirm-page-close-button">Close</button>
+        </div>
+    </div>
+</div>
+            
+<div id="dialog-confirm-page-move">
+    Select type of move.
+</div>            
+            
+            
+<div id="ebook-package-dialog" style="display:none">
+    <table>
+        <tr>
+            <td style="text-align: right">Document Content Only:</td>
+            <td> <input type="checkbox" id="ebook-package-binder-doc-only"/></td>
+        </tr>
+        <tr>
+            <td style="text-align: right">Zip file name:</td>
+            <td>
+                <input type="text" id="ebook-package-binder-zip-name"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right">UUID:</td>
+            <td>
+                <input type="text" id="ebook-package-binder-uuid"/>
+            </td>
+        </tr>        
+    </table>
+    <div id="ebook-package-tabcontrol">
+        <ul>
+            <li>
+                <a href="#ebook-package-binder-tab">Binders</a>
+            </li>
+            <li>
+                <a href="#ebook-package-app-tab">Include Apps</a>
+            </li>
+        </ul>
+        <div id="ebook-package-binder-tab" style="padding:0px;padding-top:2px">            
+            <table id="ebook-package-binder-list"></table>
+        </div>
+        <div id="ebook-package-app-tab" style="padding:0px;padding-top:2px">
+            <table id="ebook-package-app-list"></table>
+        </div>
+    </div>
+</div>            
+            
+<div id="plan-cancel-dialog" title="Confirm Plan Cancellation" style="display:none">
+    Are you sure you want to cancel your plan?
+</div>
+            
+<div id="plan-upgrade-prompt-dialog" title="Upgrade" style="display:none">
+    <span id="plan-upgrade-prompt-dialog-msg"></span>
+</div>
+            
+<div id="back-end-error-dialog" title="Error" style="display:none">
+    <h1 class="ui-state-error ui-state-error-text"><span style="float:left" class="ui-icon ui-icon-alert"></span>Opps! Something bad happened...Please give it another shot</h1>
+    <span id="back-end-error-dialog-msg"></span>
+</div>
+
+<div id="app-store-dialog" title="App Store">
+    <iframe id="appStoreInterface"  name="appStoreInterface" src="../../app-store/index.jsp" width="100%" height="140" scrolling="no"  frameborder="no"></iframe>
+</div>
+
+<div id="user-settings-dialog" title="Settings">
+    
+
+
+<div class="ui-widget-content ui-corner-top" style="background:url(../../img/bg_dotted-v1.png)">
+    <div id="user-settings-tabcontrol">
+
+        <ul id="user-settings-tabcontrol-headers">
+            <li><a style="font-weight:bold" href="#content-access-control-tab"><span style="float:left" class="ui-icon ui-icon-key"></span>Manage Access</a></li>
+            <li><a style="font-weight:bold" href="#user-profile-tab"><span style="float:left" class="ui-icon ui-icon-person"></span>Your Profile</a></li>
+        </ul>
+
+        <div id="content-access-control-tab" style="padding:0;margin: 0">
+
+                
+                <table style="border-style:none;border-spacing:0;margin-left: auto;margin-right: auto">
+                    <tr>
+                        <td colspan="2">
+                            <div class="ui-corner-top ui-widget-header" style="margin-top:8px;margin-bottom:0px;padding:8px;border-bottom: 0">Group Access</div>
+                            <div class="ui-corner-bottom ui-widget-content" style="padding: 5px">
+                                <input type="radio" name="room-access-type" value="0"/>Private <input type="radio" name="room-access-type" value="1"/>Public <br/>
+                                <div id="public-access-settings" style="display:none">
+                                    <span>Public Access Code</span><br/>
+                                    <input type="text" id="room-access-code"/> <button id="change-room-access-code-button">Change</button><br/>
+                                    <span>Public Access URL</span><br/>
+                                    <input type="text" size="64" id="room-public-access-url" /><br/><br/>
+                                </div>                         
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-style:none; border-collapse: collapse;border-spacing: 0;padding-bottom: 0">
+                            <div class="ui-corner-top ui-widget-header" style="margin-top:8px;margin-bottom:0px;padding:8px;border-bottom: 0">Grant Access to Users</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top;padding-top: 0px">
+                            <table id="user-access-control-list" style="border-top:0" class="scroll" cellpadding="0" cellspacing="0"></table>
+                            <div id="user-access-control-list-pager" class="scroll" style="text-align:center;"></div>
+                        </td>
+                        <td style="padding-top: 0px">
+                            <table id="content-access-control-list" style="border-top:0" class="scroll" cellpadding="0" cellspacing="0"></table>
+                            <div id="content-access-control-list-pager" class="scroll" style="text-align:center;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="ui-widget-content ui-corner-bottom" style="padding:5px;text-align: center">
+                                <button id="save-access-control-settings-button" >Save Changes</button>
+                            </div> 
+                        </td>
+                    </tr>
+                </table>            
+        </div>
+        <div id="user-profile-tab">
+            <div class="ui-corner-all ui-widget-content" style="padding:4px;background-color: white;width:150px;margin-bottom: 8px;">
+                <img id="user-setting-profile-photo" src="ceo.png" width="140" height="140"/>
+                <button id="update-profile-photo-btn" style="left:126px;top:-142px">change</button>
+            </div>
+
+            <div>
+                <div class="ui-corner-all ui-widget-header" style="padding:8px;display:inline">
+                    <span id="profile-user-fullname"></span> <input type="text" size="64" style="display:none" id="profile-user-fullname-textfield"/><button id="update-profile-fullname-edit-btn">Change</button><button id="update-profile-fullname-save-btn">Save</button><button id="update-profile-fullname-cancel-btn">Cancel</button>
+                </div>
+            </div>
+
+            
+            <div class="ui-corner-top ui-widget-header" style="margin-top:8px;margin-bottom:0px;padding:8px"><span id="current-plan-info-display">You currently have the '<span id="current-plan-name-display">basic</span>' plan.</span></div>
+
+            
+            <div class="ui-corner-bottom ui-widget-content" style="padding:4px;background-color: white;border-top: 0px">
+                <button id="upgrade-plan-button" style="display:none">Upgrade</button>
+                <button id="change-to-team-plan-button" style="display:none">Change to Team plan</button>
+
+                <button id="change-team-plan-size-payment-info-button" style="display:none">Change Team size/Payment information</button>
+                <button id="change-payment-info-button" style="display:none">Change payment information</button>
+
+
+                <button id="change-to-individual-plan-button" style="display:none">Change to Individual plan</button>
+
+                <button id="cancel-to-basic-plan-button" style="display:none"> Cancel current plan</button>
+            </div>
+            
+            <div class="ui-corner-top ui-widget-header" style="margin-top:8px;margin-bottom:0px;padding:8px;">Change login email</div>
+            <div class="ui-corner-bottom ui-widget-content" style="padding:4px;padding-left: 0;background-color: white;border-top: 0px">
+                <div class="ui-corner-bottom ui-widget-header" style="padding:8px;display:inline">
+                    <span id="profile-user-login-email">ekemokai@gmail.com</span> <input type="text" size="64" style="display:none" id="profile-user-login-email-textfield"/><button id="update-profile-login-email-edit-btn">Change</button><button id="update-profile-login-email-save-btn">Save</button><button id="update-profile-login-email-cancel-btn">Cancel</button>
+                </div>
+            </div>            
+            
+            <div class="ui-corner-top ui-widget-header" style="margin-top:8px;margin-bottom:0px;padding:8px;">Change password</div>
+            <div class="ui-corner-bottom ui-widget-content" style="padding:4px;background-color: white;border-top: 0px">
+                <table>
+                    <tr>
+                        <td>
+                            Current Password
+                        </td>
+                        <td>
+                            <input type="password" id="profile-user-current-password-textfield"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        New Password
+                        </td>
+                        <td>
+                            <input type="password" id="profile-user-new-password-textfield"/>
+                        </td>
+                    </tr>                
+                    <tr>
+                        <td>
+                        Confirm New Password
+                        </td>
+                        <td>
+                            <input type="password" id="profile-user-confirm-new-password-textfield"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:right">
+                            <button id="update-user-profile-password-btn">Change Password</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+    <iframe style="position:absolute;left:-1000px" id="packageInterface" name="packageInterface" src="../appbuilder/package.jsp" width="0" height="0" scrolling="no"></iframe>
+    <iframe style="position:absolute;left:-1000px" id="saveAsSVGInterface" name="saveAsSVGInterface" src="" width="0" height="0" scrolling="no"></iframe>
+    <iframe style="position:absolute;left:-1000px" id="saveAsPNGInterface" name="saveAsPNGInterface" src="" width="0" height="0" scrolling="no"></iframe>
+    <iframe style="position:absolute;left:-1000px" id="saveAsPDFInterface" name="saveAsPDFInterface" src="" width="0" height="0" scrolling="no"></iframe>
+    <iframe style="position:absolute;left:-1000px" id="saveAsDataInterface" name="saveAsDataInterface" src="" width="0" height="0" scrolling="no"></iframe>
+                
+                <div id="application-footer" class="ui-widget-header ui-corner-bottom" style="display:none;text-align:center;margin:3px;padding-top: 10px;height:20px">
+                    <a href="http://www.appynote.com/dev" target="_blank">developers</a> | <a href="../../terms/" target="_blank">terms</a> | <a href="../../privacy/" target="_blank">privacy</a>  &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> APPYnotebook Software
+                </div>
+          </div>
+      </div>
+  </body>
+</html>
+

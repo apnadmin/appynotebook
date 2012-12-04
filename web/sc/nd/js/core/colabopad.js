@@ -9022,7 +9022,10 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                     });                    
                 },
                 startMQ:function(){
-                    amq = org.activemq.Amq;
+                    amq = org.activemq.Amq;                    
+                    
+                    //uncomment this line to disable MQ
+                    //return;
                     
                     if(typeof phyzixlabs_database == "undefined"){
                         amq.init({

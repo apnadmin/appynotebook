@@ -1084,7 +1084,7 @@
                 <%@include  file="base-page.jsp" %>
                 
                 <div id="application-footer" class="ui-widget-header ui-corner-bottom" style="display:none;text-align:center;margin:3px;padding-top: 10px;height:20px">
-                    <a href="http://www.appynote.com/dev" target="_blank">developers</a> | <a href="../../terms/" target="_blank">terms</a> | <a href="../../privacy/" target="_blank">privacy</a>  &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> APPYnotebook Software
+                    <a href="http://www.appynotebook.com/dev" target="_blank">developers</a> | <a href="../../terms/" target="_blank">terms</a> | <a href="../../privacy/" target="_blank">privacy</a>  &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> APPYnotebook Software
                 </div>
           </div>
       </div>

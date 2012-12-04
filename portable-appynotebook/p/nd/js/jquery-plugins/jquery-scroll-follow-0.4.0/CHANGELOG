@@ -1,0 +1,20 @@
+==0.4.0==
+ * Added 'delay' parameter which sets the scroll follow to only happen a set interval after the last scroll
+ * Added a window.resize listener
+ * Removed the requirement for the easing plugin (still necessary for advanced easing settings)
+ * Removed the requirement for the cookie plugin (still necessary for using a killswitch)
+ * Removed 'animate' parameter. Effect can be fully realized with CSS
+ * Fixed typo in version of ui.core.js tested
+==0.3.1==
+ * Fixed behavior when 'relativeTo' is set to 'bottom.' Previous behavior allowed the scrolling object to break out of the top of its container.
+==0.3.0==
+ * Reworked animating logic to take more situations into account
+ * Added animating to initial position on page load
+ * Added animating to initial position on reenabling of following
+ * Added 'relativeTo' parameter: allows the scroll following object to reposition based on the top or the bottom of the viewport
+==0.2.1==
+ * Minor bug fix
+==0.2.0==
+ * Added 'animate' parameter which allows a scroll following effect with no animation. 
+==0.1.0==
+ * Initial Release

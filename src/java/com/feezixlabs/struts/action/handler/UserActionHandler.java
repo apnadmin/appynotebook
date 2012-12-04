@@ -62,7 +62,7 @@ public class UserActionHandler {
               if(room != null){
                   //creat default book if one has been assigned
                   String welcomeContextData = com.feezixlabs.db.dao.MiscDAO.getTextData("welcome-context").getData();
-                  if(welcomeContextData.length()!= 0){
+                  if(welcomeContextData != null && welcomeContextData.length()!= 0){
                       String[] key = welcomeContextData.split(",");
                       if(key.length == 3){
                             com.feezixlabs.bean.User superUser = com.feezixlabs.db.dao.UserDOA.getUser(key[0]);

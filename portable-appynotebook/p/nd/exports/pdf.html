@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <script type="text/javascript" src="../js/safe-jquery-1.6.2.min.js"></script>
+        <script type="text/javascript">
+            function replaceAll(txt, replace, with_this) {
+              return txt.replace(new RegExp(replace, 'g'),with_this);
+            }
+
+	    var checkCount =0;
+            var _destURL = '';
+            function sendSVG(room_id,fileName,svg,pad,destURL){
+		if(typeof destURL != "undefined")
+                  _destURL = destURL;
+
+                $('input[name=room_id]').val(room_id);
+                $('input[name=file_name]').val(fileName);
+                
+                //$('#svg1').attr("value",svg)
+                if(typeof(pad) != "undefined" && pad != null && typeof pad != "string"){
+		   
+                    $("#svg_dom").html(svg);
+                    $("#svg_dom svg").attr("xmlns:xlink","http://www.w3.org/1999/xlink");
+                    
+                    //$("#svg_dom").find("[nodeName=foreignObject]").remove();
+                    
+                    //$("#svg_dom svg").find("div").remove();
+                    $("#svg_dom").find("foreignObject").remove();
+                    
+                    //alert(svgNode.find("div").length);//.empty().remove();
+                    //$("#svg_dom svg").removeChild(document.getElementsByTagName("foreignObject"));
+                    //$("#svg_dom svg").removeAttr("xmlns");
+                    
+                    
+                    $("#svg_dom path").each(function(){//alert($(this).attr("d")+"\n"+replaceAll($(this).attr("d"),","," "));
+                        $(this).attr("d",replaceAll($(this).attr("d"),","," "));
+                    });
+                    
+                    //break it up into pages
+                    var pageCount = 1;
+                    //pad.div_dom.find('svg .note-element')
+                    //$("#svg_dom svg").attr("height",pad.texteditor.config.original_11inch_to_pixel_height+"px");//.attr("width","8.5in");
+                    //alert($("#svg_dom svg").attr("height").baseVal);
+                    $("#svg_dom svg").attr("height",pad.texteditor.config.original_11inch_to_pixel_height);//.baseVal.value = pad.texteditor.config.original_11inch_to_pixel_height;
+                    $("#svg_dom .note-element")
+                    .each(function(){
+
+
+                        if(this.transform.baseVal.numberOfItems>1){
+                            var bb = this.getBBox();
+                            var ty = this.transform.baseVal.getItem(1).matrix.f;
+                            var tx = this.transform.baseVal.getItem(1).matrix.e;
+                            var sx = this.transform.baseVal.getItem(1).matrix.a;
+                            var sy = this.transform.baseVal.getItem(1).matrix.d;
+                            var config = this.config;
+
+                            var y  = bb.y+ty;
+                            var page = Math.ceil(y/pad.texteditor.config.original_11inch_to_pixel_height);
+                            if(page>pageCount)
+                                pageCount = page;
+
+                                //alert(page);
+                            var pageY = ty-( (page-1)*pad.texteditor.config.original_11inch_to_pixel_height);
+                            //var normalizedTransform = 'rotate('+config.transforms.rotate.angle+','+config.transforms.rotate.cx+','+config.transforms.rotate.cy+') '+'translate('+config.transforms.trslt.x+','+pageY+') scale('+config.transforms.scale.x+','+config.transforms.scale.y+')';
+                            //this.setAttribute("transform",normalizedTransform);
+                            //this.transform.baseVal.getItem(1).matrix.translate(tx,ty);
+
+                            //this.getAttribute("transform").indexOf("translate(")
+
+                            var oldTranslate = "translate("+this.getAttribute("transform").split("translate(")[1].split(")")[0]+")";
+                            var newTranslate = "translate("+tx+","+pageY+")";
+                            var oldTransform = this.getAttribute("transform");
+                            var newTransform = oldTransform.replace(oldTranslate,newTranslate);
+                            this.setAttribute("transform",newTransform);
+                            this.style.display = "none";
+                            //alert(oldTransform+"\n"+newTransform);
+                            //alert(this.getAttribute("transform").split("translate(")[1].split(")")[0].split(',')[0]);
+                            //var normalizedTransform = 'rotate('+config.transforms.rotate.angle+','+config.transforms.rotate.cx+','+config.transforms.rotate.cy+') '+'translate('+config.transforms.trslt.x+','+pageY+') scale('+config.transforms.scale.x+','+config.transforms.scale.y+')';
+                            //this.setAttribute("transform",normalizedTransform);
+
+                            //alert(bb.height+' tx:'+ty);
+                            //alert('y:'+y+' ty:'+ty);
+                            //alert('note-element:'+this.transform.baseVal.getItem(1).matrix.f);
+                            //alert($(this).html());
+                            $(this).attr("page",page);
+                        }
+                    });
+                    $("#pageCount").attr("value",pageCount);
+                    $("#xhtml").attr("value",pad.texteditor.ckeditor.getData());
+
+                    $("#page_pixel_width").attr("value",pad.texteditor.config.original_8_5inch_to_pixel_width);
+                    $("#page_pixel_height").attr("value",pad.texteditor.config.original_11inch_to_pixel_height);
+
+                    $("#content_pixel_width").attr("value",pad.texteditor.config.original_editorwidth_in_pixel);
+                    $("#content_pixel_height").attr("value",pad.texteditor.config.original_editorheight_in_pixel);
+
+                    $("#page_margin_left").attr("value",pad.texteditor.config.margin.left);
+                    $("#page_margin_right").attr("value",pad.texteditor.config.margin.right);
+                    $("#page_margin_top").attr("value",pad.texteditor.config.margin.top);
+                    $("#page_margin_bottom").attr("value",pad.texteditor.config.margin.bottom);
+
+                    $('#svg').attr("value",$("#svg_dom").html());
+                    $("form[name=pdfposter]").attr("action",destURL+"/download-pdf-doc.jsp");
+                    
+                    //alert($("#svg_dom").find("foreignObject"))
+                }else{		                    
+		    //destURL = pad;
+		    //_destURL = destURL;
+                    $('#svg').attr("value",svg);
+                    $("form[name=pdfposter]").attr("action",destURL+"/download-pdf.jsp")
+                }
+                
+                document.pdfposter.submit();
+                startProgressCheck(destURL);
+            }
+
+	    function checkStatus(){
+                if(checkCount > 60){
+                    top.ColabopadApplication.onExportComplete();
+                    return;
+                }
+		
+		++checkCount;
+                $.ajax({
+                    type:'POST',
+		    dataType: 'jsonp',
+		    //jsonp:"checkAbort"
+                    data:{},
+                    url:_destURL+'/export-status.jsp',
+                    success:function(data){
+
+                    }
+                });
+             };
+
+	    function checkAbort(data){//alert("checkAbort:"+data.status);
+		var reply = data;//eval('('+data+')');
+                if(reply.status == "done"){
+		    //alert("export complete");
+                    top.ColabopadApplication.onExportComplete();
+                }
+	        else
+		if(reply.status == "error"){
+		    top.ColabopadApplication.onExportError(reply.error.src,reply.error.type,reply.error.stack_trace);
+		}
+		else
+		{
+		    setTimeout(checkStatus,1000);
+		}
+	    }
+
+            function startProgressCheck(destURL){	
+                   setTimeout(checkStatus,1000);                
+            }
+        </script>
+    </head>
+    <body>
+        <form method="post" name="pdfposter" action="download-pdf.jsp">
+            <input type="hidden" name="room_id"/>
+            <input type="hidden" name="file_name"/>
+            <input type="hidden" id="index" name="index"/>
+            <input type="hidden" id="pageCount" name="pageCount"/>
+
+            <input type="hidden" id="page_pixel_height" name="page_pixel_height"/>
+            <input type="hidden" id="page_pixel_width" name="page_pixel_width"/>
+
+            <input type="hidden" id="content_pixel_width" name="content_pixel_width"/>
+            <input type="hidden" id="content_pixel_height" name="content_pixel_height"/>
+
+            <input type="hidden" id="page_margin_left" name="page_margin_left"/>
+            <input type="hidden" id="page_margin_right" name="page_margin_right"/>
+            <input type="hidden" id="page_margin_top" name="page_margin_top"/>
+            <input type="hidden" id="page_margin_bottom" name="page_margin_bottom"/>
+
+            <input type="hidden" id="imagedata" name="imagedata"/>
+            <input type="hidden" id="svg" name="svg"/>
+            <input type="hidden" id="svg1" name="svg1"/>
+            <input type="hidden" id="xhtml" name="xhtml"/>
+        </form>
+        <div id="svg_dom">
+
+        </div>
+    </body>
+</html>
+

@@ -278,7 +278,7 @@
 
 
         <div id="account-upgrade-page1">
-            <%
+            <%--
                 com.feezixlabs.bean.Feature priceFeature = null;
                 java.util.List<com.feezixlabs.bean.Feature> features = com.feezixlabs.db.dao.MiscDAO.getFeatureMatrix();
                 for(com.feezixlabs.bean.Feature feature:features){
@@ -320,6 +320,7 @@
                     <td></td><td style="text-align:center"><button id="upgrade-btn-individual">Upgrade</button></td><td style="text-align:center"><button id="upgrade-btn-team">Upgrade</button></td>
                 </tr>
             </table>
+                --%>
         </div>
 
         <div id="account-upgrade-page2" style="display:none">
@@ -721,7 +722,7 @@
     </div>
 </div>
             
-<div id="dialog-confirm-page-move">
+<div id="dialog-confirm-page-move" style="display:none">
     Select type of move.
 </div>            
             
@@ -776,10 +777,10 @@
     <span id="back-end-error-dialog-msg"></span>
 </div>
 
-<div id="app-store-dialog" title="App Store">
+<div id="app-store-dialog" title="App Store" style="display:none">
     <iframe id="appStoreInterface"  name="appStoreInterface" src="../../app-store/index.jsp" width="100%" height="140" scrolling="no"  frameborder="no"></iframe>
 </div>
 
-<div id="user-settings-dialog" title="Settings">
+<div id="user-settings-dialog" title="Settings" style="display:none">
     <%@include  file="user-settings.jsp"%>
 </div>
