@@ -20,11 +20,11 @@ Database
     2.run stored-procedures.sql to create required stored procedures
     3.run user-roles.sql, this contains required user roles.
     4.run text-data.sql, this contains certain settings and static data
-
+    By default the user/password combination used for database access  is bitlooter/bitlooter. You can change this in context.xml and in the AppServer realm definition.
 
 Running APPYnotebook
     First rename the file WEB-INF/_dev.feezixlabs.config.xml to WEB-INF/dev.feezixlabs.config.xml
-    This file contains configuration settings for the dev environment, edit the settings according to prepare for deployment.
+    This file contains configuration settings for the dev environment, you'll edit the settings accordingly to prepare for deployment.
     
 
     create a directory to serve as the base directory for APPYnotebook, name it appynotebook_app. In this directory create the following sub-directories
@@ -38,24 +38,28 @@ Running APPYnotebook
     8.appynotebook_app/static-files/work
     9.appynotebook_app/tmp
 
-    Now edit dev.feezixlabs.config.xml. Generally you only need to specify the value for the variable system paths. All the path values starting with /path/to/appynotebook_app should be replaced with the actual path. This should be the only settings needed to change in order to run APPYnotebook.
+    Now edit dev.feezixlabs.config.xml. Generally you only need to specify the value for the various system paths. All the path values starting with /path/to/appynotebook_app should be replaced with the actual path. This should be the only settings needed to change in order to run APPYnotebook.
 
     Once you have the application running, you should be able to create the initial account via the login screen by chosing to sign in anonymously.
-    When you sign-in anonymousely, a new user would be created along with a new group. You can now edit the user roles in the database to make this new user a sysadmin. 
+    When you sign-in anonymously, a new user would be created along with a new group. You can now edit the user roles in the database to make this new user a sysadmin. 
+
     Administration
     To get to the developer/adminstrative screen, you'll need to grant the sysadmin role to your user in the database.
 
 Once you have sysadmin access, you need to install foundation Apps. There are three foundation Apps:
 
  1.Embeded text editor. (for creating text editor pages)
- 2.Embeded Web page editor. (for creating web pages)
+ 2.Embeded Web page editor. (for embedding or creating web pages)
  3.Rich text editor. (for inserting rich text on a canvas)
  
+ To install these Apps, install the foundation-apps.zip package. There are other sample Apps that you may choose to install.
 
 
 You'll also need to install the portable-appynotebook template, this template is required for generating interactive portable ebooks.
-Get this template from the following github repo https://github.com/apnadmin/portable-appynotebook. This should be pulled into appynotebook_app/portable-appynotebook.
+This should be copied from you main repo into appynotebook_app/portable-appynotebook of your installation.
 
-You may also install the free Apps.
+For additional help, join the developer group: https://groups.google.com/forum/#!forum/appynotebook-developers
+
+
 
 
