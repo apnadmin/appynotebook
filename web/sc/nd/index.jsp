@@ -834,12 +834,14 @@
 
     window.log = function (msg){
         if(ColabopadApplication.getEnv() == 'dev' && typeof phyzixlabs_database == "undefined"){
+            $('#log-viewer-dialog').dialog("open");
             jQuery('#debug-output').css({display:'block'}).append('<span style="background-color:black;color:yellow"><span style="color:#04fd33">'+msg+'</span></span><br/>');
         }
     };
 
     window.applet_log = function(msg,env){
         if(env == 'dev' && typeof phyzixlabs_database == "undefined"){
+            $('#log-viewer-dialog').dialog("open");
             jQuery('#debug-output').css({display:'block'}).append('<span style="background-color:black;color:yellow"><span style="color:#04fd33">'+msg+'</span></span><br/>');
         }
     };

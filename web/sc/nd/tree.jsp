@@ -63,6 +63,7 @@
                     taskQueueNode.put("id",assignment.getId());
                     taskQueueNode.put("title",assignment.getName());
                     taskQueueNode.put("type","assignment");        
+                    taskQueueNodeList.add(taskQueueNode);
                     
                     java.util.List assignmentSubmissionNodeList = new java.util.ArrayList();
                     taskQueueNode.put("children",assignmentSubmissionNodeList);
@@ -90,7 +91,7 @@
                           java.util.List<com.feezixlabs.bean.Pad> pads = com.feezixlabs.db.dao.PadDAO.getPads(request.getUserPrincipal().getName(),room.getId(),context.getId(),context.getParticipantId());
                           assignmentSubmissionNode.put("children",
                             com.feezixlabs.struts.action.handler.PadActionHandler.buildPadTree(room.getId(), user, null, context,com.feezixlabs.struts.action.handler.PadActionHandler.convertToTree(pads))
-                          );                          
+                          );         
                           assignmentSubmissionNodeList.add(assignmentSubmissionNode);
                     }
                 }

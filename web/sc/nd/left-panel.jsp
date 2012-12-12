@@ -1,4 +1,4 @@
-<div id="application-left-navigation-panel" style="padding-top: 0px;">
+<div id="application-left-navigation-panel" style="padding-top: 0px;overflow: hidden">
     
     
         <!--<div class="ui-widget-header ui-corner-all" style="padding: 6px 4px;margin-bottom: 4px;"><img src="images/work-bench/vmware.png"/> <span style="vertical-align:top">Work Explorer</span> <div style="clear:both"></div></div>-->
@@ -24,7 +24,7 @@
     
     
     <div class="ui-widget-header ui-corner-bottom" style="padding:4px;padding-bottom: 4px;padding-top: 2px">
-        <div class="ui-widget-content" id="participant-treecontrol" style="margin-top:4px;overflow: hidden"></div>
+        <div id="participant-treecontrol-scrollpane" class="ui-widget-content" style="margin-top:4px;overflow-y:auto;overflow-x: hidden;"><div id="participant-treecontrol" style=""></div></div>
     </div>
     <div class="ui-widget-content ui-corner-all" id="user-applet-holder" style="padding:4px;margin-top: 4px;">
         <div style="text-align:center;padding:2px;margin-bottom:4px" class="ui-corner-all ui-widget-header" id="user-applet-holder-header">APPS <%--<a href="/app-store/?fr=t" target="_blank"><button id="add-new-btn" style="float:right;">Add a new App</button></a>--%>
@@ -37,9 +37,10 @@
             
             <div style="clear:both"></div>
         </div>
-        <div id="app-panel" style="clear:both"></div>
+        <div id="app-panel" style="clear:both;overflow-y: auto;overflow-x: hidden"></div>
     </div>    
 
-    <div id="debug-output" style="display:none;width:250px;border-style:solid;padding:3px;background:black;max-height:400px;overflow:auto"></div>
-
+        <div id="log-viewer-dialog" title="log viewer" style="display:none">    
+            <div id="debug-output"  style="border-style:solid;padding:3px;background:black;"></div>
+        </div>
 </div>

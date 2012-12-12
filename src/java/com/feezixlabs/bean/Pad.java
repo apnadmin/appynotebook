@@ -26,7 +26,7 @@ public class Pad {
     int     createdBy;
     String  createDate;
     List<Pad> children = new ArrayList<Pad>();
-    
+    Pad     parent;
     
     
     public int getContextId() {
@@ -131,6 +131,13 @@ public class Pad {
 
     public void setChildren(List<Pad> children) {
         this.children = children;
-    }    
-    
+    }
+
+    public Pad getParent() {
+        return parent;
+    }
+
+    public void setParent(Pad parent) {
+        this.parent = parent;
+    }        
 }

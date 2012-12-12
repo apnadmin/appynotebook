@@ -210,7 +210,7 @@
         </div>
        
         <div id="footer" style="margin-top:auto">
-            <p style="color:silver;">Copyright &copy; Phyzixlabs Software. All rights reserved</p>
+            <p style="color:silver;">Copyright &copy; APPYnotebook Software. All rights reserved</p>
          </div>
     </body>
 </html>

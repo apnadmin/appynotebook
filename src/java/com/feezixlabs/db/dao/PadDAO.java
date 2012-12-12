@@ -90,10 +90,10 @@ public class PadDAO {
         QueryRunner run = com.feezixlabs.db.DBManager.getDataSource();
         try
         {
-            ResultSetHandler<Pad> h = new BeanListHandler(Pad.class);
+            ResultSetHandler<Pad> h = new BeanHandler(Pad.class);
             //System.out.println("call sp_get_pad(\""+userName+"\","+roomId+","+contextId+","+id+","+grantor+")");
 
-            return ((java.util.List<Pad>)run.query("{call sp_get_pad(?,?,?,?,?)}", h,userName,roomId,contextId,id,grantor)).get(0);
+            return (Pad)run.query("{call sp_get_pad(?,?,?,?,?)}", h,userName,roomId,contextId,id,grantor);
         }
         catch(java.lang.Exception ex) {
             logger.error("",ex);
@@ -133,7 +133,7 @@ public class PadDAO {
             net.sf.json.JsonConfig jsonConfig = new net.sf.json.JsonConfig();
             jsonConfig.setJavascriptCompliant(true);
 
-            com.feezixlabs.bean.Pad pad = com.feezixlabs.db.dao.PadDAO.getPad(userName, roomId, contextId,padId, grantor);
+            Pad pad = PadDAO.getPad(userName, roomId, contextId,padId, grantor);
             net.sf.json.JSONObject padJSON = net.sf.json.JSONObject.fromObject(pad.getConfig(),jsonConfig);
             if(padJSON.has("header") && padJSON.getJSONObject("header") != null && !padJSON.getJSONObject("header").isNullObject() && padJSON.getJSONObject("header").has("static_references")){
 

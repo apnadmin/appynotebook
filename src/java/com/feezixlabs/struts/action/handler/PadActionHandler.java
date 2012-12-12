@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.feezixlabs.bean.Pad;
 import com.feezixlabs.bean.Participant;
 import com.feezixlabs.bean.User;
+import com.feezixlabs.db.dao.PadDAO;
+import com.feezixlabs.db.dao.UserDOA;
 import com.feezixlabs.util.ConfigUtil;
 import java.util.*;
 
@@ -47,9 +49,68 @@ public class PadActionHandler {
         int preSibling = new Integer(request.getParameter("pre_sibling"));
         int contextId = new Integer(request.getParameter("context_id"));
         int padId = new Integer(request.getParameter("pad_id"));
-        com.feezixlabs.db.dao.PadDAO.updatePadPreSibling(request.getUserPrincipal().getName(), roomId, contextId, padId,preSibling);
+        
+        try{
+            Pad rootPad = validateContext(request,roomId,contextId,padId,0,preSibling,null,true);
+            if(rootPad != null)
+                PadDAO.updatePadPreSibling(request.getUserPrincipal().getName(), roomId, contextId, padId,preSibling);
+            else
+                System.out.println("Invalid pad tree");
+            
+        }catch(Exception ex){
+            System.out.println("Invalid pad tree");
+            ex.printStackTrace();
+        }
     }    
     
+    //this would ensure that there are no cycles in the graph 
+    //before committing changes to database
+    static Pad validateContext(HttpServletRequest request,
+                               int roomId,
+                               int contextId,
+                               int padId,
+                               int parentId,
+                               int preSibling,
+                               String childrenOnly,
+                               boolean updatePreSibling){
+        int userId = UserDOA.getUserId(request.getUserPrincipal().getName());
+        java.util.List<Pad> pads = PadDAO.getPads(request.getUserPrincipal().getName(), roomId, contextId,userId);
+        
+        if(updatePreSibling){
+            //update presiblings
+            for(Pad pad:pads){
+                if(pad.getParentId() == padId){
+                    pad.setPreSibling(preSibling);
+                }
+            }
+        }
+        else
+        {
+            if(childrenOnly.compareToIgnoreCase("yes") == 0){
+                //update presiblings
+                for(Pad pad:pads){
+                    if(pad.getParentId() == padId && pad.getPreSibling() == 0){
+                        pad.setPreSibling(preSibling);
+                    }
+                }
+
+                for(Pad pad:pads){
+                    if(pad.getParentId() == padId){
+                        pad.setParentId(parentId);
+                    }
+                }            
+
+            }else{
+                for(Pad pad:pads){
+                    if(pad.getParentId() == padId){
+                        pad.setParentId(parentId);
+                        pad.setPreSibling(preSibling);
+                    }
+                }            
+            }
+        }        
+        return PadActionHandler.convertToTree(pads);
+    }
     
     static void movePad(HttpServletRequest request){
         int roomId = new Integer(request.getParameter("room_id"));
@@ -57,9 +118,20 @@ public class PadActionHandler {
         int padId = new Integer(request.getParameter("pad_id"));
         int parentId = new Integer(request.getParameter("parent_id"));
         int preSibling = new Integer(request.getParameter("pre_sibling"));
-        String childrenOnly     = request.getParameter("children_only");
+        String childrenOnly     = request.getParameter("children_only") != null?request.getParameter("children_only"):"no";
         
-        com.feezixlabs.db.dao.PadDAO.movePad(request.getUserPrincipal().getName(), roomId, contextId, padId,parentId,preSibling, childrenOnly);
+        
+        try
+        {
+            Pad rootPad = validateContext(request,roomId,contextId,padId,parentId,preSibling,childrenOnly,false);
+            if(rootPad != null)        
+                PadDAO.movePad(request.getUserPrincipal().getName(), roomId, contextId, padId,parentId,preSibling, childrenOnly);
+            else
+                System.out.println("Invalid pad tree");
+        }catch(Exception ex){
+            System.out.println("Invalid pad tree");
+            ex.printStackTrace();
+        }
     }    
     
     static void deletePad(HttpServletRequest request){
@@ -67,7 +139,7 @@ public class PadActionHandler {
         int grantor = new Integer(request.getParameter("grantor"));
         int contextId = new Integer(request.getParameter("context_id"));
         int padId = new Integer(request.getParameter("pad_id"));
-        com.feezixlabs.db.dao.PadDAO.deletePad(request.getUserPrincipal().getName(), roomId, contextId, padId,grantor);
+        PadDAO.deletePad(request.getUserPrincipal().getName(), roomId, contextId, padId,grantor);
     }
 
     static void updatePadAccess(HttpServletRequest request){
@@ -83,7 +155,7 @@ public class PadActionHandler {
         java.util.List<com.feezixlabs.bean.Pad> sortedPads = com.feezixlabs.util.PadSorter.topo(pads);
         java.util.Collections.reverse(sortedPads);
         Pad  rootPad = sortedPads.remove(0);
-        com.feezixlabs.struts.action.handler.PadActionHandler.convertToTree(rootPad, sortedPads,0);
+        PadActionHandler.convertToTree(rootPad, sortedPads,0);
         return rootPad;
     }
     
@@ -95,6 +167,7 @@ public class PadActionHandler {
             if(pad.getParentId() == curPad.getId()){
                 //System.out.println("Adding child item:"+pad.getId());
                 curPad.getChildren().add(pad);
+                pad.setParent(curPad);
                 convertToTree(pad,pads,i+1);
             }          
         }
@@ -186,6 +259,18 @@ public class PadActionHandler {
             childNodes.add(buildPadTreeNode(roomId,user,participant,context,childPad));
         }
         return childNodes;
+    }
+    
+    
+    public static Pad findPad(Pad pad,int id){
+        if(pad.getId() == id)return pad;        
+        
+        for(Pad childPad:pad.getChildren()){
+            Pad retPad = findPad(childPad,id);
+            
+            if(retPad != null)
+                return retPad;
+        }return null;
     }
     
     public static String messagePump(HttpServletRequest request){

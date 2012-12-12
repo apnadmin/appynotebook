@@ -1975,8 +1975,17 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                     $('#phyzixlabs-file-new-page-menu-button').menu({content: $('#phyzixlabs-file-new-page-menu').html()});
                     $('#phyzixlabs-export-menu,#phyzixlabs-file-new-page-menu').remove();
                     
-                    
-                                  
+                    $("#participant-treecontrol-scrollpane").height($(document).height()*.55);
+                    $("#app-panel").height($(document).height()*.25);
+                                   
+                   $('#log-viewer-dialog').dialog({
+                        autoOpen: false,
+                        width: 300,
+                        height:250,
+                        modal:false,
+                        position:{of: $(window),my: 'left bottom',at: 'left bottom',offet:'5 5'}
+                    });
+                                   
                                    
                    //creating ploting Dialog
                    $('#image-dialog').dialog({
@@ -3111,7 +3120,7 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                    if(this.page_screen_mode){
                        $("#application-left-navigation-panel,#participant-tabcontrol-pane,#application-footer").css("display","none");
                    }else{
-                       $("#application-left-navigation-panel").css({"overflow":"auto","height":$(window).height()});
+                       //$("#application-left-navigation-panel").css({"overflow":"auto","height":$(window).height()});
                    }
                    //$("#accordion-usage-tips").accordion();
                    //create border layout for main application
@@ -4244,7 +4253,7 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                         var parent_id   = 0;
                         var pre_sibling = 0;
 
-                        if(context.pages.length>0){
+                        if(context.pages.length>0 && context.active_pad != null){
                             
                             var curPage     = context.active_pad;
                             var curPageKey  = 'key-'+context.pid+'-'+curPage.context_id+'-'+curPage.id;
@@ -4268,13 +4277,22 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                             else
                             if(insertPos == "bottom" && curPageNode != null){
                                 var curLastNode = curPageNode;
-                                while(curLastNode.getNextSibling())
-                                    curLastNode = curLastNode.getNextSibling();
+                                while(curLastNode.getNextSibling()){
+                                    if(curLastNode.getNextSibling().data.type == "pad")//avoid assignment submission node
+                                        curLastNode = curLastNode.getNextSibling();
+                                    else
+                                        break;
+                                }
 
                                 pre_sibling = curLastNode.data.id;
                                 parent_id   = curPageNode.getParent().data.type != "context"?curPageNode.getParent().data.id:0;
                             }
                         }
+                        else
+                        if(context.pages.length>0){
+                            pre_sibling = context.pages[context.pages.length-1].id;
+                        }
+                        
                         var queue_url = 'dest.'+(new Date().getTime());
                         var page_config = {
                            header:{static_references: typeof static_references != "undefined"?static_references:[]},
@@ -4284,7 +4302,7 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                         };
 
                         
-                        if(typeof phyzixlabs_database == "undefined"){
+                        if(typeof phyzixlabs_database == "undefined"){ //alert(pre_sibling+"/"+curPageNode+"/"+insertPos)
                             //load work bench
                             $.ajax({
                                 type:'POST',

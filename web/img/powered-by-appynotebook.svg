@@ -42,8 +42,8 @@
      id="namedview88"
      showgrid="false"
      inkscape:zoom="7.1762366"
-     inkscape:cx="-1413.5708"
-     inkscape:cy="1156.2342"
+     inkscape:cx="-1399.887"
+     inkscape:cy="1117.2015"
      inkscape:window-x="65"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -339,47 +339,155 @@
            id="feMergeNode3184" />
       </feMerge>
     </filter>
+    <filter
+       x="-0.25"
+       y="-0.25"
+       width="1.5"
+       height="1.5"
+       color-interpolation-filters="sRGB"
+       id="filter3779-8">
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.000000"
+         in="SourceAlpha"
+         id="feGaussianBlur3781-9" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.500000 0 "
+         type="matrix"
+         result="bluralpha"
+         id="feColorMatrix3783-3" />
+      <feOffset
+         result="offsetBlur"
+         dy="1.000000"
+         dx="1.000000"
+         in="bluralpha"
+         id="feOffset3785-7" />
+      <feMerge
+         id="feMerge3787-7">
+        <feMergeNode
+           in="offsetBlur"
+           id="feMergeNode3789-4" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode3791-0" />
+      </feMerge>
+    </filter>
   </defs>
   <g
-     id="g3071"
-     inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/embed-logo.png"
-     inkscape:export-xdpi="188.8074"
-     inkscape:export-ydpi="188.8074">
-    <g
-       inkscape:export-ydpi="254.50874"
-       inkscape:export-xdpi="254.50874"
-       inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/embed-logo.png"
-       transform="translate(44.730966,-66.46938)"
-       id="g3803">
-      <text
-         x="-1497.1532"
-         y="-27.291189"
-         id="text2897"
-         xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3779);font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
-         sodipodi:linespacing="125%"><tspan
-           x="-1497.1532"
-           y="-27.291189"
-           id="tspan2899"
-           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">A<tspan
-   id="tspan3901"
-   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">P</tspan><tspan
-   id="tspan3903"
-   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#333333;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">P</tspan><tspan
-   id="tspan3905"
-   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">Y</tspan><tspan
-   id="tspan2905"
-   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#0075bd;fill-opacity:1;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold">notebook</tspan></tspan></text>
-    </g>
+     id="g3803"
+     transform="translate(43.337478,-65.911985)"
+     inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/business-card.png"
+     inkscape:export-xdpi="111.34757"
+     inkscape:export-ydpi="111.34757">
     <text
-       x="-1450.1639"
-       y="-101.17922"
-       id="text2904"
+       sodipodi:linespacing="125%"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3779);font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"><tspan
-         x="-1450.1639"
-         y="-101.17922"
-         id="tspan2906"
-         style="font-size:8px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold">Powered by</tspan></text>
+       id="text2897"
+       y="-27.291189"
+       x="-1497.1532"><tspan
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+         id="tspan2899"
+         y="-27.291189"
+         x="-1497.1532">A<tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3901">P</tspan><tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#333333;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3903">P</tspan><tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3905">Y</tspan><tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#0075bd;fill-opacity:1;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan2905">notebook</tspan></tspan></text>
   </g>
+  <text
+     style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+     xml:space="preserve"
+     id="text2904"
+     y="-101.17922"
+     x="-1450.1639"><tspan
+       style="font-size:8px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold"
+       id="tspan2906"
+       y="-101.17922"
+       x="-1450.1639">Powered by</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+     x="-1471.384"
+     y="-50.026218"
+     id="text3052"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan3054"></tspan></text>
+  <text
+     sodipodi:linespacing="125%"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3779-8);font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+     xml:space="preserve"
+     id="text2897-8"
+     y="-67.97538"
+     x="-1451.2588"
+     transform="matrix(0.36953994,0,0,0.53899715,-898.57505,-23.822437)"
+     inkscape:export-filename="/home/bitlooter/development/java/appynotebook/web/img/business-card.png"
+     inkscape:export-xdpi="383.98462"
+     inkscape:export-ydpi="383.98462"><tspan
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+       id="tspan2899-8"
+       y="-67.97538"
+       x="-1451.2588">A<tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3901-5">P</tspan><tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#333333;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3903-5">P</tspan><tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3905-7">Y</tspan><tspan
+   style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#0075bd;fill-opacity:1;font-family:UnBatang;-inkscape-font-specification:UnBatang Bold"
+   id="tspan2905-5">notebook</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:0.18823529;stroke:none;font-family:UnBatang;-inkscape-font-specification:UnBatang"
+     x="-1395.2996"
+     y="-46.263802"
+     id="text3112"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan3114"
+       x="-1395.2996"
+       y="-46.263802" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:UnBatang;-inkscape-font-specification:UnBatang;font-stretch:normal;font-variant:normal"
+     x="-1454.9409"
+     y="-37.06678"
+     id="text3888"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan3890"
+       x="-1454.9409"
+       y="-37.06678" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:UnBatang;-inkscape-font-specification:UnBatang;font-stretch:normal;font-variant:normal"
+     x="-1442.6782"
+     y="-33.165012"
+     id="text3892"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan3894"
+       x="-1442.6782"
+       y="-33.165012" /></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0075bd;fill-opacity:1;stroke:none;font-family:UnBatang;-inkscape-font-specification:UnBatang"
+     x="-1441.006"
+     y="-36.788082"
+     id="text3896"
+     sodipodi:linespacing="125%"
+     inkscape:export-filename="/home/bitlooter/Desktop/bussiness-card-design/logo.png"
+     inkscape:export-xdpi="163.90788"
+     inkscape:export-ydpi="163.90788"><tspan
+       sodipodi:role="line"
+       id="tspan3898"
+       x="-1441.006"
+       y="-36.788082"><tspan
+   style="fill:#4d4d4d;font-weight:bold;-inkscape-font-specification:UnBatang Bold"
+   id="tspan3900">APPY</tspan>notebook</tspan></text>
 </svg>

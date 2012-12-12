@@ -19,7 +19,7 @@
         <!-- Application specific parameters -->
         <init-param>
             <param-name>environment</param-name>
-            <param-value>prod</param-value>
+            <param-value>dev</param-value>
         </init-param>
         <init-param>
             <param-name>dev.configfile.location</param-name>

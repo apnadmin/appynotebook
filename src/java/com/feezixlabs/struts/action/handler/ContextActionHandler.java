@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.feezixlabs.bean.Context;
 import com.feezixlabs.bean.ContextAccess;
+import com.feezixlabs.bean.Pad;
+import com.feezixlabs.bean.User;
 import com.feezixlabs.util.ConfigUtil;
+import net.sf.json.JsonConfig;
 
 import org.apache.log4j.Logger;
 /**
@@ -105,54 +108,25 @@ public class ContextActionHandler {
             com.feezixlabs.bean.Context cntx = com.feezixlabs.db.dao.ContextDAO.getContext(userName, roomId, contextId,userId);
             int newContextId = com.feezixlabs.db.dao.ContextDAO.addContext(userName, roomId,cntx.getConfig(),ConfigUtil.default_binder_access);
 
-            com.feezixlabs.bean.Pad pad = com.feezixlabs.db.dao.PadDAO.getPad(userName, roomId, contextId,pageId,fromUserId);
-
             net.sf.json.JsonConfig jsonConfig = new net.sf.json.JsonConfig();
             jsonConfig.setJavascriptCompliant(true);
 
-            int padId = com.feezixlabs.db.dao.PadDAO.addPad(roomId,userName, newContextId,0,0, pad.getConfig(), userId,ConfigUtil.default_page_access);
+            java.util.List<com.feezixlabs.bean.Pad> pads = com.feezixlabs.db.dao.PadDAO.getPads(userName, roomId, contextId,userId);
 
-            /*update static references*/
-            net.sf.json.JSONObject padJSON = net.sf.json.JSONObject.fromObject(pad.getConfig(),jsonConfig);
-            if(padJSON.has("header")&& padJSON.getJSONObject("header") != null && !padJSON.getJSONObject("header").isNullObject() && padJSON.getJSONObject("header").has("static_references"))
-            {
-                net.sf.json.JSONArray static_references = padJSON.getJSONObject("header").getJSONArray("static_references");
-                for(int i=0;i<static_references.size();i++){
-                    net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-
-                    Integer refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName"));
-                    if(refCount == null){
-                        com.feezixlabs.db.dao.StaticReferenceDAO.addReference(static_reference.getString("fileName"));
-                        com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), 1);
-                    }
-                    else
-                        com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount.intValue()+1);
-                }
-            }
-
+            User fromUser = com.feezixlabs.db.dao.UserDOA.getUserById(userId);
+            User toUser   = com.feezixlabs.db.dao.UserDOA.getUserById(fromUserId);
             
-            java.util.List<com.feezixlabs.bean.Element> elements = com.feezixlabs.db.dao.ElementDAO.getElements(userName, roomId, contextId, pad.getId(), fromUserId);
-            for(com.feezixlabs.bean.Element e:elements){
-                int elid = com.feezixlabs.db.dao.ElementDAO.addElement(userName, roomId, newContextId, padId, e.getConfig(),userId,ConfigUtil.default_element_access);
-
-                /*update static references*/
-                net.sf.json.JSONObject elementJSON = net.sf.json.JSONObject.fromObject(e.getConfig());
-                if(elementJSON.has("header")&& elementJSON.getJSONObject("header") != null && !elementJSON.getJSONObject("header").isNullObject() && elementJSON.getJSONObject("header").has("static_references"))
-                {
-                    net.sf.json.JSONArray static_references = elementJSON.getJSONObject("header").getJSONArray("static_references");
-                    for(int i=0;i<static_references.size();i++){
-                        net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-                        int refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName")).intValue()+1;
-                        com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount);
-                    }
-                }
-            }
+            Pad rootPad = PadActionHandler.convertToTree(pads);  
+            rootPad = PadActionHandler.findPad(rootPad, pageId);
+            clonePad(rootPad,roomId,newContextId,0,0,toUser ,fromUser,jsonConfig,true);
    }
 
    public static void distributeContextTo(int roomId,int contextId,String userName,int toRoomId,String toUserName){
               int userId = com.feezixlabs.db.dao.UserDOA.getUserId(userName);
+              User fromUser = com.feezixlabs.db.dao.UserDOA.getUserById(userId);
               int toUserId  = com.feezixlabs.db.dao.UserDOA.getUserId(toUserName);
-
+              User toUser = com.feezixlabs.db.dao.UserDOA.getUserById(toUserId);
+              
               com.feezixlabs.bean.Context cntx = com.feezixlabs.db.dao.ContextDAO.getContext(userName, roomId, contextId,userId);
               int newContextId = com.feezixlabs.db.dao.ContextDAO.addContext(toUserName, toRoomId,cntx.getConfig(),ConfigUtil.default_binder_access);
 
@@ -161,48 +135,17 @@ public class ContextActionHandler {
               net.sf.json.JsonConfig jsonConfig = new net.sf.json.JsonConfig();
               jsonConfig.setJavascriptCompliant(true);
 
-              for(com.feezixlabs.bean.Pad pad:pads){
-                  int padId = com.feezixlabs.db.dao.PadDAO.addPad(toRoomId,toUserName, newContextId,pad.getParentId(),pad.getPreSibling(), pad.getConfig(), toUserId,ConfigUtil.default_page_access);
-
-                  /*update static references*/
-                  net.sf.json.JSONObject padJSON = net.sf.json.JSONObject.fromObject(pad.getConfig(),jsonConfig);
-                  if(padJSON.has("header")&& padJSON.getJSONObject("header") != null && !padJSON.getJSONObject("header").isNullObject() && padJSON.getJSONObject("header").has("static_references"))
-                  {
-                        net.sf.json.JSONArray static_references = padJSON.getJSONObject("header").getJSONArray("static_references");
-                        for(int i=0;i<static_references.size();i++){
-                            net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-
-                            Integer refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName"));
-                            if(refCount == null){
-                                com.feezixlabs.db.dao.StaticReferenceDAO.addReference(static_reference.getString("fileName"));
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), 1);
-                            }
-                            else
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount.intValue()+1);
-                        }
-                  }
-
-                  java.util.List<com.feezixlabs.bean.Element> elements = com.feezixlabs.db.dao.ElementDAO.getElements(userName, roomId, contextId, pad.getId(), userId);
-                  for(com.feezixlabs.bean.Element e:elements){
-
-                      int elid = com.feezixlabs.db.dao.ElementDAO.addElement(toUserName, toRoomId, newContextId, padId, e.getConfig(),toUserId,ConfigUtil.default_element_access);
-
-                      /*update static references*/
-                      net.sf.json.JSONObject elementJSON = net.sf.json.JSONObject.fromObject(e.getConfig());
-                      if(elementJSON.has("header")&& elementJSON.getJSONObject("header") != null && !elementJSON.getJSONObject("header").isNullObject() && elementJSON.getJSONObject("header").has("static_references"))
-                      {
-                            net.sf.json.JSONArray static_references = elementJSON.getJSONObject("header").getJSONArray("static_references");
-                            for(int i=0;i<static_references.size();i++){
-                                net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-                                int refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName")).intValue()+1;
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount);
-                            }
-                      }
-                  }
+              Pad rootPad = PadActionHandler.convertToTree(pads);              
+              int prevSibling = 0;
+              for(Pad curPad:rootPad.getChildren()){                
+                 prevSibling = clonePad(curPad,roomId,newContextId,0,prevSibling,toUser ,fromUser,jsonConfig,true);
               }
    }
+   
    public static void distributeContext(int roomId,int contextId,String userName){
        int userId = com.feezixlabs.db.dao.UserDOA.getUserId(userName);
+       User fromUser = com.feezixlabs.db.dao.UserDOA.getUserById(userId);
+       
        for(com.feezixlabs.bean.Participant p:com.feezixlabs.db.dao.ParticipantDAO.getParticipants(roomId)){
            if(p.getUserId() != userId){
               int newContextId = com.feezixlabs.db.dao.ContextDAO.distributeContext(userName,roomId,p.getUserId(),contextId);
@@ -211,44 +154,12 @@ public class ContextActionHandler {
               net.sf.json.JsonConfig jsonConfig = new net.sf.json.JsonConfig();
               jsonConfig.setJavascriptCompliant(true);
 
-              for(com.feezixlabs.bean.Pad pad:pads){
-                  int padId = com.feezixlabs.db.dao.PadDAO.addPad(roomId,p.getUserName(), newContextId,pad.getParentId(),pad.getPreSibling(), pad.getConfig(), p.getUserId(),ConfigUtil.default_page_access);
-
-                  /*update static references*/
-                  net.sf.json.JSONObject padJSON = net.sf.json.JSONObject.fromObject(pad.getConfig(),jsonConfig);
-                  if(padJSON.has("header")&& padJSON.getJSONObject("header") != null && !padJSON.getJSONObject("header").isNullObject() && padJSON.getJSONObject("header").has("static_references"))
-                  {
-                        net.sf.json.JSONArray static_references = padJSON.getJSONObject("header").getJSONArray("static_references");
-                        for(int i=0;i<static_references.size();i++){
-                            net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-
-                            Integer refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName"));
-                            if(refCount == null){
-                                com.feezixlabs.db.dao.StaticReferenceDAO.addReference(static_reference.getString("fileName"));
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), 1);
-                            }
-                            else
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount.intValue()+1);
-                        }
-                  }
-
-                  java.util.List<com.feezixlabs.bean.Element> elements = com.feezixlabs.db.dao.ElementDAO.getElements(userName, roomId, contextId, pad.getId(), userId);
-                  for(com.feezixlabs.bean.Element e:elements){
-
-                      int elid = com.feezixlabs.db.dao.ElementDAO.addElement(p.getUserName(), roomId, newContextId, padId, e.getConfig(), p.getUserId(),ConfigUtil.default_element_access);
-
-                      /*update static references*/
-                      net.sf.json.JSONObject elementJSON = net.sf.json.JSONObject.fromObject(e.getConfig());
-                      if(elementJSON.has("header") && elementJSON.getJSONObject("header") != null && !elementJSON.getJSONObject("header").isNullObject() && elementJSON.getJSONObject("header").has("static_references"))
-                      {
-                            net.sf.json.JSONArray static_references = elementJSON.getJSONObject("header").getJSONArray("static_references");
-                            for(int i=0;i<static_references.size();i++){
-                                net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-                                int refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName")).intValue()+1;
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount);
-                            }
-                      }
-                  }
+              User toUser = com.feezixlabs.db.dao.UserDOA.getUserById(p.getUserId());
+              
+              Pad rootPad = PadActionHandler.convertToTree(pads);              
+              int prevSibling = 0;
+              for(Pad curPad:rootPad.getChildren()){                
+                 prevSibling = clonePad(curPad,roomId,newContextId,0,prevSibling,toUser ,fromUser,jsonConfig,true);
               }
            }
        }
@@ -281,6 +192,8 @@ public class ContextActionHandler {
               int contextId = new Integer(request.getParameter("context_id"));
               int padId = new Integer(request.getParameter("pad_id"));
               int assignmentId = new Integer(request.getParameter("assignment_id"));
+              
+              boolean submitAllAppendedPads = request.getParameter("submitAllAppendedPads") != null && !request.getParameter("submitAllAppendedPads").isEmpty() ? Boolean.parseBoolean(request.getParameter("submitAllAppendedPads")):true;
               
               boolean overrideExisting = request.getParameter("overrideExisting") != null && request.getParameter("overrideExisting").length()>0 ? Boolean.parseBoolean(request.getParameter("overrideExisting")):false;
               int overrideContextId = request.getParameter("overrideContextId") != null && request.getParameter("overrideContextId").length()>0 ? Integer.parseInt(request.getParameter("overrideContextId")):0;
@@ -330,10 +243,8 @@ public class ContextActionHandler {
               }
 
               com.feezixlabs.bean.User educator = com.feezixlabs.db.dao.UserDOA.getUserById(assignment.getUserId());
-
+              com.feezixlabs.bean.User user = com.feezixlabs.db.dao.UserDOA.getUserById(userId);
               
-
-
               com.feezixlabs.bean.Context cntx = com.feezixlabs.db.dao.ContextDAO.getContext(request.getUserPrincipal().getName(), roomId, contextId,userId);
 
               net.sf.json.JSONObject cntxJSON = net.sf.json.JSONObject.fromObject(cntx.getConfig(),jsonConfig);
@@ -346,63 +257,77 @@ public class ContextActionHandler {
               int newContextId = com.feezixlabs.db.dao.ContextDAO.addContext(educator.getUserName(), roomId,cntxJSON.toString(),ConfigUtil.ACCESS_NONE);
 
               java.util.List<com.feezixlabs.bean.Pad> pads = com.feezixlabs.db.dao.PadDAO.getPads(request.getUserPrincipal().getName(), roomId, contextId,userId);
-
-
-              boolean end = false;
-              for(com.feezixlabs.bean.Pad pad:pads){
-                  if(padId != 0){
-                      if(pad.getId() == padId)
-                            end = true;
-                      else
-                          continue;
-                  }
-
-
-                  int newpadId = com.feezixlabs.db.dao.PadDAO.addPad(roomId,educator.getUserName(), newContextId,pad.getParentId(),pad.getPreSibling(), pad.getConfig(), educator.getId(),ConfigUtil.ACCESS_NONE);
-
-                  /*update static references*/
-                  net.sf.json.JSONObject padJSON = net.sf.json.JSONObject.fromObject(pad.getConfig(),jsonConfig);
-                  if(padJSON.has("header") && padJSON.getJSONObject("header") != null && !padJSON.getJSONObject("header").isNullObject() && padJSON.getJSONObject("header").has("static_references"))
-                  {
-                        net.sf.json.JSONArray static_references = padJSON.getJSONObject("header").getJSONArray("static_references");
-                        for(int i=0;i<static_references.size();i++){
-                            net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-
-                            Integer refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName"));
-                            if(refCount == null){
-                                com.feezixlabs.db.dao.StaticReferenceDAO.addReference(static_reference.getString("fileName"));
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), 1);
-                            }
-                            else
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount.intValue()+1);
-                        }
-                  }
-
-
-                  java.util.List<com.feezixlabs.bean.Element> elements = com.feezixlabs.db.dao.ElementDAO.getElements(request.getUserPrincipal().getName(), roomId, contextId, pad.getId(), userId);
-                  for(com.feezixlabs.bean.Element e:elements){
-
-                      int elid = com.feezixlabs.db.dao.ElementDAO.addElement(educator.getUserName(), roomId, newContextId, newpadId, e.getConfig(),educator.getId(),ConfigUtil.ACCESS_NONE);
-
-                      /*update static references*/
-                      net.sf.json.JSONObject elementJSON = net.sf.json.JSONObject.fromObject(e.getConfig());
-                      if(elementJSON.has("header") && elementJSON.getJSONObject("header") != null && !elementJSON.getJSONObject("header").isNullObject() && elementJSON.getJSONObject("header").has("static_references"))
-                      {
-                            net.sf.json.JSONArray static_references = elementJSON.getJSONObject("header").getJSONArray("static_references");
-                            for(int i=0;i<static_references.size();i++){
-                                net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
-                                int refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName")).intValue()+1;
-                                com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount);
-                            }
-                      }
-                  }
-                  if(end)break;
+              Pad rootPad = PadActionHandler.convertToTree(pads);
+              
+              if(padId == 0){//submit entire binder
+                int prevSibling = 0;
+                for(Pad curPad:rootPad.getChildren()){                
+                    prevSibling = clonePad(curPad,roomId,newContextId,0,prevSibling,educator ,user,jsonConfig,submitAllAppendedPads);
+                }
+              }
+              else
+              {
+                  rootPad = PadActionHandler.findPad(rootPad, padId);
+                  clonePad(rootPad,roomId,newContextId,0,0,educator,user,jsonConfig,submitAllAppendedPads);
               }
 
               com.feezixlabs.db.dao.AssignmentSubmissionDAO.addAssignmentSubmission(request.getUserPrincipal().getName(), roomId, assignmentId, newContextId, contextId, padId);
-              return "{status:'success'}";
+              return "{\"status\":\"success\"}";
    }
 
+   
+   public static int clonePad(Pad srcPad,int roomId,int newContextId,int parentId,int preSibling,User toUser,User fromUser,JsonConfig jsonConfig,boolean submitAllAppendedPads){
+        int newpadId = com.feezixlabs.db.dao.PadDAO.addPad(roomId,toUser.getUserName(), newContextId,parentId,preSibling, srcPad.getConfig(), fromUser.getId(),ConfigUtil.ACCESS_NONE);
+
+        /*update static references*/
+        net.sf.json.JSONObject padJSON = net.sf.json.JSONObject.fromObject(srcPad.getConfig(),jsonConfig);
+        if(padJSON.has("header") && padJSON.getJSONObject("header") != null && !padJSON.getJSONObject("header").isNullObject() && padJSON.getJSONObject("header").has("static_references"))
+        {
+            net.sf.json.JSONArray static_references = padJSON.getJSONObject("header").getJSONArray("static_references");
+            for(int i=0;i<static_references.size();i++){
+                net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
+
+                Integer refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName"));
+                if(refCount == null){
+                    com.feezixlabs.db.dao.StaticReferenceDAO.addReference(static_reference.getString("fileName"));
+                    com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), 1);
+                }
+                else
+                    com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount.intValue()+1);
+            }
+        }
+
+
+        java.util.List<com.feezixlabs.bean.Element> elements = com.feezixlabs.db.dao.ElementDAO.getElements(fromUser.getUserName(), roomId, srcPad.getContextId(), srcPad.getId(), fromUser.getId());
+        for(com.feezixlabs.bean.Element e:elements){
+
+            int elid = com.feezixlabs.db.dao.ElementDAO.addElement(toUser.getUserName(), roomId, newContextId, newpadId, e.getConfig(),toUser.getId(),ConfigUtil.ACCESS_NONE);
+
+            /*update static references*/
+            net.sf.json.JSONObject elementJSON = net.sf.json.JSONObject.fromObject(e.getConfig());
+            if(elementJSON.has("header") && elementJSON.getJSONObject("header") != null && !elementJSON.getJSONObject("header").isNullObject() && elementJSON.getJSONObject("header").has("static_references"))
+            {
+                net.sf.json.JSONArray static_references = elementJSON.getJSONObject("header").getJSONArray("static_references");
+                for(int i=0;i<static_references.size();i++){
+                    net.sf.json.JSONObject static_reference = static_references.getJSONObject(i);
+                    int refCount = com.feezixlabs.db.dao.StaticReferenceDAO.getReference(static_reference.getString("fileName")).intValue()+1;
+                    com.feezixlabs.db.dao.StaticReferenceDAO.updateReference(static_reference.getString("fileName"), refCount);
+                }
+            }
+        }
+        
+        //clone children
+        if(srcPad.getChildren() != null && submitAllAppendedPads){
+            int prevSibling = 0;
+            for(Pad curPad:srcPad.getChildren()){                
+                prevSibling = clonePad(curPad,roomId,newContextId,newpadId,prevSibling,toUser,fromUser,jsonConfig,submitAllAppendedPads);
+            }
+        }
+        
+        return newpadId;
+   }
+   
+   
    public static void systemDistributeContext(HttpServletRequest request){
        if(request.isUserInRole("sysadmin")){
            int roomId = new Integer(request.getParameter("room_id"));
