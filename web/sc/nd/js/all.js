@@ -22545,6 +22545,7 @@ function Widget(env,appid,classid,name,widget){
            var width  = typeof options == "undefined" || typeof options.width == "undefined"?page.svg_doc.root().width.baseVal.value:options.width;
            var height  = typeof options == "undefined" || typeof options.height == "undefined"?page.svg_doc.root().height.baseVal.value:options.height;
            
+           
            var fObject = page.svg_doc.other(container,"foreignObject",{x:x,y:y,width:width,height:height});
            var iframe = document.createElementNS("http://www.w3.org/1999/xhtml","iframe");
            var body = document.createElementNS("http://www.w3.org/1999/xhtml","body");
@@ -22554,14 +22555,14 @@ function Widget(env,appid,classid,name,widget){
            iframe.setAttribute("height",height);
            iframe.setAttribute("frameborder","0");
            iframe.setAttribute("scrolling","no");
+                      
            //body.appendChild(iframe);
            //fObject.appendChild(body);
+           
            fObject.appendChild(iframe);
            
            fObject.setAttribute("class","html-view");
            var _this = this;
-           //mouse blocker
-           container.mouseBlocker = page.svg_doc.rect(container,x, y,width,height,3,3,{"pointer-events":"visible","fill":"silver","opacity":".1","stroke":"silver", "stroke-width":"2","display":"none"});
            
            
            $(iframe).load(function(){
@@ -22571,6 +22572,9 @@ function Widget(env,appid,classid,name,widget){
                    //fObject.appendChild(iframe);
                    //return;
                }
+               //mouse blocker
+               container.mouseBlocker = page.svg_doc.rect(null,x, y,width,height,3,3,{"pointer-events":"visible","fill":"silver","opacity":".1","stroke":"silver", "stroke-width":"2","display":"none"});          
+               
                if(typeof options != "undefined" && typeof options.callback != "undefined")
                    options.callback(iframe,fObject);
            });iframe.setAttribute("src", this.getFullLocalResourceURL(url, 'text/html')/*.getResourceURL(url)*/);

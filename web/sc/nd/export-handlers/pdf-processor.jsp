@@ -111,7 +111,10 @@
                     
                     //alert($("#svg_dom").find("foreignObject"))
                 }else{
-                    $('#svg').attr("value",svg);
+                    $("#svg_dom").html(svg);
+                    $("#svg_dom").find("foreignObject").remove();
+                    
+                    $('#svg').attr("value",$("#svg_dom").html());
                     $("form[name=pdfposter]").attr("action","pdf.jsp")
                 }
                 //$('#imagedata').attr("value",imagedata);

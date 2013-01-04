@@ -4805,7 +4805,11 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                    ColabopadApplication.pen.cursor = 'np-cursor-'+mode;
                    this.showAnnotationLayer();
                },
+               log:function(msg){
+                   log(msg);
+               },
                showAppAnnotationLayerForAllApps:function(display){
+                   //this.log("showAppAnnotationLayerForAllApps");
                    var pad = ColabopadApplication.getCurrentContext().active_pad;
                    for(var i=0;i<pad.widget_instances.length;i++){
                         var element = pad.widget_instances[i];
@@ -4818,6 +4822,8 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                     var pad = ColabopadApplication.getCurrentContext().active_pad;
                     
                     if(display == "show"){
+                        //this.log("showAppAnnotationLayer");
+                        
                         //computed dimension
                         var x = element.config.dim.x+element.config.transforms.trslt.x;
                         var y = element.config.dim.y+element.config.transforms.trslt.y;
@@ -4826,7 +4832,7 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                         var height = Math.abs(element.config.transforms.scale.y*element.config.dim.h);
 
                         pad.svg_doc.change(element.dom.mouseBlocker,{
-                            "x":x,"y":y,"width":width,"height":height,"display":"block"                 
+                            "x":x,"y":y,"width":width,"height":height//,"display":"block"                 
                         });
                         element.dom.mouseBlocker.style.display = "block"
                     }
@@ -4858,7 +4864,7 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                     }
                },
                showAnnotationLayer:function(force){
-                   //log("showing annotation layer:"+force)
+                   //this.log("showing annotation layer:"+force)
                    var page = ColabopadApplication.getCurrentContext().active_pad;
                    
                    if(typeof force != "undefined"){
@@ -4877,12 +4883,15 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                       this.pen.mode=='resize' || 
                       this.pen.mode=='rotate'){
                        page.annotation_layer.style.display = "none";
+                       
                        //page.svg_doc.change(page.annotation_layer,{"display":"none"}); 
                        //page.annotation_layer.setAttribute("display","none");
                        
                        //log("hiding main annotation layer");
                        
-                       if(this.pen.mode == 'move' ||this.pen.mode=='resize' || this.pen.mode=='rotate'){
+                       if(this.pen.mode == 'move' ||
+                          this.pen.mode=='resize' || 
+                          this.pen.mode=='rotate'){
                             this.showAppAnnotationLayerForAllApps("show");
                        }else{
                            this.showAppAnnotationLayerForAllApps("hide");
@@ -5184,14 +5193,14 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                             }
                          }
                          
-                         if(m.mousedrop_pt == null){                             
+                         if(m.mousedrop_pt == null || typeof m.mousedrop_pt == "undefined"){                             
                              m.mousedrop_pt = p;
                              m.accum_trslt  = {x:0,y:0};
                              m.undoNode =  {element:m.element,
                                             type:"transform",
                                             transforms:ColabopadApplication.Utility.cloneTransformationObject(m.config.transforms)
                                            };     
-                             //log("mouse down not set");
+                             log("mouse down not set");
                          }
                          
                          var trslt_delta = {x:(p.x-m.mousedrop_pt.x),y:(p.y-m.mousedrop_pt.y)};
@@ -5250,6 +5259,18 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                                 return;
                             }
                          }
+                         
+                         if(m.mousedrop_pt == null || typeof m.mousedrop_pt == "undefined"){                             
+                             m.mousedrop_pt = p;
+                             m.accum_rotate  = {angle:0};
+                             m.undoNode =  {element:m.element,
+                                            type:"transform",
+                                            transforms:ColabopadApplication.Utility.cloneTransformationObject(m.config.transforms)
+                                           };     
+                             log("mouse down rotate not set");
+                         }                         
+                         
+                         if(m.mousedrop_pt == null || typeof m.mousedrop_pt == "undefined")return;
 
                          trslt = this.pen.rotateElement.config.transforms.trslt;
 
@@ -5314,6 +5335,18 @@ function initApp(embeded,embed_key,embed_width,embed_height){
                               }
                             }
                             var pt = p;
+                            
+                            if(m.mousedrop_pt == null || typeof m.mousedrop_pt == "undefined"){                             
+                                m.mousedrop_pt = p;                                
+                                m.undoNode =  {element:m.element,
+                                                type:"transform",
+                                                transforms:ColabopadApplication.Utility.cloneTransformationObject(m.config.transforms)
+                                            };     
+                                log("mouse down resize not set");
+                            }                            
+                            
+                            
+                            if(m.mousedrop_pt == null || typeof m.mousedrop_pt == "undefined")return;
                             
                             var scaleX    = (pt.x-m.mousedrop_pt.x)/m.config.dim.w;
                             m.config.transforms.scale.x += scaleX;
@@ -7034,6 +7067,9 @@ function initApp(embeded,embed_key,embed_width,embed_height){
 
                        }
                        pad.svg_doc.remove(ele);
+                       if(ele.mouseBlocker)
+                           pad.svg_doc.remove(ele.mouseBlocker);
+                       
                    }catch(Error){
                        log('error deleting element. exception:'+Error+' callfrom:'+callfrom);
                    }

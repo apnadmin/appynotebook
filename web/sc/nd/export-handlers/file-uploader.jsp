@@ -23,6 +23,7 @@
   int height = 0;
   StringBuffer docText = null;
   StringBuffer static_references = null;
+  java.util.List staticReferenceList = null;
   boolean doConversion = false;
   String from = "";
   boolean upgradeNeeded = false;
@@ -206,12 +207,17 @@
 
             static_references = new StringBuffer();
             static_references.append("[");
+            
+            staticReferenceList = new java.util.ArrayList();
             boolean first = true;
             for(int i=0;i<imageFiles.length;i++){
                 if(fileName.compareTo(imageFiles[i]) != 0 && imageFiles[i].compareTo(fileName+".html") != 0){
-                    static_references.append((!first?",":"")+"{\"fileName\":\""+imageFiles[i]+"\"}");
+                    java.util.Map fileNameObj = new java.util.HashMap();
+                    fileNameObj.put("fileName",imageFiles[i]);
+                    //static_references.append((!first?",":"")+"{\"fileName\":\""+imageFiles[i]+"\"}");
                     //System.out.println(imageFiles[i]);
-                    first = false;
+                    //first = false;
+                    staticReferenceList.add(fileNameObj);
                 }
                 //move to static directory
                 org.apache.commons.io.FileUtils.moveFile(new java.io.File(workerFilePath+"/"+imageFiles[i]), new java.io.File(staticFilePath+"/"+imageFiles[i]));
@@ -280,8 +286,9 @@
                         buf.append("\"imgWidth\":"+width+",");
                         buf.append("\"imgHeight\":"+height+",");
                         buf.append("\"doc_text\":$(\"#html_document_holder\").html(),");
+                        
                         if(static_references != null)
-                        buf.append("\"static_references\":\""+static_references.toString()+"\",");
+                        buf.append("\"static_references\":"+/*static_references.toString()*/net.sf.json.JSONArray.fromObject(staticReferenceList).toString()+",");
                         buf.append("\"upgradeNeeded\":"+upgradeNeeded+"");
                         buf.append("}");
                     %>
