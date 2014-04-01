@@ -1,6 +1,7 @@
-
 The information below should help you get APPYnotebook up and running. Note that this guide assumes you know your way around operating systems,database servers and Appservers. It only covers the aspects of deployment that are specific to APPYnotebook. If you have any questions pertaining to the components of the infrastructure stack (OS,DB,appserver..etc) you need to consult other sources(google,stackexchange..etc).
 
+
+Eye-candy demo: http://youtu.be/U6sLF6mZI6Q
 
 Operating System
     APPYnotebook is developed on Ubuntu and the hosted version runs on a Ubuntu server. It has never been tested on any other operating system, while it should run on any J2EE container regardless of OS, we cannot guarantee it. 
